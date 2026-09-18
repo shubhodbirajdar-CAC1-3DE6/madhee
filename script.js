@@ -700,10 +700,10 @@ document.addEventListener('keydown', (e) => {
 // 13. SIX SECTIONS SCROLLSPY & ACTIVE TAB HIGHLIGHTING
 // ==========================================================================
 const SIX_SECTIONS = [
-  { id: 'prologue', num: '01', title: 'Prologue' },
-  { id: 'memories', num: '02', title: '12 Memories' },
-  { id: 'chronicles', num: '03', title: 'Case File' },
-  { id: 'madhee-dimension', num: '04', title: 'The Madhee Dimension' },
+  { id: 'prologue', num: '01', title: 'Intro' },
+  { id: 'memories', num: '02', title: 'Memories' },
+  { id: 'chronicles', num: '03', title: 'Case' },
+  { id: 'madhee-dimension', num: '04', title: 'Dimension' },
   { id: 'apology', num: '05', title: 'Letter' },
   { id: 'sanctuary', num: '06', title: 'Sanctuary' }
 ];
