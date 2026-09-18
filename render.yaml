@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: the-little-universe-of-madhee
+    runtime: static
+    staticPublishPath: .
+    buildCommand: ""
