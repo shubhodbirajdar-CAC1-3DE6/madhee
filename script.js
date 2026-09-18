@@ -16,15 +16,12 @@ let currentTheme = 'moonlit';
 
 // Audio Synthesizer State
 let audioCtx = null;
-let isAudioPlaying = false;
-let audioInterval = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initLoadingScreen();
   initThreeJSNature();
   initScrollListeners();
   initThemeSwitcher();
-  initAudioControls();
   initCursorFollower();
 
   // Snowbell cat interactive meow bounce
