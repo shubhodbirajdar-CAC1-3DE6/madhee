@@ -1629,7 +1629,7 @@ function switchBubuComedy(mode, btn) {
     if (sub) sub.textContent = 'Madhee vs Shubheeee • 100% Real Footage';
   } else if (mode === 'squish') {
     img.src = 'images/bears/bubu-comedy-squish.gif';
-    if (quote) quote.textContent = '“Bubu squishing Dudu\'s cheeks: ‘Hasso ab jaldi se Madam CR, warna dono cheeks stretch kar doonga!’ 😜🤏”';
+    if (quote) quote.textContent = '“shubeee squishing madhee\'s cheeks: ‘Hasso ab jaldi se Madam CR, warna dono cheeks stretch kar doonga!’ 😜🤏”';
     if (sub) sub.textContent = 'Squishy Cheeks Attack Mode';
   } else if (mode === 'pgl') {
     img.src = 'images/bears/bubu-comedy-pgl.gif';
