@@ -1625,8 +1625,8 @@ function switchBubuComedy(mode, btn) {
 
   if (mode === 'bonk') {
     img.src = 'images/bears/bubu-comedy-bonk.gif';
-    if (quote) quote.textContent = '“Madhee punishing idiot Shubhod with squeaky hammer: ‘Itni badi stupid mistake kaun karta hai idiot?!’ 😂🔨”';
-    if (sub) sub.textContent = 'Madhee vs Idiot Shubhod • 100% Real Footage';
+    if (quote) quote.textContent = '“Madhee punishing shubheeee with squeaky hammer: ‘Itni badi stupid mistake kaun karta hai idiot?!’ 😂🔨”';
+    if (sub) sub.textContent = 'Madhee vs Shubheeee • 100% Real Footage';
   } else if (mode === 'squish') {
     img.src = 'images/bears/bubu-comedy-squish.gif';
     if (quote) quote.textContent = '“Bubu squishing Dudu\'s cheeks: ‘Hasso ab jaldi se Madam CR, warna dono cheeks stretch kar doonga!’ 😜🤏”';
@@ -1656,9 +1656,9 @@ function triggerMadheeLaugh() {
   }
 
   const laughs = [
-    "😂 “Hahahah! Dekho dekho Madam CR hassi! Mission Successful!” 🔨🤣",
+    "😂 “Hahahah! Madhee with squeaky hammer: ‘Shubheeee, ek aur stupid mistake ki na toh sar pe aur ek bonk padega!’ 🔨🤣”",
     "🤏 “Pagal aurat hass di! Ab no more gussa, deal done!” 💖🤭",
-    "🤣 “Bubu falls on the floor laughing: ‘Yeh dekho idiot ko!’” 🦷💃",
+    "🔨 “Shubheeee accepts defeat: ‘Theek hai maaf kardo Madam CR, sar dukh raha hai hammer se!’ 🥺🤣”",
     "🌸 “Your real laugh is the cutest sound in the galaxy, Madhee!” 🥰✨"
   ];
   const msg = laughs[Math.floor(Math.random() * laughs.length)];
