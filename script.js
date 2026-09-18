@@ -1632,9 +1632,9 @@ function switchBubuComedy(mode, btn) {
     if (quote) quote.textContent = '“shubeee squishing madhee\'s cheeks: ‘Hasso ab jaldi se Madam CR, warna dono cheeks stretch kar doonga!’ 😜🤏”';
     if (sub) sub.textContent = 'Squishy Cheeks Attack Mode';
   } else if (mode === 'pgl') {
-    img.src = 'images/bears/bubu-comedy-pgl.gif';
-    if (quote) quote.textContent = '“Dudu doing his victory dance: ‘PGL AURAT... dekh Madhee thoda sa toh hassi na?!’ 💃✨”';
-    if (sub) sub.textContent = 'Official PGL Aurat Dance Routine';
+    img.src = 'images/bears/bubu-chase-hammer.gif';
+    if (quote) quote.textContent = '“Madhee chasing shubheeee with hammer: ‘Ruk tu idiot, bohot shaana banta hai na?! Aaj nahi bachega!’ 😂🏃‍♂️🔨”';
+    if (sub) sub.textContent = 'Shubheeee Running For His Life • Danger Level 100%';
   } else if (mode === 'laugh') {
     img.src = 'images/bears/bubu-comedy-laugh.gif';
     if (quote) quote.textContent = '“Bubu laughing with his single goofy tooth until his stomach hurts! Hahahahaha! 😆🦷”';
