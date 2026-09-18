@@ -703,7 +703,7 @@ const SIX_SECTIONS = [
   { id: 'prologue', num: '01', title: 'Prologue' },
   { id: 'memories', num: '02', title: '12 Memories' },
   { id: 'chronicles', num: '03', title: 'Case File' },
-  { id: 'trust-lotus', num: '04', title: 'Trust Lotus' },
+  { id: 'trust-workshop', num: '04', title: 'Trust Workshop' },
   { id: 'apology', num: '05', title: 'Letter' },
   { id: 'sanctuary', num: '06', title: 'Sanctuary' }
 ];
@@ -800,7 +800,7 @@ function initSixSectionsScrollSpy() {
       } else if (targetId === 'chronicles') {
         e.preventDefault();
         switchSitePage(3, targetId);
-      } else if (targetId === 'trust-lotus') {
+      } else if (targetId === 'trust-workshop' || targetId === 'trust-lotus') {
         e.preventDefault();
         switchSitePage(4, targetId);
       } else if (targetId === 'apology') {
@@ -839,3 +839,614 @@ function switchDancingBear(src, btn) {
   }
 }
 window.switchDancingBear = switchDancingBear;
+
+
+// ==========================================================================
+// THE TRUST WORKSHOP: 3D CINEMATIC RESTORATION LOGIC (THREE.JS + GSAP)
+// ==========================================================================
+(function() {
+  let workshopInitialized = false;
+  let workshopRunning = false;
+  let animationFrameId = null;
+  let scene, camera, renderer, crystalGroup, crystalMesh;
+  let seamMeshes = [];
+  let componentObjects = [];
+  let dustParticles;
+  let raycaster, mouse;
+  let isInteracting = false;
+  let assembledCount = 0;
+  let targetRotationX = 0;
+  let targetRotationY = 0;
+  let isDragging = false;
+  let prevMousePos = { x: 0, y: 0 };
+
+  const WORKSHOP_COMPONENTS = [
+    {
+      id: 'listen',
+      num: '01',
+      name: 'LISTEN',
+      title: 'COMPONENT 01 • LISTEN',
+      quote: '“Sometimes you don\'t need someone to explain themselves.<br>You just need them to actually listen.”',
+      color: 0xd4af37,
+      pos: { x: -3.8, y: 1.7, z: 1.0 },
+      targetOffset: { x: -0.85, y: 0.65, z: 0.75 },
+      buildMesh: function() {
+        const group = new THREE.Group();
+        const geom = new THREE.BoxGeometry(0.85, 1.15, 0.08);
+        const mat = new THREE.MeshStandardMaterial({
+          color: 0xd4af37,
+          metalness: 0.85,
+          roughness: 0.25
+        });
+        const plate = new THREE.Mesh(geom, mat);
+        group.add(plate);
+
+        const wire = new THREE.LineSegments(
+          new THREE.EdgesGeometry(geom),
+          new THREE.LineBasicMaterial({ color: 0xfff0b3 })
+        );
+        group.add(wire);
+
+        const ringMat = new THREE.MeshBasicMaterial({ color: 0xfffae0, side: THREE.DoubleSide });
+        const ring1 = new THREE.Mesh(new THREE.RingGeometry(0.1, 0.18, 24), ringMat);
+        ring1.position.z = 0.045;
+        group.add(ring1);
+        const ring2 = new THREE.Mesh(new THREE.RingGeometry(0.24, 0.3, 24), ringMat);
+        ring2.position.z = 0.045;
+        group.add(ring2);
+
+        return group;
+      }
+    },
+    {
+      id: 'understand',
+      num: '02',
+      name: 'UNDERSTAND',
+      title: 'COMPONENT 02 • UNDERSTAND',
+      quote: '“Understanding doesn\'t mean agreeing with everything.<br>It means trying to understand why it hurt.”',
+      color: 0x9d71ea,
+      pos: { x: 3.8, y: 1.9, z: 0.8 },
+      targetOffset: { x: 0.85, y: 0.65, z: 0.75 },
+      buildMesh: function() {
+        const group = new THREE.Group();
+        const geom = new THREE.ConeGeometry(0.6, 1.25, 4);
+        geom.rotateX(Math.PI / 4);
+        const mat = new THREE.MeshPhysicalMaterial({
+          color: 0x9d71ea,
+          transmission: 0.75,
+          opacity: 0.85,
+          transparent: true,
+          roughness: 0.08,
+          metalness: 0.1,
+          ior: 1.52,
+          clearcoat: 0.8
+        });
+        const mesh = new THREE.Mesh(geom, mat);
+        group.add(mesh);
+
+        const wire = new THREE.LineSegments(
+          new THREE.EdgesGeometry(geom),
+          new THREE.LineBasicMaterial({ color: 0xe0c3fc })
+        );
+        group.add(wire);
+        return group;
+      }
+    },
+    {
+      id: 'respect',
+      num: '03',
+      name: 'RESPECT',
+      title: 'COMPONENT 03 • RESPECT',
+      quote: '“Your feelings don\'t need permission to matter.<br>I should have respected that sooner.”',
+      color: 0x00b4d8,
+      pos: { x: -3.5, y: -1.7, z: 1.2 },
+      targetOffset: { x: -0.75, y: -0.65, z: 0.75 },
+      buildMesh: function() {
+        const group = new THREE.Group();
+        const geom = new THREE.CylinderGeometry(0.7, 0.7, 0.08, 8);
+        const mat = new THREE.MeshStandardMaterial({
+          color: 0x0a3d62,
+          metalness: 0.65,
+          roughness: 0.3,
+          emissive: 0x002233
+        });
+        const mesh = new THREE.Mesh(geom, mat);
+        mesh.rotation.x = Math.PI / 2;
+        group.add(mesh);
+
+        const grid = new THREE.GridHelper(1.1, 6, 0x00f2fe, 0x0077b6);
+        grid.rotation.x = Math.PI / 2;
+        grid.position.z = 0.045;
+        group.add(grid);
+        return group;
+      }
+    },
+    {
+      id: 'consistency',
+      num: '04',
+      name: 'CONSISTENCY',
+      title: 'COMPONENT 04 • CONSISTENCY',
+      quote: '“Trust doesn\'t come back because someone says sorry.<br>It comes back when actions stay consistent.”',
+      color: 0xd9822b,
+      pos: { x: 3.5, y: -1.6, z: 1.1 },
+      targetOffset: { x: 0.75, y: -0.65, z: 0.7 },
+      buildMesh: function() {
+        const group = new THREE.Group();
+        const geom = new THREE.TorusGeometry(0.55, 0.12, 12, 24);
+        const mat = new THREE.MeshStandardMaterial({
+          color: 0xd9822b,
+          metalness: 0.88,
+          roughness: 0.22
+        });
+        const torus = new THREE.Mesh(geom, mat);
+        group.add(torus);
+
+        for (let i = 0; i < 6; i++) {
+          const angle = (i / 6) * Math.PI * 2;
+          const tooth = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.22, 0.12), mat);
+          tooth.position.set(Math.cos(angle) * 0.65, Math.sin(angle) * 0.65, 0);
+          tooth.rotation.z = angle;
+          group.add(tooth);
+        }
+        return group;
+      }
+    },
+    {
+      id: 'actions',
+      num: '05',
+      name: 'ACTIONS',
+      title: 'COMPONENT 05 • ACTIONS',
+      quote: '“Words can explain.<br>Actions are what prove.”',
+      color: 0xffffff,
+      pos: { x: 0.0, y: -3.2, z: 1.5 },
+      targetOffset: { x: 0.0, y: -1.05, z: 0.85 },
+      buildMesh: function() {
+        const group = new THREE.Group();
+        const geom = new THREE.CylinderGeometry(0.2, 0.45, 1.3, 6);
+        const mat = new THREE.MeshPhysicalMaterial({
+          color: 0xffffff,
+          transmission: 0.85,
+          opacity: 0.9,
+          transparent: true,
+          roughness: 0.06,
+          metalness: 0.05,
+          ior: 1.55,
+          clearcoat: 1.0,
+          emissive: 0x332800
+        });
+        const shard = new THREE.Mesh(geom, mat);
+        shard.rotation.z = Math.PI / 6;
+        group.add(shard);
+
+        const wire = new THREE.LineSegments(
+          new THREE.EdgesGeometry(geom),
+          new THREE.LineBasicMaterial({ color: 0xffe680 })
+        );
+        wire.rotation.z = Math.PI / 6;
+        group.add(wire);
+        return group;
+      }
+    }
+  ];
+
+  function initTrustWorkshop() {
+    if (workshopInitialized) return;
+    const container = document.getElementById('trust-workshop-canvas-container');
+    if (!container) return;
+
+    workshopInitialized = true;
+    const width = container.clientWidth || 800;
+    const height = container.clientHeight || 560;
+
+    // Scene & Camera
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    camera.position.set(0, 0.8, 9.5);
+
+    // Renderer
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+    container.appendChild(renderer.domElement);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0x1a2640, 1.5);
+    scene.add(ambientLight);
+
+    const keyLight = new THREE.PointLight(0xfff1d6, 2.2, 30);
+    keyLight.position.set(2, 6, 5);
+    scene.add(keyLight);
+
+    const rimLight = new THREE.PointLight(0x7352c7, 1.8, 25);
+    rimLight.position.set(-4, -3, -3);
+    scene.add(rimLight);
+
+    const goldAccent = new THREE.PointLight(0xe8c547, 1.2, 20);
+    goldAccent.position.set(0, -4, 4);
+    scene.add(goldAccent);
+
+    // Floating Dust Particles
+    const dustCount = 120;
+    const dustGeo = new THREE.BufferGeometry();
+    const dustPos = new Float32Array(dustCount * 3);
+    for (let i = 0; i < dustCount * 3; i += 3) {
+      dustPos[i] = (Math.random() - 0.5) * 16;
+      dustPos[i + 1] = (Math.random() - 0.5) * 12;
+      dustPos[i + 2] = (Math.random() - 0.5) * 12;
+    }
+    dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+    const dustMat = new THREE.PointsMaterial({
+      color: 0xf1dfa5,
+      size: 0.045,
+      transparent: true,
+      opacity: 0.6
+    });
+    dustParticles = new THREE.Points(dustGeo, dustMat);
+    scene.add(dustParticles);
+
+    // Build Central Crystal
+    crystalGroup = new THREE.Group();
+    const crystalGeo = new THREE.OctahedronGeometry(1.85, 1);
+    crystalMat = new THREE.MeshPhysicalMaterial({
+      color: 0xdbe8fc,
+      metalness: 0.15,
+      roughness: 0.12,
+      transmission: 0.7,
+      opacity: 0.88,
+      transparent: true,
+      ior: 1.52,
+      reflectivity: 0.75,
+      clearcoat: 0.65
+    });
+    crystalMesh = new THREE.Mesh(crystalGeo, crystalMat);
+    crystalGroup.add(crystalMesh);
+
+    const edges = new THREE.LineSegments(
+      new THREE.EdgesGeometry(crystalGeo),
+      new THREE.LineBasicMaterial({ color: 0x829bb8, transparent: true, opacity: 0.45 })
+    );
+    crystalGroup.add(edges);
+
+    // 5 Kintsugi Seam Curves along Crystal Facets
+    const seamCurves = [
+      new THREE.CatmullRomCurve3([
+        new THREE.Vector3(-0.2, 1.8, 0.1),
+        new THREE.Vector3(-0.75, 1.15, 0.65),
+        new THREE.Vector3(-1.3, 0.35, 0.6),
+        new THREE.Vector3(-1.0, -0.3, 0.75)
+      ]),
+      new THREE.CatmullRomCurve3([
+        new THREE.Vector3(0.15, 1.75, 0.15),
+        new THREE.Vector3(0.85, 1.05, 0.65),
+        new THREE.Vector3(1.25, 0.28, 0.75),
+        new THREE.Vector3(1.15, -0.35, 0.55)
+      ]),
+      new THREE.CatmullRomCurve3([
+        new THREE.Vector3(-1.25, 0.2, 0.45),
+        new THREE.Vector3(-0.55, -0.2, 1.15),
+        new THREE.Vector3(-0.1, -0.75, 1.05),
+        new THREE.Vector3(-0.65, -1.25, 0.65)
+      ]),
+      new THREE.CatmullRomCurve3([
+        new THREE.Vector3(1.15, 0.1, 0.55),
+        new THREE.Vector3(0.65, -0.2, 1.15),
+        new THREE.Vector3(0.18, -0.75, 1.05),
+        new THREE.Vector3(0.75, -1.25, 0.55)
+      ]),
+      new THREE.CatmullRomCurve3([
+        new THREE.Vector3(-0.75, -1.15, 0.45),
+        new THREE.Vector3(0.0, -1.35, 0.95),
+        new THREE.Vector3(0.65, -1.15, 0.55),
+        new THREE.Vector3(0.0, -1.8, 0.1)
+      ])
+    ];
+
+    seamMeshes = [];
+    seamCurves.forEach((curve) => {
+      const tubeGeo = new THREE.TubeGeometry(curve, 28, 0.038, 8, false);
+      const tubeMat = new THREE.MeshStandardMaterial({
+        color: 0x141b2b,
+        roughness: 0.9,
+        metalness: 0.1,
+        emissive: 0x000000
+      });
+      const tubeMesh = new THREE.Mesh(tubeGeo, tubeMat);
+      crystalGroup.add(tubeMesh);
+      seamMeshes.push(tubeMesh);
+    });
+
+    scene.add(crystalGroup);
+
+    // Build 5 Orbiting Components
+    componentObjects = [];
+    WORKSHOP_COMPONENTS.forEach((cfg, idx) => {
+      const compMesh = cfg.buildMesh();
+      compMesh.position.set(cfg.pos.x, cfg.pos.y, cfg.pos.z);
+      compMesh.userData = {
+        index: idx,
+        config: cfg,
+        initialPos: { ...cfg.pos },
+        assembled: false,
+        floatPhase: idx * 1.2
+      };
+      scene.add(compMesh);
+      componentObjects.push(compMesh);
+    });
+
+    // Raycasting & Interaction
+    raycaster = new THREE.Raycaster();
+    mouse = new THREE.Vector2();
+
+    const getPointerPos = (e) => {
+      const rect = container.getBoundingClientRect();
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+      return {
+        x: ((clientX - rect.left) / rect.width) * 2 - 1,
+        y: -((clientY - rect.top) / rect.height) * 2 + 1
+      };
+    };
+
+    container.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      prevMousePos = { x: e.clientX, y: e.clientY };
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const deltaX = e.clientX - prevMousePos.x;
+      const deltaY = e.clientY - prevMousePos.y;
+      targetRotationY += deltaX * 0.005;
+      targetRotationX += deltaY * 0.005;
+      prevMousePos = { x: e.clientX, y: e.clientY };
+    });
+
+    window.addEventListener('pointerup', () => {
+      isDragging = false;
+    });
+
+    container.addEventListener('click', (e) => {
+      if (isInteracting) return;
+      const p = getPointerPos(e);
+      mouse.x = p.x;
+      mouse.y = p.y;
+      raycaster.setFromCamera(mouse, camera);
+
+      // Check intersect with component objects
+      const intersects = raycaster.intersectObjects(componentObjects, true);
+      if (intersects.length > 0) {
+        let targetComp = intersects[0].object;
+        while (targetComp.parent && !targetComp.userData.config) {
+          targetComp = targetComp.parent;
+        }
+        if (targetComp && targetComp.userData && targetComp.userData.config) {
+          triggerWorkshopComponent(targetComp.userData.index);
+        }
+      }
+    });
+
+    // Responsive Resize
+    window.addEventListener('resize', () => {
+      if (!container || !renderer || !camera) return;
+      const w = container.clientWidth || 800;
+      const h = container.clientHeight || 560;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    });
+  }
+
+  function startWorkshopRenderLoop() {
+    if (workshopRunning) return;
+    workshopRunning = true;
+    let clock = 0;
+
+    function render() {
+      if (!workshopRunning) return;
+      animationFrameId = requestAnimationFrame(render);
+      clock += 0.016;
+
+      // Gentle crystal floating & smooth rotation
+      if (crystalGroup) {
+        crystalGroup.rotation.y += (targetRotationY - crystalGroup.rotation.y) * 0.06 + 0.002;
+        crystalGroup.rotation.x += (targetRotationX - crystalGroup.rotation.x) * 0.06;
+        crystalGroup.position.y = Math.sin(clock * 0.8) * 0.08;
+      }
+
+      // Idle float for un-assembled components
+      componentObjects.forEach((comp) => {
+        if (!comp.userData.assembled && !isInteracting) {
+          const p = comp.userData.floatPhase;
+          comp.position.y = comp.userData.initialPos.y + Math.sin(clock * 1.2 + p) * 0.12;
+          comp.rotation.y += 0.006;
+          comp.rotation.x += 0.003;
+        }
+      });
+
+      // Dust drift
+      if (dustParticles) {
+        dustParticles.rotation.y += 0.0008;
+      }
+
+      renderer.render(scene, camera);
+    }
+    render();
+  }
+
+  function stopWorkshopRenderLoop() {
+    workshopRunning = false;
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+  }
+
+  function triggerWorkshopComponent(index) {
+    if (index < 0 || index >= componentObjects.length) return;
+    const comp = componentObjects[index];
+    const cfg = comp.userData.config;
+
+    // Show Message Card
+    const msgCard = document.getElementById('workshop-message-card');
+    const msgBadge = document.getElementById('msg-comp-badge');
+    const msgQuote = document.getElementById('msg-quote-text');
+
+    if (msgBadge) msgBadge.textContent = cfg.title;
+    if (msgQuote) msgQuote.innerHTML = cfg.quote;
+    if (msgCard) {
+      msgCard.classList.add('show');
+    }
+
+    // If already assembled, simply focus camera and update quote
+    if (comp.userData.assembled) {
+      if (typeof gsap !== 'undefined') {
+        gsap.to(camera.position, {
+          x: comp.position.x * 0.6,
+          y: comp.position.y * 0.6 + 0.4,
+          z: 7.2,
+          duration: 1.0,
+          ease: 'power2.out',
+          onComplete: () => {
+            gsap.to(camera.position, { x: 0, y: 0.8, z: 9.5, duration: 1.2, delay: 2.0, ease: 'power2.inOut' });
+          }
+        });
+      }
+      return;
+    }
+
+    isInteracting = true;
+
+    // Update active pill button state
+    const pills = document.querySelectorAll('.comp-pill');
+    pills.forEach((p, idx) => {
+      if (idx === index) p.classList.add('active');
+      else p.classList.remove('active');
+    });
+
+    if (typeof gsap !== 'undefined') {
+      // 1. Camera moves towards component
+      gsap.to(camera.position, {
+        x: cfg.pos.x * 0.65,
+        y: cfg.pos.y * 0.65 + 0.3,
+        z: 7.0,
+        duration: 1.1,
+        ease: 'power2.out'
+      });
+
+      // 2. Component scales up and travels toward crystal socket
+      gsap.to(comp.scale, { x: 1.25, y: 1.25, z: 1.25, duration: 0.6, yoyo: true, repeat: 1 });
+
+      gsap.to(comp.position, {
+        x: cfg.targetOffset.x,
+        y: cfg.targetOffset.y,
+        z: cfg.targetOffset.z,
+        duration: 2.0,
+        delay: 0.8,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          // 3. Locks into crystal (Magnetic snap)
+          comp.userData.assembled = true;
+          crystalGroup.attach(comp);
+
+          // Golden Kintsugi seam transformation
+          if (seamMeshes[index]) {
+            const mat = seamMeshes[index].material;
+            gsap.to(mat.color, { r: 1.0, g: 0.88, b: 0.45, duration: 1.0 });
+            gsap.to(mat.emissive, { r: 0.95, g: 0.6, b: 0.12, duration: 1.0 });
+            mat.emissiveIntensity = 2.2;
+          }
+
+          // Gold flash pulse
+          const pulse = new THREE.PointLight(0xffd700, 3.5, 6);
+          pulse.position.set(cfg.targetOffset.x, cfg.targetOffset.y, cfg.targetOffset.z);
+          crystalGroup.add(pulse);
+          gsap.to(pulse, {
+            intensity: 0,
+            duration: 1.4,
+            onComplete: () => crystalGroup.remove(pulse)
+          });
+
+          // 4. Update HUD Progress
+          assembledCount++;
+          const counterLabel = document.getElementById('workshop-progress-label');
+          if (counterLabel) counterLabel.textContent = `${assembledCount} / 5 ASSEMBLED`;
+
+          const seg = document.querySelector(`.hud-segment.seg-${index + 1}`);
+          if (seg) seg.classList.add('active');
+
+          if (pills[index]) {
+            pills[index].classList.add('assembled');
+            const st = pills[index].querySelector('.comp-pill-status');
+            if (st) st.textContent = '✓';
+          }
+
+          // 5. Camera glides back to overview
+          gsap.to(camera.position, {
+            x: 0,
+            y: 0.8,
+            z: 9.5,
+            duration: 1.4,
+            ease: 'power2.inOut',
+            onComplete: () => {
+              isInteracting = false;
+              // Check if all 5 assembled
+              if (assembledCount === 5) {
+                triggerWorkshopFinale();
+              }
+            }
+          });
+        }
+      });
+    } else {
+      // Fallback if GSAP is unavailable
+      comp.position.set(cfg.targetOffset.x, cfg.targetOffset.y, cfg.targetOffset.z);
+      comp.userData.assembled = true;
+      crystalGroup.attach(comp);
+      assembledCount++;
+      isInteracting = false;
+    }
+  }
+
+  function triggerWorkshopFinale() {
+    // Illuminate full crystal
+    if (crystalMat && typeof gsap !== 'undefined') {
+      gsap.to(crystalMat.color, { r: 1.0, g: 0.96, b: 0.85, duration: 2.2 });
+      gsap.to(crystalMesh.scale, { x: 1.08, y: 1.08, z: 1.08, duration: 1.4, yoyo: true, repeat: 1 });
+    }
+
+    // Hide temporary quote message card smoothly
+    const msgCard = document.getElementById('workshop-message-card');
+    if (msgCard) msgCard.classList.remove('show');
+
+    // Reveal Finale Statement Card
+    const finaleCard = document.getElementById('workshop-finale-card');
+    if (finaleCard) {
+      finaleCard.style.display = 'block';
+      setTimeout(() => {
+        finaleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    }
+  }
+
+  function inspectWorkshopCrystal() {
+    targetRotationY += Math.PI * 2;
+    if (typeof gsap !== 'undefined') {
+      gsap.to(camera.position, {
+        x: 0,
+        y: 0.2,
+        z: 6.8,
+        duration: 1.6,
+        ease: 'power2.out'
+      });
+    }
+  }
+
+  // Global Exports
+  window.initTrustWorkshop = initTrustWorkshop;
+  window.resumeTrustWorkshop = startWorkshopRenderLoop;
+  window.pauseTrustWorkshop = stopWorkshopRenderLoop;
+  window.triggerWorkshopComponent = triggerWorkshopComponent;
+  window.inspectWorkshopCrystal = inspectWorkshopCrystal;
+})();

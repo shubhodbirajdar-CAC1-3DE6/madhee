@@ -16,8 +16,9 @@
 
   <link rel="stylesheet" href="styles.css?v=8.0">
 
-  <!-- Three.js from CDN -->
+  <!-- Three.js & GSAP from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body class="theme-moonlit" id="top">
 
@@ -53,7 +54,7 @@
         <button type="button" class="nav-link active" onclick="switchSitePage(1)"><span class="nav-num">01.</span> Prologue</button>
         <button type="button" class="nav-link" onclick="switchSitePage(2)"><span class="nav-num">02.</span> 12 Memories</button>
         <button type="button" class="nav-link" onclick="switchSitePage(3)"><span class="nav-num">03.</span> Case File</button>
-        <button type="button" class="nav-link" onclick="switchSitePage(4)"><span class="nav-num">04.</span> Trust Lotus</button>
+        <button type="button" class="nav-link" onclick="switchSitePage(4)"><span class="nav-num">04.</span> Workshop</button>
         <button type="button" class="nav-link" onclick="switchSitePage(5)"><span class="nav-num">05.</span> Letter</button>
         <button type="button" class="nav-link" onclick="switchSitePage(6)"><span class="nav-num">06.</span> Sanctuary</button>
       </nav>
@@ -1256,78 +1257,137 @@
           <span>Previous: 02. 12 Memories</span>
         </button>
         <button type="button" class="btn-step-nav btn-step-next" onclick="switchSitePage(4)">
-          <span>Next Section: 04. Trust Lotus</span>
+          <span>Next Section: 04. The Trust Workshop</span>
           <span class="step-arrow">➔</span>
         </button>
       </div>
     </div>
 
     <!-- ====================================================================
-         SECTION 04: TRUST LOTUS
+         SECTION 04: THE TRUST WORKSHOP (3D CINEMATIC RESTORATION)
          ==================================================================== -->
-    <div class="site-section-page" id="page-4-trust-lotus" data-page="4">
-<section class="trust-lotus-section" id="trust-lotus">
-      <div class="trust-container glass-panel">
-        <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 04 OF 06 • TRUST LOTUS <span class="badge-dot">✦</span></div>
+    <div class="site-section-page" id="page-4-trust-workshop" data-page="4">
+      <section class="trust-workshop-section" id="trust-workshop">
+        <div class="workshop-container">
+          
+          <!-- Master Header -->
+          <div class="section-master-header-block">
+            <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 04 OF 06 • THE TRUST WORKSHOP <span class="badge-dot">✦</span></div>
+            <h2 class="workshop-main-title">The Trust Workshop</h2>
+            <div class="workshop-golden-rule">
+              <span class="rule-line"></span>
+              <span class="rule-symbol">✦ ⟐ ✦</span>
+              <span class="rule-line"></span>
+            </div>
+            <p class="workshop-lead-quote">
+              “Trust is not something that magically becomes whole after one apology.<br>
+              It is rebuilt slowly through listening, understanding, respect, consistency, and actions.”
+            </p>
+            <p class="workshop-instruction-hint">
+              Tap each of the five floating components orbiting the fractured crystal to carefully restore it.
+            </p>
+          </div>
 
-        <div class="trust-header">
-          <div class="lotus-sparkle-icon">🌸 💎 🌿</div>
-          <span class="section-tag">REBUILDING HARMONY</span>
-          <h2 class="section-headline">The Lotus of Trust</h2>
-          <p class="trust-lead">
-            Trust isn't rebuilt with grand speeches or empty promises. It is grown like a wild lotus — with patience, roots in the soil, and steady actions over time.
-          </p>
-          <p class="trust-tap-hint">Tap each petal below to illuminate its commitment:</p>
-        </div>
+          <!-- 3D Cinematic Stage -->
+          <div class="workshop-stage-wrapper">
+            
+            <!-- Assembly HUD Status Header -->
+            <div class="workshop-hud-bar">
+              <div class="hud-stat-badge">
+                <span class="hud-status-indicator"></span>
+                <span class="hud-title">RESTORATION PROGRESS</span>
+              </div>
+              <div class="hud-counter-pill" id="workshop-progress-label">0 / 5 ASSEMBLED</div>
+              <div class="hud-segment-track" id="workshop-progress-track">
+                <span class="hud-segment seg-1"></span>
+                <span class="hud-segment seg-2"></span>
+                <span class="hud-segment seg-3"></span>
+                <span class="hud-segment seg-4"></span>
+                <span class="hud-segment seg-5"></span>
+              </div>
+            </div>
 
-        <div class="lotus-petals-grid">
-          <!-- Petal 1 -->
-          <button class="lotus-petal" onclick="activatePetal(this, 'Patience', 'Never rushing your feelings or expecting you to move on before you are ready.')">
-            <span class="petal-num">01</span>
-            <span class="petal-icon">🌱</span>
-            <h3 class="petal-title">Patience</h3>
-            <p class="petal-desc">Giving you all the quiet time and space you need.</p>
-          </button>
-
-          <!-- Petal 2 -->
-          <button class="lotus-petal" onclick="activatePetal(this, 'Honesty', 'Being transparent, clear, and never hiding behind half-truths or jokes.')">
-            <span class="petal-num">02</span>
-            <span class="petal-icon">💎</span>
-            <h3 class="petal-title">Honesty</h3>
-            <p class="petal-desc">Unvarnished transparency in every conversation.</p>
-          </button>
-
-          <!-- Petal 3 -->
-          <button class="lotus-petal" onclick="activatePetal(this, 'Space', 'Respecting your boundaries without lingering or demanding attention.')">
-            <span class="petal-num">03</span>
-            <span class="petal-icon">🌙</span>
-            <h3 class="petal-title">Space</h3>
-            <p class="petal-desc">Honoring your silence whenever you need it.</p>
-          </button>
-
-          <!-- Petal 4 -->
-          <button class="lotus-petal" onclick="activatePetal(this, 'Listening', 'Hearing your point of view completely without interrupting or defending.')">
-            <span class="petal-num">04</span>
-            <span class="petal-icon">👂</span>
-            <h3 class="petal-title">Listening</h3>
-            <p class="petal-desc">Understanding your perspective before speaking.</p>
-          </button>
-
-          <!-- Petal 5 -->
-          <button class="lotus-petal" onclick="activatePetal(this, 'Accountability', 'Owning my mistakes fully and permanently learning from them.')">
-            <span class="petal-num">05</span>
-            <span class="petal-icon">⚖️</span>
-            <h3 class="petal-title">Accountability</h3>
-            <p class="petal-desc">Taking responsibility without making excuses.</p>
-          </button>
-        </div>
-
-        <div id="petal-detail-display" class="petal-detail-display" aria-live="polite">
-          <span class="detail-placeholder">Tap any petal above to view the promise.</span>
-        </div>
+            <!-- Canvas Container -->
+            <div id="trust-workshop-canvas-container" class="workshop-canvas-container">
+              <!-- Three.js Canvas injected here -->
               
-      </div>
-    </section>
+              <!-- Subtle Canvas Ambient Labels -->
+              <div class="canvas-corner-tag top-left">PROJECT: CRYSTAL_RESTORE</div>
+              <div class="canvas-corner-tag top-right">SYSTEM: ACTIVE • 60 FPS</div>
+              <div class="canvas-corner-tag bottom-left">KINTSUGI GOLDEN SEAMS</div>
+              <div class="canvas-corner-tag bottom-right">3D INTERACTIVE SPACE</div>
+
+              <!-- Interactive Floating Component Trigger Buttons (Mobile & Desktop Accessible) -->
+              <div class="workshop-component-pills" id="workshop-pills-bar">
+                <button type="button" class="comp-pill" data-comp="0" onclick="triggerWorkshopComponent(0)">
+                  <span class="comp-pill-num">01</span>
+                  <span class="comp-pill-name">LISTEN</span>
+                  <span class="comp-pill-status">✦</span>
+                </button>
+                <button type="button" class="comp-pill" data-comp="1" onclick="triggerWorkshopComponent(1)">
+                  <span class="comp-pill-num">02</span>
+                  <span class="comp-pill-name">UNDERSTAND</span>
+                  <span class="comp-pill-status">✦</span>
+                </button>
+                <button type="button" class="comp-pill" data-comp="2" onclick="triggerWorkshopComponent(2)">
+                  <span class="comp-pill-num">03</span>
+                  <span class="comp-pill-name">RESPECT</span>
+                  <span class="comp-pill-status">✦</span>
+                </button>
+                <button type="button" class="comp-pill" data-comp="3" onclick="triggerWorkshopComponent(3)">
+                  <span class="comp-pill-num">04</span>
+                  <span class="comp-pill-name">CONSISTENCY</span>
+                  <span class="comp-pill-status">✦</span>
+                </button>
+                <button type="button" class="comp-pill" data-comp="4" onclick="triggerWorkshopComponent(4)">
+                  <span class="comp-pill-num">05</span>
+                  <span class="comp-pill-name">ACTIONS</span>
+                  <span class="comp-pill-status">✦</span>
+                </button>
+              </div>
+
+              <!-- Component Message Overlay Card -->
+              <div id="workshop-message-card" class="workshop-message-card" aria-live="polite">
+                <div class="msg-card-header">
+                  <span class="msg-badge" id="msg-comp-badge">COMPONENT 01 • LISTEN</span>
+                  <span class="msg-seam-status">GOLDEN SEAM ENGAGED</span>
+                </div>
+                <div class="msg-quote-content" id="msg-quote-text">
+                  “Sometimes you don't need someone to explain themselves.<br>You just need them to actually listen.”
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Grand Finale Statement Card (Revealed on 5/5 Assembly) -->
+            <div id="workshop-finale-card" class="workshop-finale-card">
+              <div class="finale-kintsugi-crest">✦ ⟐ ✦</div>
+              <h3 class="finale-trust-title">TRUST</h3>
+              <p class="finale-trust-sub">Not repaired in one moment.<br><span>Rebuilt over time.</span></p>
+              
+              <div class="finale-truth-lines">
+                <p class="truth-p">“I know one apology can't fix everything.”</p>
+                <p class="truth-p">“So I won't ask you to trust me immediately.”</p>
+                <p class="truth-p highlight-rebuild">“I'll just try to become someone who deserves that trust again.”</p>
+              </div>
+
+              <div class="finale-golden-verdict">
+                <div class="verdict-seam-line"></div>
+                <p class="verdict-text">“Some things are worth rebuilding carefully.”</p>
+                <p class="verdict-sign">— Shubhod</p>
+              </div>
+
+              <div class="finale-actions">
+                <button type="button" class="btn-finale-inspect" onclick="inspectWorkshopCrystal()">
+                  <span>🔍 Rotate & Inspect Restored Crystal</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
 
       <div class="page-step-footer double-step">
         <button type="button" class="btn-step-nav btn-step-prev" onclick="switchSitePage(3)">
@@ -1485,7 +1545,7 @@
       <div class="page-step-footer double-step">
         <button type="button" class="btn-step-nav btn-step-prev" onclick="switchSitePage(4)">
           <span class="step-arrow">←</span>
-          <span>Previous: 04. Trust Lotus</span>
+          <span>Previous: 04. The Trust Workshop</span>
         </button>
         <button type="button" class="btn-step-nav btn-step-next" onclick="switchSitePage(6)">
           <span>Next Section: 06. Sanctuary</span>

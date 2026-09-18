@@ -3324,3 +3324,458 @@ body {
   color: #fff;
   box-shadow: 0 0 16px rgba(232, 197, 71, 0.4);
 }
+
+/* ==========================================================================
+   THE TRUST WORKSHOP: 3D CINEMATIC RESTORATION EXPERIENCE
+   ========================================================================== */
+.trust-workshop-section {
+  padding: 40px 15px 60px;
+  background: radial-gradient(ellipse at 50% 20%, #0c1224 0%, #060913 70%, #03050a 100%);
+  color: #e2e8f0;
+  min-height: 85vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.workshop-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+.workshop-main-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #ffffff 0%, #f7dfa5 45%, #e8c547 70%, #c9a432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 12px 0 10px;
+  text-shadow: 0 0 25px rgba(232, 197, 71, 0.25);
+}
+
+.workshop-golden-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 10px auto 16px;
+  max-width: 420px;
+}
+
+.workshop-golden-rule .rule-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232, 197, 71, 0.5), transparent);
+}
+
+.workshop-golden-rule .rule-symbol {
+  font-size: 0.85rem;
+  color: #e8c547;
+  letter-spacing: 3px;
+}
+
+.workshop-lead-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-style: italic;
+  line-height: 1.6;
+  color: #d1d8e6;
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 8px;
+}
+
+.workshop-instruction-hint {
+  font-size: 0.88rem;
+  color: #8e9bb3;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
+}
+
+/* Workshop 3D Stage Wrapper */
+.workshop-stage-wrapper {
+  background: radial-gradient(ellipse at 50% 30%, rgba(18, 25, 45, 0.85), rgba(6, 9, 19, 0.98));
+  border: 1px solid rgba(232, 197, 71, 0.3);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), inset 0 0 30px rgba(232, 197, 71, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* HUD Top Bar */
+.workshop-hud-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 12px 20px;
+  background: rgba(10, 14, 26, 0.75);
+  border: 1px solid rgba(232, 197, 71, 0.2);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.hud-stat-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-status-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #38ef7d;
+  box-shadow: 0 0 10px #38ef7d;
+  animation: pulseGreen 2s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.hud-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #a0aec0;
+}
+
+.hud-counter-pill {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffd875;
+  background: rgba(232, 197, 71, 0.12);
+  border: 1px solid rgba(232, 197, 71, 0.35);
+  padding: 5px 14px;
+  border-radius: 999px;
+}
+
+.hud-segment-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-segment {
+  width: 24px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.4s ease;
+}
+
+.hud-segment.active {
+  background: linear-gradient(90deg, #f39c12, #f1c40f);
+  border-color: #ffd875;
+  box-shadow: 0 0 12px rgba(241, 196, 15, 0.6);
+}
+
+/* Three.js Canvas Container */
+.workshop-canvas-container {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  border-radius: 18px;
+  background: radial-gradient(circle at 50% 50%, #0c142b 0%, #050813 100%);
+  border: 1px solid rgba(232, 197, 71, 0.18);
+  overflow: hidden;
+  cursor: grab;
+}
+
+.workshop-canvas-container:active {
+  cursor: grabbing;
+}
+
+.canvas-corner-tag {
+  position: absolute;
+  font-family: 'Cinzel', monospace;
+  font-size: 0.65rem;
+  color: rgba(232, 197, 71, 0.45);
+  letter-spacing: 1.5px;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.canvas-corner-tag.top-left { top: 14px; left: 16px; }
+.canvas-corner-tag.top-right { top: 14px; right: 16px; }
+.canvas-corner-tag.bottom-left { bottom: 74px; left: 16px; }
+.canvas-corner-tag.bottom-right { bottom: 74px; right: 16px; }
+
+/* Interactive Component Pills at Bottom */
+.workshop-component-pills {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 95%;
+  max-width: 820px;
+  z-index: 10;
+}
+
+.comp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: rgba(9, 13, 25, 0.88);
+  border: 1px solid rgba(232, 197, 71, 0.35);
+  backdrop-filter: blur(12px);
+  color: #cbd5e1;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comp-pill:hover {
+  background: rgba(232, 197, 71, 0.15);
+  border-color: rgba(232, 197, 71, 0.8);
+  color: #ffd875;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(232, 197, 71, 0.2);
+}
+
+.comp-pill.active {
+  background: linear-gradient(135deg, rgba(232, 197, 71, 0.25), rgba(180, 130, 40, 0.35));
+  border-color: #ffd875;
+  color: #fff;
+  box-shadow: 0 0 16px rgba(232, 197, 71, 0.4);
+}
+
+.comp-pill.assembled {
+  border-color: #2ecc71;
+}
+
+.comp-pill.assembled .comp-pill-status {
+  color: #2ecc71;
+}
+
+.comp-pill-num {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.comp-pill-status {
+  font-size: 0.75rem;
+  color: #ffd875;
+}
+
+/* Component Message Overlay Card */
+.workshop-message-card {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-25px);
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(8, 12, 24, 0.94);
+  border: 1px solid rgba(232, 197, 71, 0.5);
+  backdrop-filter: blur(18px);
+  padding: 18px 24px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(232, 197, 71, 0.2);
+  max-width: 520px;
+  width: 90%;
+  text-align: center;
+  z-index: 20;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.workshop-message-card.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.msg-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(232, 197, 71, 0.2);
+}
+
+.msg-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffd875;
+}
+
+.msg-seam-status {
+  font-family: 'Cinzel', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: #38ef7d;
+}
+
+.msg-quote-content {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.18rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: #f0f4fc;
+}
+
+/* Grand Finale Statement Card */
+.workshop-finale-card {
+  display: none;
+  opacity: 0;
+  margin-top: 25px;
+  padding: 40px 30px;
+  background: radial-gradient(circle at 50% 20%, rgba(26, 36, 64, 0.9), rgba(8, 12, 22, 0.98));
+  border: 1px solid rgba(232, 197, 71, 0.6);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(232, 197, 71, 0.25);
+  animation: workshopFinaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes workshopFinaleIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.finale-kintsugi-crest {
+  font-size: 1.2rem;
+  color: #ffd875;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+
+.finale-trust-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff, #fce899, #e8c547);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+  text-shadow: 0 0 25px rgba(232, 197, 71, 0.5);
+}
+
+.finale-trust-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  color: #c5d0e6;
+  margin-bottom: 25px;
+}
+
+.finale-trust-sub span {
+  color: #ffd875;
+}
+
+.finale-truth-lines {
+  max-width: 600px;
+  margin: 0 auto 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.truth-p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.22rem;
+  font-style: italic;
+  color: #e2e8f0;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.truth-p.highlight-rebuild {
+  font-size: 1.3rem;
+  color: #ffd875;
+  font-weight: 600;
+}
+
+.finale-golden-verdict {
+  margin: 30px auto 20px;
+  max-width: 520px;
+}
+
+.verdict-seam-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffd875, transparent);
+  margin-bottom: 18px;
+}
+
+.verdict-text {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.verdict-sign {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffd875;
+  margin: 0;
+}
+
+.btn-finale-inspect {
+  margin-top: 15px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: rgba(232, 197, 71, 0.15);
+  border: 1px solid rgba(232, 197, 71, 0.6);
+  color: #ffd875;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-finale-inspect:hover {
+  background: rgba(232, 197, 71, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(232, 197, 71, 0.4);
+}
+
+@media (max-width: 768px) {
+  .workshop-canvas-container {
+    height: 440px;
+  }
+  .canvas-corner-tag.bottom-left,
+  .canvas-corner-tag.bottom-right {
+    display: none;
+  }
+  .comp-pill {
+    padding: 6px 11px;
+    font-size: 0.72rem;
+  }
+  .workshop-lead-quote {
+    font-size: 1.05rem;
+  }
+}
