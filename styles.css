@@ -2437,6 +2437,86 @@ body {
 }
 .appeal-val { color: #fde047; font-weight: 800; }
 
+/* Cutu Bubu Courtroom Interactive in Case File */
+.case-court-bubu-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-radius: 18px;
+  padding: 20px 18px;
+  margin: 18px 0 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.court-bubu-avatar-wrap {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.court-bubu-img {
+  max-width: 130px;
+  max-height: 130px;
+  object-fit: contain;
+  transition: transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+}
+
+.court-bubu-quote {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: #fde047;
+  line-height: 1.4;
+  margin: 0 0 6px;
+}
+
+.court-bubu-role-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+.court-bubu-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.court-role-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.court-role-btn:hover,
+.court-role-btn.active {
+  background: rgba(251, 191, 36, 0.25);
+  border-color: #f59e0b;
+  color: #fef08a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
 /* Hope Block */
 .finale-hope-block {
   margin-bottom: 34px;

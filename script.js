@@ -1697,3 +1697,34 @@ function triggerMadheeLaugh() {
   }
 }
 window.triggerMadheeLaugh = triggerMadheeLaugh;
+
+// ==========================================================================
+// CUTU BUBU COURTROOM SWITCHER (JUDGE MADHEE, LAWYER MADHEE, JAILER SHUBHOD)
+// ==========================================================================
+function switchCourtRole(role, btn) {
+  const img = document.getElementById('case-court-bubu-img');
+  const quote = document.getElementById('caseCourtQuote');
+  const sub = document.getElementById('caseCourtSub');
+  if (!img) return;
+
+  document.querySelectorAll('.court-bubu-switcher .court-role-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  if (role === 'judge') {
+    img.src = 'images/bears/bubu-judge-madhee.gif';
+    if (quote) quote.textContent = '“Judge Madhee: ‘Tamam sabooton ke baad, yeh idiot gunhegaar saabit hota hai! Order in the court!’ 👩‍⚖️🔨”';
+    if (sub) sub.textContent = 'Honourable Judge Madhee Presiding • Zero Bail Granted';
+  } else if (role === 'lawyer') {
+    img.src = 'images/bears/bubu-judge-madhee.gif';
+    if (quote) quote.textContent = '“Lawyer Madhee: ‘Your Honour, iss idiot ke saare arguments reject kiye jaate hain! Strict punishment is mandatory!’ 📜⚖️”';
+    if (sub) sub.textContent = 'Chief Public Prosecutor Madhee • 100% Conviction Rate';
+  } else if (role === 'jailer') {
+    img.src = 'images/bears/bubu-jailer-shubhod.gif';
+    if (quote) quote.textContent = '“Jailer Shubhod: ‘Ji Madam Judge! Jailer Shubhod 24/7 duty pe khada hai, sazaa poori karega jab tak maaf nahi karti!’ 👮‍♂️🫡”';
+    if (sub) sub.textContent = 'Jailer Shubhod Reporting For Sazaa Duty • Keys Handed Over To Madhee';
+  }
+
+  img.style.transform = 'scale(1.15)';
+  setTimeout(() => { img.style.transform = ''; }, 260);
+}
+window.switchCourtRole = switchCourtRole;

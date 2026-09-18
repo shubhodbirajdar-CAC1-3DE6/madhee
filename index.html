@@ -1240,11 +1240,36 @@
           <!-- Section: Final Verdict -->
           <div class="chronicle-sub-section">
             <h3 class="sub-sec-title">⚖️ FINAL VERDICT</h3>
+
+            <!-- Cutu Bubu Courtroom Interactive -->
+            <div class="case-court-bubu-card">
+              <div class="court-bubu-avatar-wrap">
+                <img id="case-court-bubu-img" src="images/bears/bubu-judge-madhee.gif" alt="Judge Madhee & Jailer Shubhod" class="court-bubu-img">
+              </div>
+              <div class="court-bubu-caption">
+                <p id="caseCourtQuote" class="court-bubu-quote">“Judge Madhee: ‘Tamam sabooton ke baad, yeh idiot gunhegaar saabit hota hai! Order in the court!’ 👩‍⚖️🔨”</p>
+                <span id="caseCourtSub" class="court-bubu-role-badge">Honourable Judge Madhee Presiding • Zero Bail Granted</span>
+              </div>
+              <div class="court-bubu-switcher">
+                <button type="button" class="court-role-btn active" onclick="switchCourtRole('judge', this)">
+                  <span>👩‍⚖️ Judge Madhee</span>
+                </button>
+                <button type="button" class="court-role-btn" onclick="switchCourtRole('lawyer', this)">
+                  <span>📜 Lawyer Madhee</span>
+                </button>
+                <button type="button" class="court-role-btn" onclick="switchCourtRole('jailer', this)">
+                  <span>👮‍♂️ Jailer Shubhod</span>
+                </button>
+              </div>
+            </div>
+
             <div class="verdict-mini-table">
               <div class="verdict-row"><span class="v-lbl">CASE:</span><span class="v-val">Madhee vs. Idiot Shubhod</span></div>
               <div class="verdict-row"><span class="v-lbl">CHARGE:</span><span class="v-val v-red">Trust hurt 😭</span></div>
-              <div class="verdict-row"><span class="v-lbl">DEFENCE:</span><span class="v-val">“Ma'am… I was being stupid.” 🥺</span></div>
               <div class="verdict-row"><span class="v-lbl">JUDGE:</span><span class="v-val v-gold">MADHEE 👩‍⚖️</span></div>
+              <div class="verdict-row"><span class="v-lbl">LAWYER:</span><span class="v-val v-gold">Also MADHEE 📜 (No bail for idiot!)</span></div>
+              <div class="verdict-row"><span class="v-lbl">JAILER:</span><span class="v-val v-purple">SHUBHOD 👮‍♂️ (Serving 24/7 punishment duty)</span></div>
+              <div class="verdict-row"><span class="v-lbl">DEFENCE:</span><span class="v-val">“Ma'am… I was being stupid.” 🥺</span></div>
               <div class="verdict-row"><span class="v-lbl">VERDICT:</span><span class="v-val v-purple">PENDING...</span></div>
               <div class="verdict-row v-appeal-highlight"><span class="v-lbl">APPEAL:</span><span class="v-val v-gold">“MAAF KARDEEE MA’AM.” 😭🙏😂</span></div>
             </div>
@@ -1765,6 +1790,10 @@
               <div class="court-row">
                 <span class="court-label">LAWYER:</span>
                 <span class="court-val">Also MADHEE. 😭</span>
+              </div>
+              <div class="court-row">
+                <span class="court-label">JAILER:</span>
+                <span class="court-val">SHUBHOD 👮‍♂️ (Serving 24/7 punishment duty)</span>
               </div>
               <div class="court-row">
                 <span class="court-label">VERDICT:</span>
