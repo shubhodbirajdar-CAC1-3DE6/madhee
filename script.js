@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollListeners();
   initThemeSwitcher();
   initCursorFollower();
+  initSixSectionsScrollSpy();
 
   // Snowbell cat interactive meow bounce
   document.querySelectorAll('.snowbell-cat-perch').forEach(cat => {
@@ -693,3 +694,52 @@ document.addEventListener('keydown', (e) => {
 // ==========================================================================
 
 // ==========================================================================
+
+
+// ==========================================================================
+// 13. SIX SECTIONS SCROLLSPY & ACTIVE TAB HIGHLIGHTING
+// ==========================================================================
+const SIX_SECTIONS = [
+  { id: 'prologue', num: '01', title: 'Prologue' },
+  { id: 'memories', num: '02', title: '12 Memories' },
+  { id: 'chronicles', num: '03', title: 'Case File' },
+  { id: 'trust-lotus', num: '04', title: 'Trust Lotus' },
+  { id: 'apology', num: '05', title: 'Letter' },
+  { id: 'sanctuary', num: '06', title: 'Sanctuary' }
+];
+
+function initSixSectionsScrollSpy() {
+  const navLinks = document.querySelectorAll('#mainNavLinks .nav-link');
+  const railLabel = document.getElementById('lunar-phase-label');
+
+  function updateActiveSection() {
+    const scrollPos = window.scrollY + (window.innerHeight * 0.35);
+    let activeSec = SIX_SECTIONS[0];
+
+    for (let i = SIX_SECTIONS.length - 1; i >= 0; i--) {
+      const el = document.getElementById(SIX_SECTIONS[i].id);
+      if (el && el.offsetTop <= scrollPos) {
+        activeSec = SIX_SECTIONS[i];
+        break;
+      }
+    }
+
+    // Highlight nav link
+    navLinks.forEach(link => {
+      const targetSec = link.getAttribute('data-section');
+      if (targetSec === activeSec.id) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    // Update progress rail label
+    if (railLabel) {
+      railLabel.textContent = `Section ${activeSec.num}: ${activeSec.title}`;
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveSection, { passive: true });
+  updateActiveSection();
+}

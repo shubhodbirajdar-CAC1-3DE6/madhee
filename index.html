@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=6.0">
+  <link rel="stylesheet" href="styles.css?v=7.0">
 
   <!-- Three.js from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -49,13 +49,13 @@
         <span class="brand-text">The Little Universe</span>
       </a>
 
-      <nav class="nav-links">
-        <a href="#prologue" class="nav-link">Prologue</a>
-        <a href="#chapter-01" class="nav-link">12 Memories</a>
-        <a href="#chronicles" class="nav-link">Case File</a>
-        <a href="#trust-lotus" class="nav-link">Trust Lotus</a>
-        <a href="#apology" class="nav-link">Letter</a>
-        <a href="#sanctuary" class="nav-link">Sanctuary</a>
+      <nav class="nav-links" id="mainNavLinks">
+        <a href="#prologue" class="nav-link active" data-section="prologue"><span class="nav-num">01.</span> Prologue</a>
+        <a href="#memories" class="nav-link" data-section="memories"><span class="nav-num">02.</span> 12 Memories</a>
+        <a href="#chronicles" class="nav-link" data-section="chronicles"><span class="nav-num">03.</span> Case File</a>
+        <a href="#trust-lotus" class="nav-link" data-section="trust-lotus"><span class="nav-num">04.</span> Trust Lotus</a>
+        <a href="#apology" class="nav-link" data-section="apology"><span class="nav-num">05.</span> Letter</a>
+        <a href="#sanctuary" class="nav-link" data-section="sanctuary"><span class="nav-num">06.</span> Sanctuary</a>
       </nav>
 
       <!-- Theme Switcher & Audio Controls -->
@@ -138,6 +138,8 @@
          ==================================================================== -->
     <section class="prologue-section" id="prologue">
       <div class="prologue-card glass-panel">
+      <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 01 OF 06 • PROLOGUE <span class="badge-dot">✦</span></div>
+
         <div class="nature-leaf-crest">🌿 🌸 🌙</div>
         <span class="section-tag">PROLOGUE</span>
         <h2 class="section-headline">The Garden of Beginning</h2>
@@ -153,9 +155,12 @@
         <p class="prologue-p-highlight">
           “Look closely. Every single petal, shadow, and smile tells the truth of who you are.”
         </p>
-        <div class="prologue-footer-hint">
-          <span>Explore Chapter 01 Below</span>
-          <span class="down-indicator">↓</span>
+        <div class="section-bridge-wrap">
+          <a href="#memories" class="btn-section-bridge">
+            <span class="bridge-tag">NEXT SECTION</span>
+            <span class="bridge-title">Proceed to Section 02: 12 Memories</span>
+            <span class="bridge-arrow">➔</span>
+          </a>
         </div>
       </div>
     </section>
@@ -165,6 +170,17 @@
          ==================================================================== -->
     <div class="chapters-wrapper" id="chapters-wrapper">
 
+          <!-- ====================================================================
+         SECTION 02 OF 06: 12 MEMORIES (12 MOMENTS & MILESTONE)
+         ==================================================================== -->
+    <div class="section-two-memories-wrapper" id="memories">
+      <div class="section-gateway-header">
+        <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 02 OF 06 • 12 MEMORIES <span class="badge-dot">✦</span></div>
+        <h2 class="section-gateway-title">12 Photographic Moments</h2>
+        <p class="section-gateway-sub">
+          “12 little moments • 12 different versions of you • memories I wanted to keep safe.” 🌸✨
+        </p>
+      </div>
       <!-- CHAPTER 01 -->
       <section class="chapter-fullscreen-section" id="chapter-01" data-chapter="1">
         <div class="chapter-container">
@@ -995,20 +1011,24 @@
         <!-- Page Turn Action -->
         <div class="milestone-turn-page-block">
           <p class="turn-whisper">So...</p>
-          <a href="#chronicles" class="btn-turn-page">
-            <span class="turn-sparkle">✨</span>
-            <span class="turn-text">Let's turn the page</span>
-            <span class="turn-arrow">↓</span>
+          <a href="#chronicles" class="btn-section-bridge">
+            <span class="bridge-tag">NEXT SECTION</span>
+            <span class="bridge-title">Proceed to Section 03: Case File</span>
+            <span class="bridge-arrow">➔</span>
           </a>
         </div>
 
       </div>
     </section>
+    </div>
 
     <!-- ====================================================================
          THE FRIENDSHIP CHRONICLES (HUMOR & MEMORIES)
          ==================================================================== -->
     <section class="chronicles-section" id="chronicles">
+            <div class="section-master-header-block">
+        <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 03 OF 06 • CASE FILE & CONFESSION <span class="badge-dot">✦</span></div>
+      </div>
       <div class="chronicles-grid">
 
         <!-- Madhee Case File -->
@@ -1214,6 +1234,13 @@
         </div>
 
       </div>
+          <div class="section-bridge-wrap chronicles-bridge">
+        <a href="#trust-lotus" class="btn-section-bridge">
+          <span class="bridge-tag">NEXT SECTION</span>
+          <span class="bridge-title">Proceed to Section 04: Trust Lotus</span>
+          <span class="bridge-arrow">➔</span>
+        </a>
+      </div>
     </section>
 
     <!-- ====================================================================
@@ -1221,6 +1248,8 @@
          ==================================================================== -->
     <section class="trust-lotus-section" id="trust-lotus">
       <div class="trust-container glass-panel">
+        <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 04 OF 06 • TRUST LOTUS <span class="badge-dot">✦</span></div>
+
         <div class="trust-header">
           <div class="lotus-sparkle-icon">🌸 💎 🌿</div>
           <span class="section-tag">REBUILDING HARMONY</span>
@@ -1276,6 +1305,13 @@
         <div id="petal-detail-display" class="petal-detail-display" aria-live="polite">
           <span class="detail-placeholder">Tap any petal above to view the promise.</span>
         </div>
+              <div class="section-bridge-wrap lotus-bridge">
+          <a href="#apology" class="btn-section-bridge">
+            <span class="bridge-tag">NEXT SECTION</span>
+            <span class="bridge-title">Proceed to Section 05: The Letter</span>
+            <span class="bridge-arrow">➔</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1285,6 +1321,8 @@
     <section class="apology-section" id="apology">
       <div class="letter-scroll-wrapper">
         <article class="apology-manuscript glass-panel">
+          <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 05 OF 06 • THE LETTER <span class="badge-dot">✦</span></div>
+
           <div class="letter-header">
             <div class="letter-seal">❤️</div>
             <span class="letter-tag">A GENUINE NOTE • DIL SE</span>
@@ -1413,6 +1451,13 @@
             <p class="signature-name">Shubhod ❤️</p>
           </div>
         </article>
+              <div class="section-bridge-wrap letter-bridge">
+          <a href="#sanctuary" class="btn-section-bridge">
+            <span class="bridge-tag">NEXT SECTION</span>
+            <span class="bridge-title">Proceed to Section 06: Sanctuary & Grand Finale</span>
+            <span class="bridge-arrow">➔</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1424,6 +1469,8 @@
 
         <!-- GRAND FINALE CARD: ONE LAST THING, MADHEE -->
         <article class="finale-grand-card">
+          <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 06 OF 06 • SANCTUARY & GRAND FINALE <span class="badge-dot">✦</span></div>
+
           
           <!-- Alert Banner -->
           <div class="finale-alert-banner">
@@ -1660,6 +1707,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=6.0"></script>
+  <script src="script.js?v=7.0"></script>
 </body>
 </html>

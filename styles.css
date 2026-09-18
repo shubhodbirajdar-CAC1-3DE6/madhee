@@ -2936,3 +2936,147 @@ body {
 .cat-pose-4:hover, .cat-pose-8:hover, .cat-pose-12:hover {
   transform: translateY(-8px) scale(1.12) rotate(-2deg);
 }
+
+
+/* ==========================================================================
+   THE 6 DEDICATED SECTIONS STYLING & MASTER BADGES
+   ========================================================================== */
+.section-master-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 999px;
+  font-family: var(--font-cinzel);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent-gold);
+  margin-bottom: 18px;
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.15);
+}
+
+.badge-dot {
+  font-size: 0.75rem;
+  color: #fef08a;
+}
+
+.section-master-header-block {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* SECTION 02: 12 MEMORIES GATEWAY BANNER */
+.section-gateway-header {
+  text-align: center;
+  padding: 80px 20px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-gateway-title {
+  font-family: var(--font-cinzel);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  color: #fef08a;
+  letter-spacing: 0.08em;
+  margin: 12px 0;
+  text-shadow: 0 0 30px rgba(253, 224, 71, 0.35);
+}
+
+.section-gateway-sub {
+  font-family: var(--font-garamond);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* NAVBAR TABS STYLING */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+.nav-num {
+  font-family: var(--font-cinzel);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  opacity: 0.75;
+}
+
+.nav-link.active {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fef08a !important;
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.35);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+}
+
+.nav-link.active .nav-num {
+  opacity: 1;
+  color: #ffffff;
+}
+
+/* SECTION INTER-CONNECTING BRIDGES */
+.section-bridge-wrap {
+  text-align: center;
+  margin: 45px auto 20px;
+}
+
+.btn-section-bridge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45), 0 0 20px rgba(251, 191, 36, 0.15);
+}
+
+.btn-section-bridge:hover {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(245, 158, 11, 0.2));
+  border-color: #fef08a;
+  color: #fef08a;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 14px 35px rgba(251, 191, 36, 0.3);
+}
+
+.bridge-tag {
+  font-family: var(--font-cinzel);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-gold);
+  background: rgba(251, 191, 36, 0.15);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.bridge-title {
+  color: #ffffff;
+}
+
+.bridge-arrow {
+  font-size: 1.1rem;
+  color: var(--accent-gold);
+  transition: transform 0.25s ease;
+}
+
+.btn-section-bridge:hover .bridge-arrow {
+  transform: translateX(4px);
+}
