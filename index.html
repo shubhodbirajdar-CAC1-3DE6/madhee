@@ -54,7 +54,7 @@
         <button type="button" class="nav-link active" onclick="switchSitePage(1)"><span class="nav-num">01.</span> Prologue</button>
         <button type="button" class="nav-link" onclick="switchSitePage(2)"><span class="nav-num">02.</span> 12 Memories</button>
         <button type="button" class="nav-link" onclick="switchSitePage(3)"><span class="nav-num">03.</span> Case File</button>
-        <button type="button" class="nav-link" onclick="switchSitePage(4)"><span class="nav-num">04.</span> Workshop</button>
+        <button type="button" class="nav-link" onclick="switchSitePage(4)"><span class="nav-num">04.</span> Dimension</button>
         <button type="button" class="nav-link" onclick="switchSitePage(5)"><span class="nav-num">05.</span> Letter</button>
         <button type="button" class="nav-link" onclick="switchSitePage(6)"><span class="nav-num">06.</span> Sanctuary</button>
       </nav>
@@ -1257,129 +1257,162 @@
           <span>Previous: 02. 12 Memories</span>
         </button>
         <button type="button" class="btn-step-nav btn-step-next" onclick="switchSitePage(4)">
-          <span>Next Section: 04. The Trust Workshop</span>
+          <span>Next Section: 04. The Madhee Dimension</span>
           <span class="step-arrow">➔</span>
         </button>
       </div>
     </div>
 
     <!-- ====================================================================
-         SECTION 04: THE TRUST WORKSHOP (3D CINEMATIC RESTORATION)
+         SECTION 04: THE MADHEE DIMENSION (3D MULTIVERSE)
          ==================================================================== -->
-    <div class="site-section-page" id="page-4-trust-workshop" data-page="4">
-      <section class="trust-workshop-section" id="trust-workshop">
-        <div class="workshop-container">
-          
+    <div class="site-section-page" id="page-4-madhee-dimension" data-page="4">
+      <section class="madhee-dimension-section" id="madhee-dimension">
+        <div class="dimension-container">
+
           <!-- Master Header -->
           <div class="section-master-header-block">
-            <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 04 OF 06 • THE TRUST WORKSHOP <span class="badge-dot">✦</span></div>
-            <h2 class="workshop-main-title">The Trust Workshop</h2>
-            <div class="workshop-golden-rule">
-              <span class="rule-line"></span>
-              <span class="rule-symbol">✦ ⟐ ✦</span>
-              <span class="rule-line"></span>
+            <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 04 OF 06 • THE MADHEE DIMENSION <span class="badge-dot">✦</span></div>
+            <h2 class="dimension-main-title">The Madhee Dimension</h2>
+            <div class="dimension-rule-line">
+              <span class="d-line"></span>
+              <span class="d-symbol">🪐 ✦ 🌙</span>
+              <span class="d-line"></span>
             </div>
-            <p class="workshop-lead-quote">
-              “Trust is not something that magically becomes whole after one apology.<br>
-              It is rebuilt slowly through listening, understanding, respect, consistency, and actions.”
-            </p>
-            <p class="workshop-instruction-hint">
-              Tap each of the five floating components orbiting the fractured crystal to carefully restore it.
+            <p class="dimension-lead-sub">
+              Warning: Extremely Gorgeousss Territory. Five distinct worlds orbiting one central force.
             </p>
           </div>
 
-          <!-- 3D Cinematic Stage -->
-          <div class="workshop-stage-wrapper">
+          <!-- The Portal Gateway (Interactive Entrance) -->
+          <div id="dimension-portal-gate" class="dimension-portal-gate">
+            <div class="portal-rings-container" aria-hidden="true">
+              <div class="portal-ring ring-outer"></div>
+              <div class="portal-ring ring-mid"></div>
+              <div class="portal-ring ring-inner"></div>
+              <div class="portal-vortex-core"></div>
+            </div>
+            <div class="portal-text-content">
+              <span class="portal-alert-tag">SPACE-TIME ANOMALY DETECTED</span>
+              <h3 class="portal-title">Enter The Madhee Dimension</h3>
+              <p class="portal-desc">
+                You are about to step into a miniature magical universe created specifically around her. Prepare for calm skies, radiant suns, total chaos, main character energy, and Class Representative rules.
+              </p>
+              <button type="button" class="btn-portal-enter" onclick="enterMadheeDimension()">
+                <span>ENTER THE DIMENSION ➔</span>
+                <span class="btn-sparkle">✨</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3D Dimension Stage (Revealed after portal entry) -->
+          <div id="dimension-universe-stage" class="dimension-universe-stage" style="display: none;">
             
-            <!-- Assembly HUD Status Header -->
-            <div class="workshop-hud-bar">
-              <div class="hud-stat-badge">
-                <span class="hud-status-indicator"></span>
-                <span class="hud-title">RESTORATION PROGRESS</span>
+            <!-- HUD Control & Telemetry Bar -->
+            <div class="dimension-hud-bar">
+              <div class="hud-left-stat">
+                <span class="hud-live-beacon"></span>
+                <span class="hud-system-title">MULTIVERSE MAP • 5 ORBITING WORLDS</span>
               </div>
-              <div class="hud-counter-pill" id="workshop-progress-label">0 / 5 ASSEMBLED</div>
-              <div class="hud-segment-track" id="workshop-progress-track">
-                <span class="hud-segment seg-1"></span>
-                <span class="hud-segment seg-2"></span>
-                <span class="hud-segment seg-3"></span>
-                <span class="hud-segment seg-4"></span>
-                <span class="hud-segment seg-5"></span>
+              <div class="hud-right-nav">
+                <button type="button" class="hud-orbit-btn" onclick="focusDimensionCore()">
+                  <span>● MADHEE CORE</span>
+                </button>
               </div>
             </div>
 
-            <!-- Canvas Container -->
-            <div id="trust-workshop-canvas-container" class="workshop-canvas-container">
-              <!-- Three.js Canvas injected here -->
-              
-              <!-- Subtle Canvas Ambient Labels -->
-              <div class="canvas-corner-tag top-left">PROJECT: CRYSTAL_RESTORE</div>
-              <div class="canvas-corner-tag top-right">SYSTEM: ACTIVE • 60 FPS</div>
-              <div class="canvas-corner-tag bottom-left">KINTSUGI GOLDEN SEAMS</div>
-              <div class="canvas-corner-tag bottom-right">3D INTERACTIVE SPACE</div>
+            <!-- 3D Canvas Viewport -->
+            <div id="madhee-dimension-canvas-container" class="dimension-canvas-container">
+              <!-- Three.js Canvas renders here -->
 
-              <!-- Interactive Floating Component Trigger Buttons (Mobile & Desktop Accessible) -->
-              <div class="workshop-component-pills" id="workshop-pills-bar">
-                <button type="button" class="comp-pill" data-comp="0" onclick="triggerWorkshopComponent(0)">
-                  <span class="comp-pill-num">01</span>
-                  <span class="comp-pill-name">LISTEN</span>
-                  <span class="comp-pill-status">✦</span>
+              <!-- Space Telemetry Watermarks -->
+              <div class="dimension-tag tag-tl">COORDINATES: MADHEE_05_AXIS</div>
+              <div class="dimension-tag tag-tr">ORBIT: STABLE • 60 FPS</div>
+              <div class="dimension-tag tag-bl">DRAG TO ROTATE UNIVERSE</div>
+              <div class="dimension-tag tag-br">TAP ANY WORLD TO EXPLORE</div>
+
+              <!-- Quick World Navigation Pills -->
+              <div class="dimension-world-pills" id="dimension-world-pills">
+                <button type="button" class="world-pill" data-world="0" onclick="enterWorld(0)">
+                  <span class="pill-emoji">🌙</span>
+                  <span class="pill-title">01. CALM</span>
                 </button>
-                <button type="button" class="comp-pill" data-comp="1" onclick="triggerWorkshopComponent(1)">
-                  <span class="comp-pill-num">02</span>
-                  <span class="comp-pill-name">UNDERSTAND</span>
-                  <span class="comp-pill-status">✦</span>
+                <button type="button" class="world-pill" data-world="1" onclick="enterWorld(1)">
+                  <span class="pill-emoji">☀️</span>
+                  <span class="pill-title">02. HAPPY</span>
                 </button>
-                <button type="button" class="comp-pill" data-comp="2" onclick="triggerWorkshopComponent(2)">
-                  <span class="comp-pill-num">03</span>
-                  <span class="comp-pill-name">RESPECT</span>
-                  <span class="comp-pill-status">✦</span>
+                <button type="button" class="world-pill" data-world="2" onclick="enterWorld(2)">
+                  <span class="pill-emoji">😂</span>
+                  <span class="pill-title">03. CHAOS</span>
                 </button>
-                <button type="button" class="comp-pill" data-comp="3" onclick="triggerWorkshopComponent(3)">
-                  <span class="comp-pill-num">04</span>
-                  <span class="comp-pill-name">CONSISTENCY</span>
-                  <span class="comp-pill-status">✦</span>
+                <button type="button" class="world-pill" data-world="3" onclick="enterWorld(3)">
+                  <span class="pill-emoji">✨</span>
+                  <span class="pill-title">04. MAIN CHARACTER</span>
                 </button>
-                <button type="button" class="comp-pill" data-comp="4" onclick="triggerWorkshopComponent(4)">
-                  <span class="comp-pill-num">05</span>
-                  <span class="comp-pill-name">ACTIONS</span>
-                  <span class="comp-pill-status">✦</span>
+                <button type="button" class="world-pill" data-world="4" onclick="enterWorld(4)">
+                  <span class="pill-emoji">👑</span>
+                  <span class="pill-title">05. MA'AM</span>
                 </button>
               </div>
 
-              <!-- Component Message Overlay Card -->
-              <div id="workshop-message-card" class="workshop-message-card" aria-live="polite">
-                <div class="msg-card-header">
-                  <span class="msg-badge" id="msg-comp-badge">COMPONENT 01 • LISTEN</span>
-                  <span class="msg-seam-status">GOLDEN SEAM ENGAGED</span>
+              <!-- Active World Detail Overlay Card -->
+              <div id="dimension-world-modal" class="dimension-world-modal" aria-live="polite">
+                <button type="button" class="btn-close-world" onclick="exitWorldView()" title="Return to Universe">✕ Return to Universe</button>
+                <div class="world-modal-inner" id="world-modal-content">
+                  <!-- Injected dynamically based on clicked world -->
                 </div>
-                <div class="msg-quote-content" id="msg-quote-text">
-                  “Sometimes you don't need someone to explain themselves.<br>You just need them to actually listen.”
+              </div>
+
+              <!-- Chaos Monkey Jump Surprise Card -->
+              <div id="chaos-monkey-popup" class="chaos-monkey-popup">
+                <div class="monkey-badge">⚠️ CRITICAL ADVISORY ⚠️</div>
+                <div class="monkey-bounce-img">🐒💥😂</div>
+                <h4 class="monkey-title">I TOLD YOU NOT TO PRESS IT! 😭🐒</h4>
+                <p class="monkey-desc">
+                  Bandar has been deployed into the airspace! Madhee's chaos level reached 9999%!
+                </p>
+                <button type="button" class="btn-dismiss-monkey" onclick="dismissChaosMonkey()">
+                  <span>Calm Down Bandar 😂</span>
+                </button>
+              </div>
+
+              <!-- Ma'am Office Dossier Modal -->
+              <div id="maam-dossier-modal" class="maam-dossier-modal">
+                <div class="dossier-card glass-panel">
+                  <div class="dossier-stamp">CONFIDENTIAL • CLASS CR ⚖️</div>
+                  <h4 class="dossier-title">OFFICIAL CASE FILE: SHUBHOD 😭</h4>
+                  <div class="dossier-rows">
+                    <div class="d-row"><span class="d-label">NAME:</span> <span class="d-val">Shubhod</span></div>
+                    <div class="d-row"><span class="d-label">POSITION:</span> <span class="d-val">Certified Idiot</span></div>
+                    <div class="d-row"><span class="d-label">KNOWN ALIAS:</span> <span class="d-val">Bandar 🐒</span></div>
+                    <div class="d-row"><span class="d-label">CURRENT STATUS:</span> <span class="d-val status-watch">“Under Observation.” 🧐</span></div>
+                    <div class="d-row"><span class="d-label">SENTENCE:</span> <span class="d-val">Decision pending, Ma'am. 😭🙏</span></div>
+                  </div>
+                  <button type="button" class="btn-close-dossier" onclick="closeMaamDossier()">
+                    <span>Acknowledged, Ma'am 👩‍⚖️😂</span>
+                  </button>
                 </div>
               </div>
 
             </div>
 
-            <!-- Grand Finale Statement Card (Revealed on 5/5 Assembly) -->
-            <div id="workshop-finale-card" class="workshop-finale-card">
-              <div class="finale-kintsugi-crest">✦ ⟐ ✦</div>
-              <h3 class="finale-trust-title">TRUST</h3>
-              <p class="finale-trust-sub">Not repaired in one moment.<br><span>Rebuilt over time.</span></p>
-              
-              <div class="finale-truth-lines">
-                <p class="truth-p">“I know one apology can't fix everything.”</p>
-                <p class="truth-p">“So I won't ask you to trust me immediately.”</p>
-                <p class="truth-p highlight-rebuild">“I'll just try to become someone who deserves that trust again.”</p>
+            <!-- Dimension Universe Finale Statement Card -->
+            <div id="dimension-universe-finale" class="dimension-universe-finale">
+              <div class="finale-star-crest">🪐 ✦ 👑 ✦ ✨</div>
+              <h3 class="finale-universe-title">MADHEE</h3>
+              <p class="finale-universe-sub">
+                Gorgeousss. Ladoo. Bachaaa. Diamond. Ma'am.<br>
+                <span>And somehow... all five at once.</span>
+              </p>
+              <div class="finale-universe-evidence">
+                <p class="evidence-lead">“Okay...”</p>
+                <p class="evidence-quote">“That's enough evidence.”</p>
+                <p class="evidence-highlight">“You're officially a whole universe by yourself. 😂✨”</p>
+                <p class="evidence-continue">Now let's continue...</p>
               </div>
-
-              <div class="finale-golden-verdict">
-                <div class="verdict-seam-line"></div>
-                <p class="verdict-text">“Some things are worth rebuilding carefully.”</p>
-                <p class="verdict-sign">— Shubhod</p>
-              </div>
-
-              <div class="finale-actions">
-                <button type="button" class="btn-finale-inspect" onclick="inspectWorkshopCrystal()">
-                  <span>🔍 Rotate & Inspect Restored Crystal</span>
+              <div class="finale-dimension-actions">
+                <button type="button" class="btn-universe-proceed" onclick="switchSitePage(5)">
+                  <span>Proceed to Section 05: The Letter ➔</span>
                 </button>
               </div>
             </div>
@@ -1545,7 +1578,7 @@
       <div class="page-step-footer double-step">
         <button type="button" class="btn-step-nav btn-step-prev" onclick="switchSitePage(4)">
           <span class="step-arrow">←</span>
-          <span>Previous: 04. The Trust Workshop</span>
+          <span>Previous: 04. The Madhee Dimension</span>
         </button>
         <button type="button" class="btn-step-nav btn-step-next" onclick="switchSitePage(6)">
           <span>Next Section: 06. Sanctuary</span>

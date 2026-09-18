@@ -703,7 +703,7 @@ const SIX_SECTIONS = [
   { id: 'prologue', num: '01', title: 'Prologue' },
   { id: 'memories', num: '02', title: '12 Memories' },
   { id: 'chronicles', num: '03', title: 'Case File' },
-  { id: 'trust-workshop', num: '04', title: 'Trust Workshop' },
+  { id: 'madhee-dimension', num: '04', title: 'The Madhee Dimension' },
   { id: 'apology', num: '05', title: 'Letter' },
   { id: 'sanctuary', num: '06', title: 'Sanctuary' }
 ];
@@ -800,7 +800,7 @@ function initSixSectionsScrollSpy() {
       } else if (targetId === 'chronicles') {
         e.preventDefault();
         switchSitePage(3, targetId);
-      } else if (targetId === 'trust-workshop' || targetId === 'trust-lotus') {
+      } else if (targetId === 'madhee-dimension' || targetId === 'dimension' || targetId === 'trust-lotus' || targetId === 'trust-workshop') {
         e.preventDefault();
         switchSitePage(4, targetId);
       } else if (targetId === 'apology') {
@@ -841,345 +841,342 @@ function switchDancingBear(src, btn) {
 window.switchDancingBear = switchDancingBear;
 
 
+
 // ==========================================================================
-// THE TRUST WORKSHOP: 3D CINEMATIC RESTORATION LOGIC (THREE.JS + GSAP)
+// THE MADHEE DIMENSION: 3D MULTIVERSE & THE 5 WORLDS (THREE.JS + GSAP)
 // ==========================================================================
 (function() {
-  let workshopInitialized = false;
-  let workshopRunning = false;
+  let dimensionInitialized = false;
+  let dimensionRunning = false;
   let animationFrameId = null;
-  let scene, camera, renderer, crystalGroup, crystalMesh;
-  let seamMeshes = [];
-  let componentObjects = [];
-  let dustParticles;
+  let scene, camera, renderer;
+  let coreSphere, coreOrbitRings = [];
+  let worldMeshes = [];
+  let spaceDust;
   let raycaster, mouse;
-  let isInteracting = false;
-  let assembledCount = 0;
-  let targetRotationX = 0;
-  let targetRotationY = 0;
+  let activeWorldIndex = null;
+  let visitedWorlds = new Set();
+  let universeRotation = { x: 0, y: 0 };
+  let targetRotation = { x: 0, y: 0 };
   let isDragging = false;
-  let prevMousePos = { x: 0, y: 0 };
+  let prevPointer = { x: 0, y: 0 };
 
-  const WORKSHOP_COMPONENTS = [
+  const WORLDS_DATA = [
     {
-      id: 'listen',
-      num: '01',
-      name: 'LISTEN',
-      title: 'COMPONENT 01 • LISTEN',
-      quote: '“Sometimes you don\'t need someone to explain themselves.<br>You just need them to actually listen.”',
-      color: 0xd4af37,
-      pos: { x: -3.8, y: 1.7, z: 1.0 },
-      targetOffset: { x: -0.85, y: 0.65, z: 0.75 },
-      buildMesh: function() {
+      id: 'calm',
+      title: 'HER CALM SIDE 🌙',
+      badge: 'WORLD 01 • MOONLIT SERENITY',
+      quote: '“Some moments don\'t need noise.<br>Sometimes your quiet side is the prettiest one.”',
+      color: 0x7ec8e3,
+      emissive: 0x112233,
+      pos: { x: -4.8, y: 2.2, z: 0.8 },
+      buildWorld: function() {
         const group = new THREE.Group();
-        const geom = new THREE.BoxGeometry(0.85, 1.15, 0.08);
+        // Moon sphere
+        const geo = new THREE.SphereGeometry(0.85, 24, 24);
         const mat = new THREE.MeshStandardMaterial({
-          color: 0xd4af37,
-          metalness: 0.85,
-          roughness: 0.25
-        });
-        const plate = new THREE.Mesh(geom, mat);
-        group.add(plate);
-
-        const wire = new THREE.LineSegments(
-          new THREE.EdgesGeometry(geom),
-          new THREE.LineBasicMaterial({ color: 0xfff0b3 })
-        );
-        group.add(wire);
-
-        const ringMat = new THREE.MeshBasicMaterial({ color: 0xfffae0, side: THREE.DoubleSide });
-        const ring1 = new THREE.Mesh(new THREE.RingGeometry(0.1, 0.18, 24), ringMat);
-        ring1.position.z = 0.045;
-        group.add(ring1);
-        const ring2 = new THREE.Mesh(new THREE.RingGeometry(0.24, 0.3, 24), ringMat);
-        ring2.position.z = 0.045;
-        group.add(ring2);
-
-        return group;
-      }
-    },
-    {
-      id: 'understand',
-      num: '02',
-      name: 'UNDERSTAND',
-      title: 'COMPONENT 02 • UNDERSTAND',
-      quote: '“Understanding doesn\'t mean agreeing with everything.<br>It means trying to understand why it hurt.”',
-      color: 0x9d71ea,
-      pos: { x: 3.8, y: 1.9, z: 0.8 },
-      targetOffset: { x: 0.85, y: 0.65, z: 0.75 },
-      buildMesh: function() {
-        const group = new THREE.Group();
-        const geom = new THREE.ConeGeometry(0.6, 1.25, 4);
-        geom.rotateX(Math.PI / 4);
-        const mat = new THREE.MeshPhysicalMaterial({
-          color: 0x9d71ea,
-          transmission: 0.75,
-          opacity: 0.85,
-          transparent: true,
-          roughness: 0.08,
+          color: 0xa4d4e6,
+          roughness: 0.6,
           metalness: 0.1,
-          ior: 1.52,
-          clearcoat: 0.8
+          emissive: 0x182c3f
         });
-        const mesh = new THREE.Mesh(geom, mat);
-        group.add(mesh);
+        const moon = new THREE.Mesh(geo, mat);
+        group.add(moon);
 
-        const wire = new THREE.LineSegments(
-          new THREE.EdgesGeometry(geom),
-          new THREE.LineBasicMaterial({ color: 0xe0c3fc })
-        );
-        group.add(wire);
+        // Soft celestial halo ring
+        const ringGeo = new THREE.RingGeometry(1.1, 1.25, 32);
+        const ringMat = new THREE.MeshBasicMaterial({ color: 0xc4e5f2, side: THREE.DoubleSide, transparent: true, opacity: 0.45 });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.PI / 2.5;
+        group.add(ring);
+
+        // Orbiting mini moon
+        const subMoonGeo = new THREE.SphereGeometry(0.18, 16, 16);
+        const subMoonMat = new THREE.MeshStandardMaterial({ color: 0xffffff });
+        const subMoon = new THREE.Mesh(subMoonGeo, subMoonMat);
+        subMoon.position.set(1.5, 0.4, 0);
+        group.add(subMoon);
+        group.userData.subOrbiter = subMoon;
+
         return group;
       }
     },
     {
-      id: 'respect',
-      num: '03',
-      name: 'RESPECT',
-      title: 'COMPONENT 03 • RESPECT',
-      quote: '“Your feelings don\'t need permission to matter.<br>I should have respected that sooner.”',
-      color: 0x00b4d8,
-      pos: { x: -3.5, y: -1.7, z: 1.2 },
-      targetOffset: { x: -0.75, y: -0.65, z: 0.75 },
-      buildMesh: function() {
+      id: 'happy',
+      title: 'HER HAPPY SIDE ☀️',
+      badge: 'WORLD 02 • RADIANT SUNRISE',
+      quote: '“That smile should honestly come with a warning.<br>Too much happiness detected. 😭”',
+      color: 0xffb703,
+      emissive: 0x663d00,
+      pos: { x: 4.8, y: 2.4, z: 0.5 },
+      buildWorld: function() {
         const group = new THREE.Group();
-        const geom = new THREE.CylinderGeometry(0.7, 0.7, 0.08, 8);
+        // Glowing sun core
+        const geo = new THREE.SphereGeometry(0.88, 24, 24);
         const mat = new THREE.MeshStandardMaterial({
-          color: 0x0a3d62,
-          metalness: 0.65,
+          color: 0xffb703,
           roughness: 0.3,
-          emissive: 0x002233
+          metalness: 0.2,
+          emissive: 0xff8c00,
+          emissiveIntensity: 0.6
         });
-        const mesh = new THREE.Mesh(geom, mat);
-        mesh.rotation.x = Math.PI / 2;
-        group.add(mesh);
+        const sun = new THREE.Mesh(geo, mat);
+        group.add(sun);
 
-        const grid = new THREE.GridHelper(1.1, 6, 0x00f2fe, 0x0077b6);
-        grid.rotation.x = Math.PI / 2;
-        grid.position.z = 0.045;
-        group.add(grid);
+        // Corona spikes / corona ring
+        const coronaGeo = new THREE.TorusGeometry(1.2, 0.05, 12, 32);
+        const coronaMat = new THREE.MeshBasicMaterial({ color: 0xffd166, transparent: true, opacity: 0.7 });
+        const corona1 = new THREE.Mesh(coronaGeo, coronaMat);
+        group.add(corona1);
+        const corona2 = new THREE.Mesh(coronaGeo, coronaMat);
+        corona2.rotation.x = Math.PI / 2;
+        group.add(corona2);
+
+        group.userData.sunMesh = sun;
         return group;
       }
     },
     {
-      id: 'consistency',
-      num: '04',
-      name: 'CONSISTENCY',
-      title: 'COMPONENT 04 • CONSISTENCY',
-      quote: '“Trust doesn\'t come back because someone says sorry.<br>It comes back when actions stay consistent.”',
-      color: 0xd9822b,
-      pos: { x: 3.5, y: -1.6, z: 1.1 },
-      targetOffset: { x: 0.75, y: -0.65, z: 0.7 },
-      buildMesh: function() {
+      id: 'chaos',
+      title: 'HER CHAOS SIDE 😂',
+      badge: 'WORLD 03 • UNPREDICTABLE HAZARD ZONE',
+      quote: '“WARNING.<br>Madhee has entered chaos mode.<br>Please remain calm.”',
+      hasHazardButton: true,
+      color: 0xff4757,
+      emissive: 0x4a0e14,
+      pos: { x: -4.4, y: -2.0, z: 1.2 },
+      buildWorld: function() {
         const group = new THREE.Group();
-        const geom = new THREE.TorusGeometry(0.55, 0.12, 12, 24);
+        // Asteroid / chaos sphere
+        const geo = new THREE.DodecahedronGeometry(0.85, 1);
         const mat = new THREE.MeshStandardMaterial({
-          color: 0xd9822b,
-          metalness: 0.88,
-          roughness: 0.22
+          color: 0xff4757,
+          roughness: 0.4,
+          metalness: 0.3,
+          emissive: 0x800c19
         });
-        const torus = new THREE.Mesh(geom, mat);
-        group.add(torus);
+        const asteroid = new THREE.Mesh(geo, mat);
+        group.add(asteroid);
 
-        for (let i = 0; i < 6; i++) {
-          const angle = (i / 6) * Math.PI * 2;
-          const tooth = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.22, 0.12), mat);
-          tooth.position.set(Math.cos(angle) * 0.65, Math.sin(angle) * 0.65, 0);
-          tooth.rotation.z = angle;
-          group.add(tooth);
-        }
+        // Spinning hazard warning ring
+        const ringGeo = new THREE.TorusGeometry(1.2, 0.06, 8, 24);
+        const ringMat = new THREE.MeshStandardMaterial({ color: 0xfeca57, emissive: 0xb37400 });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.PI / 3;
+        group.add(ring);
+        group.userData.chaosRing = ring;
+
         return group;
       }
     },
     {
-      id: 'actions',
-      num: '05',
-      name: 'ACTIONS',
-      title: 'COMPONENT 05 • ACTIONS',
-      quote: '“Words can explain.<br>Actions are what prove.”',
-      color: 0xffffff,
-      pos: { x: 0.0, y: -3.2, z: 1.5 },
-      targetOffset: { x: 0.0, y: -1.05, z: 0.85 },
-      buildMesh: function() {
+      id: 'main-character',
+      title: 'MAIN CHARACTER ENERGY ✨',
+      badge: 'WORLD 04 • CINEMATIC CENTERSTAGE',
+      quote: '“Some people enter a room.<br>You somehow become the scene.”<br><span style="color:#ffd875;font-weight:600;">“Unfair, honestly. 😭”</span>',
+      color: 0xf1c40f,
+      emissive: 0x544000,
+      pos: { x: 4.4, y: -1.9, z: 1.0 },
+      buildWorld: function() {
         const group = new THREE.Group();
-        const geom = new THREE.CylinderGeometry(0.2, 0.45, 1.3, 6);
+        // Faceted diamond / gem sphere
+        const geo = new THREE.IcosahedronGeometry(0.85, 0);
         const mat = new THREE.MeshPhysicalMaterial({
-          color: 0xffffff,
-          transmission: 0.85,
-          opacity: 0.9,
+          color: 0xfff0b3,
+          roughness: 0.1,
+          metalness: 0.3,
+          transmission: 0.65,
           transparent: true,
-          roughness: 0.06,
-          metalness: 0.05,
-          ior: 1.55,
           clearcoat: 1.0,
-          emissive: 0x332800
+          emissive: 0x473800
         });
-        const shard = new THREE.Mesh(geom, mat);
-        shard.rotation.z = Math.PI / 6;
-        group.add(shard);
+        const gem = new THREE.Mesh(geo, mat);
+        group.add(gem);
 
-        const wire = new THREE.LineSegments(
-          new THREE.EdgesGeometry(geom),
-          new THREE.LineBasicMaterial({ color: 0xffe680 })
-        );
-        wire.rotation.z = Math.PI / 6;
-        group.add(wire);
+        // Stage Pedestal ring below
+        const pedestalGeo = new THREE.CylinderGeometry(1.1, 1.2, 0.1, 16);
+        const pedestalMat = new THREE.MeshStandardMaterial({ color: 0x1e272e, metalness: 0.8, roughness: 0.2 });
+        const pedestal = new THREE.Mesh(pedestalGeo, pedestalMat);
+        pedestal.position.y = -0.95;
+        group.add(pedestal);
+
+        return group;
+      }
+    },
+    {
+      id: 'maam',
+      title: 'HER MA\'AM SIDE 👑',
+      badge: 'WORLD 05 • CLASS CR HEADQUARTERS',
+      quote: '<strong>CLASS REPRESENTATIVE OFFICE</strong><br><span style="color:#38ef7d;font-family:Cinzel,monospace;font-size:0.85rem;">STATUS: “MA\'AM IS IN CHARGE.”</span>',
+      hasMaamFiles: true,
+      color: 0x8e44ad,
+      emissive: 0x3b1154,
+      pos: { x: 0.0, y: -3.8, z: 1.4 },
+      buildWorld: function() {
+        const group = new THREE.Group();
+        // High-tech holographic sphere
+        const geo = new THREE.SphereGeometry(0.85, 20, 20);
+        const mat = new THREE.MeshStandardMaterial({
+          color: 0x9b59b6,
+          metalness: 0.6,
+          roughness: 0.25,
+          emissive: 0x3d1752
+        });
+        const sphere = new THREE.Mesh(geo, mat);
+        group.add(sphere);
+
+        // Floating holographic document tablets around it
+        for (let i = 0; i < 3; i++) {
+          const tabGeo = new THREE.BoxGeometry(0.35, 0.45, 0.02);
+          const tabMat = new THREE.MeshBasicMaterial({ color: 0xe056fd, wireframe: true });
+          const tab = new THREE.Mesh(tabGeo, tabMat);
+          const ang = (i / 3) * Math.PI * 2;
+          tab.position.set(Math.cos(ang) * 1.3, (i - 1) * 0.3, Math.sin(ang) * 1.3);
+          tab.rotation.y = ang;
+          group.add(tab);
+        }
         return group;
       }
     }
   ];
 
-  function initTrustWorkshop() {
-    if (workshopInitialized) return;
-    const container = document.getElementById('trust-workshop-canvas-container');
+  function enterMadheeDimension() {
+    const gate = document.getElementById('dimension-portal-gate');
+    const stage = document.getElementById('dimension-universe-stage');
+    
+    if (gate && stage) {
+      gate.style.opacity = '0';
+      gate.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        gate.style.display = 'none';
+        stage.style.display = 'block';
+        initMadheeDimension();
+        startDimensionRenderLoop();
+
+        // Warp Camera Effect with GSAP
+        if (typeof gsap !== 'undefined' && camera) {
+          camera.position.set(0, 0, 24);
+          gsap.to(camera.position, {
+            x: 0,
+            y: 0.5,
+            z: 9.8,
+            duration: 1.8,
+            ease: 'power3.out'
+          });
+        }
+      }, 400);
+    }
+  }
+
+  function initMadheeDimension() {
+    if (dimensionInitialized) return;
+    const container = document.getElementById('madhee-dimension-canvas-container');
     if (!container) return;
 
-    workshopInitialized = true;
+    dimensionInitialized = true;
     const width = container.clientWidth || 800;
     const height = container.clientHeight || 560;
 
     // Scene & Camera
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.set(0, 0.8, 9.5);
+    camera.position.set(0, 0.5, 9.8);
 
     // Renderer
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
+    renderer.toneMappingExposure = 1.15;
     container.appendChild(renderer.domElement);
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0x1a2640, 1.5);
+    // Cosmic Lighting
+    const ambientLight = new THREE.AmbientLight(0x182440, 1.6);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.PointLight(0xfff1d6, 2.2, 30);
-    keyLight.position.set(2, 6, 5);
-    scene.add(keyLight);
+    const centralSunLight = new THREE.PointLight(0xfff5dd, 2.5, 25);
+    centralSunLight.position.set(0, 0, 0);
+    scene.add(centralSunLight);
 
-    const rimLight = new THREE.PointLight(0x7352c7, 1.8, 25);
-    rimLight.position.set(-4, -3, -3);
-    scene.add(rimLight);
+    const topFill = new THREE.PointLight(0x7352c7, 1.8, 30);
+    topFill.position.set(2, 6, 4);
+    scene.add(topFill);
 
-    const goldAccent = new THREE.PointLight(0xe8c547, 1.2, 20);
-    goldAccent.position.set(0, -4, 4);
-    scene.add(goldAccent);
+    const bottomGlow = new THREE.PointLight(0x00d2d3, 1.2, 25);
+    bottomGlow.position.set(-2, -5, 3);
+    scene.add(bottomGlow);
 
-    // Floating Dust Particles
-    const dustCount = 120;
+    // Space Dust Field
+    const dustCount = 180;
     const dustGeo = new THREE.BufferGeometry();
     const dustPos = new Float32Array(dustCount * 3);
     for (let i = 0; i < dustCount * 3; i += 3) {
-      dustPos[i] = (Math.random() - 0.5) * 16;
-      dustPos[i + 1] = (Math.random() - 0.5) * 12;
-      dustPos[i + 2] = (Math.random() - 0.5) * 12;
+      dustPos[i] = (Math.random() - 0.5) * 22;
+      dustPos[i + 1] = (Math.random() - 0.5) * 16;
+      dustPos[i + 2] = (Math.random() - 0.5) * 16;
     }
     dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
     const dustMat = new THREE.PointsMaterial({
-      color: 0xf1dfa5,
-      size: 0.045,
+      color: 0xffffff,
+      size: 0.048,
       transparent: true,
-      opacity: 0.6
+      opacity: 0.7
     });
-    dustParticles = new THREE.Points(dustGeo, dustMat);
-    scene.add(dustParticles);
+    spaceDust = new THREE.Points(dustGeo, dustMat);
+    scene.add(spaceDust);
 
-    // Build Central Crystal
-    crystalGroup = new THREE.Group();
-    const crystalGeo = new THREE.OctahedronGeometry(1.85, 1);
-    crystalMat = new THREE.MeshPhysicalMaterial({
-      color: 0xdbe8fc,
+    // Central Sphere: "MADHEE"
+    const coreGeo = new THREE.SphereGeometry(1.6, 32, 32);
+    const coreMat = new THREE.MeshPhysicalMaterial({
+      color: 0xfff4d9,
+      emissive: 0x47300c,
+      emissiveIntensity: 0.5,
       metalness: 0.15,
       roughness: 0.12,
-      transmission: 0.7,
-      opacity: 0.88,
+      transmission: 0.5,
       transparent: true,
-      ior: 1.52,
-      reflectivity: 0.75,
-      clearcoat: 0.65
+      ior: 1.45,
+      clearcoat: 0.9
     });
-    crystalMesh = new THREE.Mesh(crystalGeo, crystalMat);
-    crystalGroup.add(crystalMesh);
+    coreSphere = new THREE.Mesh(coreGeo, coreMat);
+    scene.add(coreSphere);
 
-    const edges = new THREE.LineSegments(
-      new THREE.EdgesGeometry(crystalGeo),
-      new THREE.LineBasicMaterial({ color: 0x829bb8, transparent: true, opacity: 0.45 })
-    );
-    crystalGroup.add(edges);
+    // Orbit Rings around Central Core
+    const ring1Geo = new THREE.TorusGeometry(2.3, 0.022, 12, 64);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0xe8c547, transparent: true, opacity: 0.6 });
+    const ring1 = new THREE.Mesh(ring1Geo, ringMat);
+    ring1.rotation.x = Math.PI / 3;
+    scene.add(ring1);
+    coreOrbitRings.push(ring1);
 
-    // 5 Kintsugi Seam Curves along Crystal Facets
-    const seamCurves = [
-      new THREE.CatmullRomCurve3([
-        new THREE.Vector3(-0.2, 1.8, 0.1),
-        new THREE.Vector3(-0.75, 1.15, 0.65),
-        new THREE.Vector3(-1.3, 0.35, 0.6),
-        new THREE.Vector3(-1.0, -0.3, 0.75)
-      ]),
-      new THREE.CatmullRomCurve3([
-        new THREE.Vector3(0.15, 1.75, 0.15),
-        new THREE.Vector3(0.85, 1.05, 0.65),
-        new THREE.Vector3(1.25, 0.28, 0.75),
-        new THREE.Vector3(1.15, -0.35, 0.55)
-      ]),
-      new THREE.CatmullRomCurve3([
-        new THREE.Vector3(-1.25, 0.2, 0.45),
-        new THREE.Vector3(-0.55, -0.2, 1.15),
-        new THREE.Vector3(-0.1, -0.75, 1.05),
-        new THREE.Vector3(-0.65, -1.25, 0.65)
-      ]),
-      new THREE.CatmullRomCurve3([
-        new THREE.Vector3(1.15, 0.1, 0.55),
-        new THREE.Vector3(0.65, -0.2, 1.15),
-        new THREE.Vector3(0.18, -0.75, 1.05),
-        new THREE.Vector3(0.75, -1.25, 0.55)
-      ]),
-      new THREE.CatmullRomCurve3([
-        new THREE.Vector3(-0.75, -1.15, 0.45),
-        new THREE.Vector3(0.0, -1.35, 0.95),
-        new THREE.Vector3(0.65, -1.15, 0.55),
-        new THREE.Vector3(0.0, -1.8, 0.1)
-      ])
-    ];
+    const ring2Geo = new THREE.TorusGeometry(2.8, 0.018, 12, 64);
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xa29bfe, transparent: true, opacity: 0.45 });
+    const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+    ring2.rotation.y = Math.PI / 4;
+    ring2.rotation.x = Math.PI / 6;
+    scene.add(ring2);
+    coreOrbitRings.push(ring2);
 
-    seamMeshes = [];
-    seamCurves.forEach((curve) => {
-      const tubeGeo = new THREE.TubeGeometry(curve, 28, 0.038, 8, false);
-      const tubeMat = new THREE.MeshStandardMaterial({
-        color: 0x141b2b,
-        roughness: 0.9,
-        metalness: 0.1,
-        emissive: 0x000000
-      });
-      const tubeMesh = new THREE.Mesh(tubeGeo, tubeMat);
-      crystalGroup.add(tubeMesh);
-      seamMeshes.push(tubeMesh);
-    });
-
-    scene.add(crystalGroup);
-
-    // Build 5 Orbiting Components
-    componentObjects = [];
-    WORKSHOP_COMPONENTS.forEach((cfg, idx) => {
-      const compMesh = cfg.buildMesh();
-      compMesh.position.set(cfg.pos.x, cfg.pos.y, cfg.pos.z);
-      compMesh.userData = {
+    // Build the 5 Orbiting Worlds
+    worldMeshes = [];
+    WORLDS_DATA.forEach((wData, idx) => {
+      const worldGroup = wData.buildWorld();
+      worldGroup.position.set(wData.pos.x, wData.pos.y, wData.pos.z);
+      worldGroup.userData = {
         index: idx,
-        config: cfg,
-        initialPos: { ...cfg.pos },
-        assembled: false,
-        floatPhase: idx * 1.2
+        config: wData,
+        basePos: { ...wData.pos },
+        floatOffset: idx * 1.3
       };
-      scene.add(compMesh);
-      componentObjects.push(compMesh);
+      scene.add(worldGroup);
+      worldMeshes.push(worldGroup);
     });
 
-    // Raycasting & Interaction
+    // Pointer Drag & Click
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
 
-    const getPointerPos = (e) => {
+    const getPointerCoords = (e) => {
       const rect = container.getBoundingClientRect();
       const clientX = e.clientX || (e.touches && e.touches[0].clientX);
       const clientY = e.clientY || (e.touches && e.touches[0].clientY);
@@ -1191,16 +1188,16 @@ window.switchDancingBear = switchDancingBear;
 
     container.addEventListener('pointerdown', (e) => {
       isDragging = true;
-      prevMousePos = { x: e.clientX, y: e.clientY };
+      prevPointer = { x: e.clientX, y: e.clientY };
     });
 
     window.addEventListener('pointermove', (e) => {
       if (!isDragging) return;
-      const deltaX = e.clientX - prevMousePos.x;
-      const deltaY = e.clientY - prevMousePos.y;
-      targetRotationY += deltaX * 0.005;
-      targetRotationX += deltaY * 0.005;
-      prevMousePos = { x: e.clientX, y: e.clientY };
+      const dx = e.clientX - prevPointer.x;
+      const dy = e.clientY - prevPointer.y;
+      targetRotation.y += dx * 0.005;
+      targetRotation.x += dy * 0.005;
+      prevPointer = { x: e.clientX, y: e.clientY };
     });
 
     window.addEventListener('pointerup', () => {
@@ -1208,21 +1205,27 @@ window.switchDancingBear = switchDancingBear;
     });
 
     container.addEventListener('click', (e) => {
-      if (isInteracting) return;
-      const p = getPointerPos(e);
+      const p = getPointerCoords(e);
       mouse.x = p.x;
       mouse.y = p.y;
       raycaster.setFromCamera(mouse, camera);
 
-      // Check intersect with component objects
-      const intersects = raycaster.intersectObjects(componentObjects, true);
-      if (intersects.length > 0) {
-        let targetComp = intersects[0].object;
-        while (targetComp.parent && !targetComp.userData.config) {
-          targetComp = targetComp.parent;
+      // Check intersect with central core
+      const coreHit = raycaster.intersectObject(coreSphere);
+      if (coreHit.length > 0) {
+        focusDimensionCore();
+        return;
+      }
+
+      // Check intersect with worlds
+      const hits = raycaster.intersectObjects(worldMeshes, true);
+      if (hits.length > 0) {
+        let parent = hits[0].object;
+        while (parent.parent && !parent.userData.config) {
+          parent = parent.parent;
         }
-        if (targetComp && targetComp.userData && targetComp.userData.config) {
-          triggerWorkshopComponent(targetComp.userData.index);
+        if (parent && parent.userData && parent.userData.config) {
+          enterWorld(parent.userData.index);
         }
       }
     });
@@ -1238,215 +1241,223 @@ window.switchDancingBear = switchDancingBear;
     });
   }
 
-  function startWorkshopRenderLoop() {
-    if (workshopRunning) return;
-    workshopRunning = true;
+  function startDimensionRenderLoop() {
+    if (dimensionRunning) return;
+    dimensionRunning = true;
     let clock = 0;
 
-    function render() {
-      if (!workshopRunning) return;
-      animationFrameId = requestAnimationFrame(render);
+    function animate() {
+      if (!dimensionRunning) return;
+      animationFrameId = requestAnimationFrame(animate);
       clock += 0.016;
 
-      // Gentle crystal floating & smooth rotation
-      if (crystalGroup) {
-        crystalGroup.rotation.y += (targetRotationY - crystalGroup.rotation.y) * 0.06 + 0.002;
-        crystalGroup.rotation.x += (targetRotationX - crystalGroup.rotation.x) * 0.06;
-        crystalGroup.position.y = Math.sin(clock * 0.8) * 0.08;
+      // Rotate Universe based on drag
+      universeRotation.x += (targetRotation.x - universeRotation.x) * 0.06;
+      universeRotation.y += (targetRotation.y - universeRotation.y) * 0.06;
+
+      // Central core gentle rotation
+      if (coreSphere) {
+        coreSphere.rotation.y = clock * 0.15 + universeRotation.y;
+        coreSphere.rotation.x = universeRotation.x;
+        coreSphere.position.y = Math.sin(clock * 0.8) * 0.08;
       }
 
-      // Idle float for un-assembled components
-      componentObjects.forEach((comp) => {
-        if (!comp.userData.assembled && !isInteracting) {
-          const p = comp.userData.floatPhase;
-          comp.position.y = comp.userData.initialPos.y + Math.sin(clock * 1.2 + p) * 0.12;
-          comp.rotation.y += 0.006;
-          comp.rotation.x += 0.003;
+      // Orbit rings spin
+      coreOrbitRings.forEach((r, idx) => {
+        r.rotation.z = clock * (idx === 0 ? 0.2 : -0.15);
+      });
+
+      // Orbiting worlds idle floating & spinning
+      worldMeshes.forEach((w) => {
+        const p = w.userData.floatOffset;
+        if (activeWorldIndex !== w.userData.index) {
+          w.position.y = w.userData.basePos.y + Math.sin(clock * 1.1 + p) * 0.14;
+          w.rotation.y += 0.008;
+        }
+
+        // Sub-elements rotation
+        if (w.userData.subOrbiter) {
+          w.userData.subOrbiter.position.x = Math.cos(clock * 2) * 1.5;
+          w.userData.subOrbiter.position.z = Math.sin(clock * 2) * 1.5;
+        }
+        if (w.userData.chaosRing) {
+          w.userData.chaosRing.rotation.z += 0.02;
         }
       });
 
-      // Dust drift
-      if (dustParticles) {
-        dustParticles.rotation.y += 0.0008;
+      // Space dust drift
+      if (spaceDust) {
+        spaceDust.rotation.y += 0.0006;
       }
 
       renderer.render(scene, camera);
     }
-    render();
+    animate();
   }
 
-  function stopWorkshopRenderLoop() {
-    workshopRunning = false;
+  function stopDimensionRenderLoop() {
+    dimensionRunning = false;
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId);
       animationFrameId = null;
     }
   }
 
-  function triggerWorkshopComponent(index) {
-    if (index < 0 || index >= componentObjects.length) return;
-    const comp = componentObjects[index];
-    const cfg = comp.userData.config;
+  function enterWorld(index) {
+    if (index < 0 || index >= WORLDS_DATA.length) return;
+    activeWorldIndex = index;
+    visitedWorlds.add(index);
+    const wData = WORLDS_DATA[index];
+    const wMesh = worldMeshes[index];
 
-    // Show Message Card
-    const msgCard = document.getElementById('workshop-message-card');
-    const msgBadge = document.getElementById('msg-comp-badge');
-    const msgQuote = document.getElementById('msg-quote-text');
-
-    if (msgBadge) msgBadge.textContent = cfg.title;
-    if (msgQuote) msgQuote.innerHTML = cfg.quote;
-    if (msgCard) {
-      msgCard.classList.add('show');
-    }
-
-    // If already assembled, simply focus camera and update quote
-    if (comp.userData.assembled) {
-      if (typeof gsap !== 'undefined') {
-        gsap.to(camera.position, {
-          x: comp.position.x * 0.6,
-          y: comp.position.y * 0.6 + 0.4,
-          z: 7.2,
-          duration: 1.0,
-          ease: 'power2.out',
-          onComplete: () => {
-            gsap.to(camera.position, { x: 0, y: 0.8, z: 9.5, duration: 1.2, delay: 2.0, ease: 'power2.inOut' });
-          }
-        });
-      }
-      return;
-    }
-
-    isInteracting = true;
-
-    // Update active pill button state
-    const pills = document.querySelectorAll('.comp-pill');
+    // Highlight pill button
+    const pills = document.querySelectorAll('.world-pill');
     pills.forEach((p, idx) => {
       if (idx === index) p.classList.add('active');
       else p.classList.remove('active');
     });
 
-    if (typeof gsap !== 'undefined') {
-      // 1. Camera moves towards component
+    // Build World Modal Content
+    const modal = document.getElementById('dimension-world-modal');
+    const content = document.getElementById('world-modal-content');
+    if (content) {
+      let extraHTML = '';
+      if (wData.hasHazardButton) {
+        extraHTML = `
+          <div class="w-extra-action">
+            <button type="button" class="btn-hazard-press" onclick="triggerChaosMonkey()">
+              <span>⚠️ DO NOT PRESS ⚠️</span>
+            </button>
+          </div>
+        `;
+      } else if (wData.hasMaamFiles) {
+        extraHTML = `
+          <div class="w-extra-action" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+            <span class="w-badge" style="cursor:default;">ATTENDANCE</span>
+            <span class="w-badge" style="cursor:default;">COMPLAINTS</span>
+            <span class="w-badge" style="cursor:default;">RULES</span>
+            <button type="button" class="w-badge" style="background:#e74c3c;border-color:#ff7675;color:#fff;cursor:pointer;" onclick="openMaamDossier()">
+              SHUBHOD\'S FILE 😭
+            </button>
+          </div>
+        `;
+      }
+
+      content.innerHTML = `
+        <span class="w-badge">${wData.badge}</span>
+        <h3 class="w-title">${wData.title}</h3>
+        <div class="w-quote-block">${wData.quote}</div>
+        ${extraHTML}
+      `;
+    }
+
+    if (modal) {
+      modal.classList.add('show');
+    }
+
+    // Camera fly smoothly towards the world
+    if (typeof gsap !== 'undefined' && camera) {
       gsap.to(camera.position, {
-        x: cfg.pos.x * 0.65,
-        y: cfg.pos.y * 0.65 + 0.3,
-        z: 7.0,
-        duration: 1.1,
+        x: wData.pos.x * 0.72,
+        y: wData.pos.y * 0.72,
+        z: 4.8,
+        duration: 1.2,
         ease: 'power2.out'
       });
-
-      // 2. Component scales up and travels toward crystal socket
-      gsap.to(comp.scale, { x: 1.25, y: 1.25, z: 1.25, duration: 0.6, yoyo: true, repeat: 1 });
-
-      gsap.to(comp.position, {
-        x: cfg.targetOffset.x,
-        y: cfg.targetOffset.y,
-        z: cfg.targetOffset.z,
-        duration: 2.0,
-        delay: 0.8,
-        ease: 'power2.inOut',
-        onComplete: () => {
-          // 3. Locks into crystal (Magnetic snap)
-          comp.userData.assembled = true;
-          crystalGroup.attach(comp);
-
-          // Golden Kintsugi seam transformation
-          if (seamMeshes[index]) {
-            const mat = seamMeshes[index].material;
-            gsap.to(mat.color, { r: 1.0, g: 0.88, b: 0.45, duration: 1.0 });
-            gsap.to(mat.emissive, { r: 0.95, g: 0.6, b: 0.12, duration: 1.0 });
-            mat.emissiveIntensity = 2.2;
-          }
-
-          // Gold flash pulse
-          const pulse = new THREE.PointLight(0xffd700, 3.5, 6);
-          pulse.position.set(cfg.targetOffset.x, cfg.targetOffset.y, cfg.targetOffset.z);
-          crystalGroup.add(pulse);
-          gsap.to(pulse, {
-            intensity: 0,
-            duration: 1.4,
-            onComplete: () => crystalGroup.remove(pulse)
-          });
-
-          // 4. Update HUD Progress
-          assembledCount++;
-          const counterLabel = document.getElementById('workshop-progress-label');
-          if (counterLabel) counterLabel.textContent = `${assembledCount} / 5 ASSEMBLED`;
-
-          const seg = document.querySelector(`.hud-segment.seg-${index + 1}`);
-          if (seg) seg.classList.add('active');
-
-          if (pills[index]) {
-            pills[index].classList.add('assembled');
-            const st = pills[index].querySelector('.comp-pill-status');
-            if (st) st.textContent = '✓';
-          }
-
-          // 5. Camera glides back to overview
-          gsap.to(camera.position, {
-            x: 0,
-            y: 0.8,
-            z: 9.5,
-            duration: 1.4,
-            ease: 'power2.inOut',
-            onComplete: () => {
-              isInteracting = false;
-              // Check if all 5 assembled
-              if (assembledCount === 5) {
-                triggerWorkshopFinale();
-              }
-            }
-          });
-        }
-      });
-    } else {
-      // Fallback if GSAP is unavailable
-      comp.position.set(cfg.targetOffset.x, cfg.targetOffset.y, cfg.targetOffset.z);
-      comp.userData.assembled = true;
-      crystalGroup.attach(comp);
-      assembledCount++;
-      isInteracting = false;
-    }
-  }
-
-  function triggerWorkshopFinale() {
-    // Illuminate full crystal
-    if (crystalMat && typeof gsap !== 'undefined') {
-      gsap.to(crystalMat.color, { r: 1.0, g: 0.96, b: 0.85, duration: 2.2 });
-      gsap.to(crystalMesh.scale, { x: 1.08, y: 1.08, z: 1.08, duration: 1.4, yoyo: true, repeat: 1 });
     }
 
-    // Hide temporary quote message card smoothly
-    const msgCard = document.getElementById('workshop-message-card');
-    if (msgCard) msgCard.classList.remove('show');
-
-    // Reveal Finale Statement Card
-    const finaleCard = document.getElementById('workshop-finale-card');
-    if (finaleCard) {
-      finaleCard.style.display = 'block';
+    // Check if user has explored all 5 worlds
+    if (visitedWorlds.size === 5) {
       setTimeout(() => {
-        finaleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 300);
+        showDimensionFinale();
+      }, 2500);
     }
   }
 
-  function inspectWorkshopCrystal() {
-    targetRotationY += Math.PI * 2;
-    if (typeof gsap !== 'undefined') {
+  function exitWorldView() {
+    activeWorldIndex = null;
+    const modal = document.getElementById('dimension-world-modal');
+    if (modal) modal.classList.remove('show');
+
+    // Camera return to overview
+    if (typeof gsap !== 'undefined' && camera) {
+      gsap.to(camera.position, {
+        x: 0,
+        y: 0.5,
+        z: 9.8,
+        duration: 1.2,
+        ease: 'power2.inOut'
+      });
+    }
+
+    const pills = document.querySelectorAll('.world-pill');
+    pills.forEach(p => p.classList.remove('active'));
+  }
+
+  function focusDimensionCore() {
+    exitWorldView();
+    if (typeof gsap !== 'undefined' && camera) {
       gsap.to(camera.position, {
         x: 0,
         y: 0.2,
-        z: 6.8,
-        duration: 1.6,
-        ease: 'power2.out'
+        z: 5.5,
+        duration: 1.2,
+        ease: 'power2.out',
+        onComplete: () => {
+          showDimensionFinale();
+        }
       });
+    }
+  }
+
+  function triggerChaosMonkey() {
+    const popup = document.getElementById('chaos-monkey-popup');
+    if (popup) {
+      popup.classList.add('show');
+    }
+  }
+
+  function dismissChaosMonkey() {
+    const popup = document.getElementById('chaos-monkey-popup');
+    if (popup) {
+      popup.classList.remove('show');
+    }
+  }
+
+  function openMaamDossier() {
+    const modal = document.getElementById('maam-dossier-modal');
+    if (modal) {
+      modal.classList.add('show');
+    }
+  }
+
+  function closeMaamDossier() {
+    const modal = document.getElementById('maam-dossier-modal');
+    if (modal) {
+      modal.classList.remove('show');
+    }
+  }
+
+  function showDimensionFinale() {
+    const finale = document.getElementById('dimension-universe-finale');
+    if (finale) {
+      finale.style.display = 'block';
+      setTimeout(() => {
+        finale.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 200);
     }
   }
 
   // Global Exports
-  window.initTrustWorkshop = initTrustWorkshop;
-  window.resumeTrustWorkshop = startWorkshopRenderLoop;
-  window.pauseTrustWorkshop = stopWorkshopRenderLoop;
-  window.triggerWorkshopComponent = triggerWorkshopComponent;
-  window.inspectWorkshopCrystal = inspectWorkshopCrystal;
+  window.enterMadheeDimension = enterMadheeDimension;
+  window.initMadheeDimension = initMadheeDimension;
+  window.resumeMadheeDimension = startDimensionRenderLoop;
+  window.pauseMadheeDimension = stopDimensionRenderLoop;
+  window.enterWorld = enterWorld;
+  window.exitWorldView = exitWorldView;
+  window.focusDimensionCore = focusDimensionCore;
+  window.triggerChaosMonkey = triggerChaosMonkey;
+  window.dismissChaosMonkey = dismissChaosMonkey;
+  window.openMaamDossier = openMaamDossier;
+  window.closeMaamDossier = closeMaamDossier;
 })();
