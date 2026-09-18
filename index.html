@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=7.0">
+  <link rel="stylesheet" href="styles.css?v=8.0">
 
   <!-- Three.js from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -49,13 +49,13 @@
         <span class="brand-text">The Little Universe</span>
       </a>
 
-      <nav class="nav-links" id="mainNavLinks">
-        <a href="#prologue" class="nav-link active" data-section="prologue"><span class="nav-num">01.</span> Prologue</a>
-        <a href="#memories" class="nav-link" data-section="memories"><span class="nav-num">02.</span> 12 Memories</a>
-        <a href="#chronicles" class="nav-link" data-section="chronicles"><span class="nav-num">03.</span> Case File</a>
-        <a href="#trust-lotus" class="nav-link" data-section="trust-lotus"><span class="nav-num">04.</span> Trust Lotus</a>
-        <a href="#apology" class="nav-link" data-section="apology"><span class="nav-num">05.</span> Letter</a>
-        <a href="#sanctuary" class="nav-link" data-section="sanctuary"><span class="nav-num">06.</span> Sanctuary</a>
+            <nav class="nav-links" id="mainNavLinks">
+        <button type="button" class="nav-link active" onclick="switchSitePage(1)"><span class="nav-num">01.</span> Prologue</button>
+        <button type="button" class="nav-link" onclick="switchSitePage(2)"><span class="nav-num">02.</span> 12 Memories</button>
+        <button type="button" class="nav-link" onclick="switchSitePage(3)"><span class="nav-num">03.</span> Case File</button>
+        <button type="button" class="nav-link" onclick="switchSitePage(4)"><span class="nav-num">04.</span> Trust Lotus</button>
+        <button type="button" class="nav-link" onclick="switchSitePage(5)"><span class="nav-num">05.</span> Letter</button>
+        <button type="button" class="nav-link" onclick="switchSitePage(6)"><span class="nav-num">06.</span> Sanctuary</button>
       </nav>
 
       <!-- Theme Switcher & Audio Controls -->
@@ -85,7 +85,11 @@
     <!-- ====================================================================
          HERO SECTION: THE MOON & FLOWER CELESTIAL SANCTUARY
          ==================================================================== -->
-    <section class="hero-section" id="hero">
+        <!-- ====================================================================
+         SECTION 01: PROLOGUE
+         ==================================================================== -->
+    <div class="site-section-page active-page" id="page-1-prologue" data-page="1">
+<section class="hero-section" id="hero">
       <div class="hero-content">
         <div class="celestial-badge">
           <span class="badge-sparkle">✦</span>
@@ -155,25 +159,22 @@
         <p class="prologue-p-highlight">
           “Look closely. Every single petal, shadow, and smile tells the truth of who you are.”
         </p>
-        <div class="section-bridge-wrap">
-          <a href="#memories" class="btn-section-bridge">
-            <span class="bridge-tag">NEXT SECTION</span>
-            <span class="bridge-title">Proceed to Section 02: 12 Memories</span>
-            <span class="bridge-arrow">➔</span>
-          </a>
         </div>
-      </div>
     </section>
 
-    <!-- ====================================================================
-         THE 12 DEDICATED PHOTO CHAPTERS (FULL-SCREEN EXPERIENCES)
-         ==================================================================== -->
-    <div class="chapters-wrapper" id="chapters-wrapper">
+      <div class="page-step-footer">
+        <button type="button" class="btn-step-nav btn-step-next" onclick="switchSitePage(2)">
+          <span>Next Section: 02. 12 Memories</span>
+          <span class="step-arrow">➔</span>
+        </button>
+      </div>
+    </div>
 
-          <!-- ====================================================================
-         SECTION 02 OF 06: 12 MEMORIES (12 MOMENTS & MILESTONE)
+    <!-- ====================================================================
+         SECTION 02: 12 MEMORIES
          ==================================================================== -->
-    <div class="section-two-memories-wrapper" id="memories">
+    <div class="site-section-page" id="page-2-memories" data-page="2">
+<div class="section-two-memories-wrapper" id="memories">
       <div class="section-gateway-header">
         <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 02 OF 06 • 12 MEMORIES <span class="badge-dot">✦</span></div>
         <h2 class="section-gateway-title">12 Photographic Moments</h2>
@@ -1020,12 +1021,24 @@
 
       </div>
     </section>
+
+      <div class="page-step-footer double-step">
+        <button type="button" class="btn-step-nav btn-step-prev" onclick="switchSitePage(1)">
+          <span class="step-arrow">←</span>
+          <span>Previous: 01. Prologue</span>
+        </button>
+        <button type="button" class="btn-step-nav btn-step-next" onclick="switchSitePage(3)">
+          <span>Next Section: 03. Case File</span>
+          <span class="step-arrow">➔</span>
+        </button>
+      </div>
     </div>
 
     <!-- ====================================================================
-         THE FRIENDSHIP CHRONICLES (HUMOR & MEMORIES)
+         SECTION 03: CASE FILE
          ==================================================================== -->
-    <section class="chronicles-section" id="chronicles">
+    <div class="site-section-page" id="page-3-chronicles" data-page="3">
+<section class="chronicles-section" id="chronicles">
             <div class="section-master-header-block">
         <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 03 OF 06 • CASE FILE & CONFESSION <span class="badge-dot">✦</span></div>
       </div>
@@ -1234,19 +1247,26 @@
         </div>
 
       </div>
-          <div class="section-bridge-wrap chronicles-bridge">
-        <a href="#trust-lotus" class="btn-section-bridge">
-          <span class="bridge-tag">NEXT SECTION</span>
-          <span class="bridge-title">Proceed to Section 04: Trust Lotus</span>
-          <span class="bridge-arrow">➔</span>
-        </a>
-      </div>
+          
     </section>
 
+      <div class="page-step-footer double-step">
+        <button type="button" class="btn-step-nav btn-step-prev" onclick="switchSitePage(2)">
+          <span class="step-arrow">←</span>
+          <span>Previous: 02. 12 Memories</span>
+        </button>
+        <button type="button" class="btn-step-nav btn-step-next" onclick="switchSitePage(4)">
+          <span>Next Section: 04. Trust Lotus</span>
+          <span class="step-arrow">➔</span>
+        </button>
+      </div>
+    </div>
+
     <!-- ====================================================================
-         THE LOTUS OF TRUST (INTERACTIVE 3D/BOTANICAL PILLARS)
+         SECTION 04: TRUST LOTUS
          ==================================================================== -->
-    <section class="trust-lotus-section" id="trust-lotus">
+    <div class="site-section-page" id="page-4-trust-lotus" data-page="4">
+<section class="trust-lotus-section" id="trust-lotus">
       <div class="trust-container glass-panel">
         <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 04 OF 06 • TRUST LOTUS <span class="badge-dot">✦</span></div>
 
@@ -1305,20 +1325,27 @@
         <div id="petal-detail-display" class="petal-detail-display" aria-live="polite">
           <span class="detail-placeholder">Tap any petal above to view the promise.</span>
         </div>
-              <div class="section-bridge-wrap lotus-bridge">
-          <a href="#apology" class="btn-section-bridge">
-            <span class="bridge-tag">NEXT SECTION</span>
-            <span class="bridge-title">Proceed to Section 05: The Letter</span>
-            <span class="bridge-arrow">➔</span>
-          </a>
-        </div>
+              
       </div>
     </section>
 
+      <div class="page-step-footer double-step">
+        <button type="button" class="btn-step-nav btn-step-prev" onclick="switchSitePage(3)">
+          <span class="step-arrow">←</span>
+          <span>Previous: 03. Case File</span>
+        </button>
+        <button type="button" class="btn-step-nav btn-step-next" onclick="switchSitePage(5)">
+          <span>Next Section: 05. Letter</span>
+          <span class="step-arrow">➔</span>
+        </button>
+      </div>
+    </div>
+
     <!-- ====================================================================
-         THE SINCERE APOLOGY LETTER ("DEAR MADHEE…")
+         SECTION 05: LETTER
          ==================================================================== -->
-    <section class="apology-section" id="apology">
+    <div class="site-section-page" id="page-5-apology" data-page="5">
+<section class="apology-section" id="apology">
       <div class="letter-scroll-wrapper">
         <article class="apology-manuscript glass-panel">
           <div class="section-master-badge"><span class="badge-dot">✦</span> SECTION 05 OF 06 • THE LETTER <span class="badge-dot">✦</span></div>
@@ -1451,20 +1478,27 @@
             <p class="signature-name">Shubhod ❤️</p>
           </div>
         </article>
-              <div class="section-bridge-wrap letter-bridge">
-          <a href="#sanctuary" class="btn-section-bridge">
-            <span class="bridge-tag">NEXT SECTION</span>
-            <span class="bridge-title">Proceed to Section 06: Sanctuary & Grand Finale</span>
-            <span class="bridge-arrow">➔</span>
-          </a>
-        </div>
+              
       </div>
     </section>
 
+      <div class="page-step-footer double-step">
+        <button type="button" class="btn-step-nav btn-step-prev" onclick="switchSitePage(4)">
+          <span class="step-arrow">←</span>
+          <span>Previous: 04. Trust Lotus</span>
+        </button>
+        <button type="button" class="btn-step-nav btn-step-next" onclick="switchSitePage(6)">
+          <span>Next Section: 06. Sanctuary</span>
+          <span class="step-arrow">➔</span>
+        </button>
+      </div>
+    </div>
+
     <!-- ====================================================================
-         THE MOONLIT SANCTUARY: ONE LAST THING & FINAL WISH
+         SECTION 06: SANCTUARY & GRAND FINALE
          ==================================================================== -->
-    <section class="sanctuary-section" id="sanctuary">
+    <div class="site-section-page" id="page-6-sanctuary" data-page="6">
+<section class="sanctuary-section" id="sanctuary">
       <div class="sanctuary-inner">
 
         <!-- GRAND FINALE CARD: ONE LAST THING, MADHEE -->
@@ -1688,6 +1722,18 @@
         </div>
       </div>
     </section>
+
+      <div class="page-step-footer double-step">
+        <button type="button" class="btn-step-nav btn-step-prev" onclick="switchSitePage(5)">
+          <span class="step-arrow">←</span>
+          <span>Previous: 05. Letter</span>
+        </button>
+        <button type="button" class="btn-step-nav btn-step-restart" onclick="switchSitePage(1)">
+          <span>↺ Return to Beginning (Prologue)</span>
+        </button>
+      </div>
+    </div>
+
 </main>
 
   <!-- Photo Lightbox Modal -->
@@ -1707,6 +1753,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=7.0"></script>
+  <script src="script.js?v=8.0"></script>
 </body>
 </html>

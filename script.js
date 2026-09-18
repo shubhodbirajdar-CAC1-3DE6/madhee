@@ -708,38 +708,111 @@ const SIX_SECTIONS = [
   { id: 'sanctuary', num: '06', title: 'Sanctuary' }
 ];
 
-function initSixSectionsScrollSpy() {
+
+// ==========================================================================
+// 6-SECTION PAGED MULTI-STEP NAVIGATION LOGIC
+// ==========================================================================
+let currentSitePage = 1;
+
+function switchSitePage(pageIndex, targetId) {
+  const pageNum = parseInt(pageIndex, 10);
+  if (isNaN(pageNum) || pageNum < 1 || pageNum > 6) return;
+  
+  currentSitePage = pageNum;
+
+  // 1. Hide all pages, show selected page
+  const pages = document.querySelectorAll('.site-section-page');
+  pages.forEach(page => {
+    const p = parseInt(page.getAttribute('data-page'), 10);
+    if (p === pageNum) {
+      page.classList.add('active-page');
+      page.style.display = 'block';
+    } else {
+      page.classList.remove('active-page');
+      page.style.display = 'none';
+    }
+  });
+
+  // 2. Update navbar active tabs
   const navLinks = document.querySelectorAll('#mainNavLinks .nav-link');
+  navLinks.forEach((link, idx) => {
+    if (idx + 1 === pageNum) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+
+  // 3. Update side rail label
   const railLabel = document.getElementById('lunar-phase-label');
-
-  function updateActiveSection() {
-    const scrollPos = window.scrollY + (window.innerHeight * 0.35);
-    let activeSec = SIX_SECTIONS[0];
-
-    for (let i = SIX_SECTIONS.length - 1; i >= 0; i--) {
-      const el = document.getElementById(SIX_SECTIONS[i].id);
-      if (el && el.offsetTop <= scrollPos) {
-        activeSec = SIX_SECTIONS[i];
-        break;
-      }
-    }
-
-    // Highlight nav link
-    navLinks.forEach(link => {
-      const targetSec = link.getAttribute('data-section');
-      if (targetSec === activeSec.id) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
-
-    // Update progress rail label
-    if (railLabel) {
-      railLabel.textContent = `Section ${activeSec.num}: ${activeSec.title}`;
-    }
+  if (railLabel && typeof SIX_SECTIONS !== 'undefined' && SIX_SECTIONS[pageNum - 1]) {
+    const sec = SIX_SECTIONS[pageNum - 1];
+    railLabel.textContent = `Section ${sec.num}: ${sec.title}`;
   }
 
-  window.addEventListener('scroll', updateActiveSection, { passive: true });
-  updateActiveSection();
+  // 4. Scroll to target or top
+  if (targetId) {
+    setTimeout(() => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 60);
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
+
+// Override scrollToRandomMemory to ensure page 2 is active
+function scrollToRandomMemory() {
+  switchSitePage(2);
+  const rand = Math.floor(Math.random() * 12) + 1;
+  const pad = rand < 10 ? '0' + rand : rand;
+  setTimeout(() => {
+    const target = document.getElementById('chapter-' + pad);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 120);
+}
+
+// Replace initSixSectionsScrollSpy with Page Controller Initializer
+function initSixSectionsScrollSpy() {
+  // Initialize page 1 as active
+  switchSitePage(1);
+  
+  // Handle any anchor clicks to navigate to correct page
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      const targetId = href.substring(1);
+      
+      // Check which section this targetId belongs to
+      if (targetId === 'prologue' || targetId === 'hero') {
+        e.preventDefault();
+        switchSitePage(1, targetId);
+      } else if (targetId === 'memories' || targetId.startsWith('chapter-')) {
+        e.preventDefault();
+        switchSitePage(2, targetId);
+      } else if (targetId === 'chronicles') {
+        e.preventDefault();
+        switchSitePage(3, targetId);
+      } else if (targetId === 'trust-lotus') {
+        e.preventDefault();
+        switchSitePage(4, targetId);
+      } else if (targetId === 'apology') {
+        e.preventDefault();
+        switchSitePage(5, targetId);
+      } else if (targetId === 'sanctuary') {
+        e.preventDefault();
+        switchSitePage(6, targetId);
+      }
+    });
+  });
+}
+
+
+window.switchSitePage = switchSitePage;
