@@ -816,3 +816,26 @@ function initSixSectionsScrollSpy() {
 
 
 window.switchSitePage = switchSitePage;
+
+// ==========================================================================
+// TRENDING DANCING BEAR SWITCHER
+// ==========================================================================
+function switchDancingBear(src, btn) {
+  const bearImg = document.getElementById('active-dancing-bear');
+  if (bearImg) {
+    bearImg.style.opacity = '0.2';
+    bearImg.style.transform = 'scale(0.95)';
+    bearImg.style.transition = 'all 0.2s ease';
+    setTimeout(() => {
+      bearImg.src = src;
+      bearImg.style.opacity = '1';
+      bearImg.style.transform = 'scale(1)';
+    }, 150);
+  }
+  const buttons = document.querySelectorAll('.bear-select-btn');
+  buttons.forEach(b => b.classList.remove('active'));
+  if (btn) {
+    btn.classList.add('active');
+  }
+}
+window.switchDancingBear = switchDancingBear;
