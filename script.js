@@ -1635,10 +1635,10 @@ function switchBubuComedy(mode, btn) {
     img.src = 'images/bears/bubu-chase-hammer.gif';
     if (quote) quote.textContent = '“Madhee chasing shubheeee with hammer: ‘Ruk tu idiot, bohot shaana banta hai na?! Aaj nahi bachega!’ 😂🏃‍♂️🔨”';
     if (sub) sub.textContent = 'Shubheeee Running For His Life • Danger Level 100%';
-  } else if (mode === 'laugh') {
-    img.src = 'images/bears/bubu-comedy-laugh.gif';
-    if (quote) quote.textContent = '“Bubu laughing with his single goofy tooth until his stomach hurts! Hahahahaha! 😆🦷”';
-    if (sub) sub.textContent = 'Uncontrollable Belly Laugh';
+  } else if (mode === 'bhukkad' || mode === 'laugh') {
+    img.src = 'images/bears/bubu-noodle-bhukkad.gif';
+    if (quote) quote.textContent = '“Madhee watching shubheeee finish entire food in 2 seconds: ‘Bhukkad kahin ka, kam se kam thoda toh chhod deta mere liye!’ 🍜🤤”';
+    if (sub) sub.textContent = 'Shubheeee In Full Vacuum Cleaner Mode • No Snacks Safe';
   }
 
   img.style.transform = 'scale(1.15) rotate(3deg)';
@@ -1657,7 +1657,7 @@ function triggerMadheeLaugh() {
 
   const laughs = [
     "😂 “Hahahah! Madhee with squeaky hammer: ‘Shubheeee, ek aur stupid mistake ki na toh sar pe aur ek bonk padega!’ 🔨🤣”",
-    "🤏 “Pagal aurat hass di! Ab no more gussa, deal done!” 💖🤭",
+    "🤏 “Madam CR finally hass di! Ab no more gussa, deal done!” 💖🤭",
     "🔨 “Shubheeee accepts defeat: ‘Theek hai maaf kardo Madam CR, sar dukh raha hai hammer se!’ 🥺🤣”",
     "🌸 “Your real laugh is the cutest sound in the galaxy, Madhee!” 🥰✨"
   ];
