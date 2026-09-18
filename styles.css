@@ -527,6 +527,12 @@ body {
   border-color: #ef4444;
 }
 
+.gorgeous-pill:hover {
+  background: rgba(244, 114, 182, 0.25);
+  border-color: #f472b6;
+  box-shadow: 0 6px 16px rgba(244, 114, 182, 0.3);
+}
+
 .nickname-toast {
   min-height: 32px;
   font-family: var(--font-hand);

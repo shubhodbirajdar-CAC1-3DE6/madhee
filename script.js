@@ -593,7 +593,8 @@ function triggerNickname(type) {
     madhee: '“The real, brilliant, irreplaceable best friend.” ✨',
     madoo: '“The soft, cute, goofy nickname that always brings a smile.” 🌸',
     cr: '“WARNING: Authority level extremely dangerous. Keep calm and do not talk in class! 📋”',
-    dumbbell: '“Proof that even the smartest people can have an utterly hilarious nickname! 🏋️‍♀️”'
+    gorgeous: '“Because no matter what, you will always be truly gorgeous, inside and out! 💖✨”',
+    dumbbell: '“Because no matter what, you will always be truly gorgeous, inside and out! 💖✨”'
   };
 
   toast.textContent = quotes[type] || '✨ Madhee';
