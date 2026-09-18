@@ -14,10 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=5.0">
+  <link rel="stylesheet" href="styles.css?v=6.0">
 
-    <!-- GSAP for Smooth 3D Inertial Physics -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <!-- Three.js from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -53,7 +51,7 @@
 
       <nav class="nav-links">
         <a href="#prologue" class="nav-link">Prologue</a>
-        <a href="#memory-universe" class="nav-link">3D Universe</a>
+        <a href="#chapter-01" class="nav-link">12 Memories</a>
         <a href="#chronicles" class="nav-link">Case File</a>
         <a href="#trust-lotus" class="nav-link">Trust Lotus</a>
         <a href="#apology" class="nav-link">Letter</a>
@@ -163,455 +161,775 @@
     </section>
 
     <!-- ====================================================================
-         THE 3D MEMORY UNIVERSE: 360° ORBITAL MEMORY RING (12 MOMENTS)
+         THE 12 DEDICATED PHOTO CHAPTERS (FULL-SCREEN EXPERIENCES)
          ==================================================================== -->
-    <section class="memory-universe-section" id="memory-universe">
-      <div class="universe-bg-glow" aria-hidden="true"></div>
-      
-      <!-- Section Atmospheric Header -->
-      <div class="universe-header">
-        <div class="celestial-badge">
-          <span class="badge-sparkle">✦</span>
-          <span>360° SPATIAL MEMORY INSTALLATION</span>
-          <span class="badge-sparkle">✦</span>
-        </div>
-        <h2 class="universe-main-title">THE MEMORY UNIVERSE OF MADHEE</h2>
-        <p class="universe-subtitle">
-          “12 floating memories arranged in a single continuous orbital ring around us.<br>
-          Drag, swipe, or use arrows to step through each moment.”
-        </p>
-      </div>
+    <div class="chapters-wrapper" id="chapters-wrapper">
 
-      <!-- 3D Viewport Stage -->
-      <div class="universe-stage-3d" id="universeStage3D">
-        <div class="memory-ring-3d" id="memoryRing3D">
-        <!-- FLOATING 3D CENTERPIECE (CORE SANCTUARY) -->
-        <div class="centerpiece-3d" id="centerpieceCore">
-          <div class="centerpiece-rings-wrap">
-            <div class="center-ring ring-outer"></div>
-            <div class="center-ring ring-middle"></div>
-            <div class="center-ring ring-inner"></div>
-            <div class="center-star-core">✦</div>
-          </div>
-          <div class="centerpiece-glass-plaque">
-            <span class="centerpiece-badge">✦ MEMORY UNIVERSE ✦</span>
-            <h3 class="centerpiece-title">12 LITTLE MOMENTS</h3>
-            <div class="centerpiece-line"></div>
-            <p class="centerpiece-verse">
-              12 memories.<br>
-              Countless little moments.<br>
-              One very special friendship.
-            </p>
-            <div class="centerpiece-names">MADHEE × SHUBHOD</div>
-          </div>
-        </div>
-
-          <!-- 3D MEMORY PANEL 01 -->
-          <div class="memory-panel-3d" data-index="0" data-chapter="1" id="memPanel01">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-peeking.svg" alt="Snowbell Cat" class="snowbell-panel-img">
+      <!-- CHAPTER 01 -->
+      <section class="chapter-fullscreen-section" id="chapter-01" data-chapter="1">
+        <div class="chapter-container">
+          <!-- Photo Display -->
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee01.jpg', '🌸 Madhee — This Moment')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-1" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-peeking.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌸</div>
+              <img src="images/madhee01.jpg" alt="Madhee with glasses, open hair, and a soft calm smile" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Just Madhee being Madhee ❤️</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
             </div>
+          </div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee01.jpg', 'Madhee — This Moment')">
-                <img src="images/madhee01.jpg" alt="Madhee — This Moment" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+          <!-- Story & Madhee — This Moment -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 01</span>
+                <span class="theme-mood-pill">🌸 Soft Smile & Calm Peace</span>
+              </div>
+              <h2 class="chapter-title">🌸 MADHEE — THIS MOMENT</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture has a very simple, beautiful version of you, Madhee. 🥹❤️
+                </p>
+
+                <p class="story-body-p">
+                  You’re wearing your glasses, with your hair naturally open, and that soft little smile on your face. There’s something really calm about your expression—it doesn’t look forced or posed, just you being you.
+                </p>
+
+                <p class="story-body-p">
+                  Your eyes behind those glasses make the picture even more special, and that small smile somehow gives the whole photo a warm and peaceful feeling. 🌿
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">No fancy pose.</p>
+                  <p class="verse-line">No dramatic expression.</p>
+                  <p class="verse-line verse-highlight">Just Madhee being Madhee. ❤️</p>
+                </div>
+
+                <p class="story-whisper-lead">And honestly…</p>
+
+                <div class="story-quote-card">
+                  <p class="story-final-quote">
+                    “That smile of yours… you probably don’t even realize how much warmth it carries.” 🥹✨
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 01 / 12</span>
-                <span class="panel-mood-pill">🌸 Soft Smile & Calm Peace</span>
+      <!-- CHAPTER 02 -->
+      <section class="chapter-fullscreen-section" id="chapter-02" data-chapter="2">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee02.jpg', '💫 A Little Glimpse of You')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-2" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-sleeping.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">Madhee — This Moment</h3>
-              <p class="panel-msg">You’re wearing your glasses with your hair naturally open, and that soft calm smile on your face. No fancy pose, no drama—just Madhee being Madhee. That smile carries more warmth than you probably even realize. 🥹❤️</p>
-              
-              <div class="panel-accent-quote">
-                <span>“Just Madhee being Madhee.” 🌸</span>
+              <div class="frame-tape-flower">💫</div>
+              <img src="images/madhee02.jpg" alt="Madhee with long hair, glasses, earrings and soft smile" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Soft and effortless vibe ✨</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 02 -->
-          <div class="memory-panel-3d" data-index="1" data-chapter="2" id="memPanel02">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-sleeping.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & A Little Glimpse of You -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 02</span>
+                <span class="theme-mood-pill">💫 Soft & Effortless Vibe</span>
+              </div>
+              <h2 class="chapter-title">💫 A Little Glimpse of You</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee02.jpg', 'Calm & Real')">
-                <img src="images/madhee02.jpg" alt="Calm & Real" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture has such a soft and effortless vibe. 🥹❤️
+                </p>
+
+                <p class="story-body-p">
+                  You’re wearing your glasses, with your long hair naturally falling around your face, and that little smile makes the whole picture feel so warm. There’s something really peaceful about the way you’re looking at the camera—it feels simple, natural, and completely you.
+                </p>
+
+                <p class="story-body-p">
+                  The little details make it even prettier—the earrings, tiny nose pin, necklace, and the black-and-red outfit all come together so nicely. ✨
+                </p>
+
+                <p class="story-body-p">
+                  But honestly, your smile is what makes this picture special. You’re not doing anything extra, and you don’t need to.
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">Just you,</p>
+                  <p class="verse-line">your glasses, that smile,</p>
+                  <p class="verse-line verse-highlight">and that calm little expression. 🌷</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE DETAIL:</span>
+                  <p class="story-final-quote">
+                    “Okay Madhee… this smile is seriously unfair. 😭❤️ You just casually took a picture and somehow made it this beautiful.”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 02 / 12</span>
-                <span class="panel-mood-pill">💫 Soft & Effortless Vibe</span>
+      <!-- CHAPTER 03 -->
+      <section class="chapter-fullscreen-section" id="chapter-03" data-chapter="3">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee03.jpg', '🌿 A Little Moment That Feels Like You')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-3" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-flower.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">Calm & Real</h3>
-              <p class="panel-msg">There is something very comforting about this picture. The sunlight, the candid angle, and how comfortable you look being completely yourself. That quiet elegance of yours is truly rare. 🌿✨</p>
-              
-              <div class="panel-accent-quote">
-                <span>“Comforting, simple, and real.”</span>
+              <div class="frame-tape-flower">🌿</div>
+              <img src="images/madhee03.jpg" alt="Madhee resting arms on knees in peaceful sunlight" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Effortless simplicity & peaceful sunlight 🌿</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 03 -->
-          <div class="memory-panel-3d" data-index="2" data-chapter="3" id="memPanel03">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-flower.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & A Little Moment That Feels Like You -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 03</span>
+                <span class="theme-mood-pill">🌿 Peaceful Sunlight & Simplicity</span>
+              </div>
+              <h2 class="chapter-title">🌿 A Little Moment That Feels Like You</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee03.jpg', 'A Quiet Afternoon')">
-                <img src="images/madhee03.jpg" alt="A Quiet Afternoon" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  There’s something really special about this picture, Madhee. 🥹💚
+                </p>
+
+                <p class="story-body-p">
+                  You’re sitting there so comfortably, resting your arms on your knees, with your hair naturally falling around you. You’re looking straight at the camera through your glasses, and that tiny, soft smile makes the whole picture feel so warm.
+                </p>
+
+                <p class="story-body-p">
+                  The sunlight falling across your face makes everything feel even more peaceful. Your green outfit, the glasses, your open hair, and that relaxed little expression all come together so naturally. ✨
+                </p>
+
+                <p class="story-whisper-lead">But what I like most is how effortless this picture feels.</p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">You’re not trying to do some perfect pose.</p>
+                  <p class="verse-line">You’re not trying to make the picture look special.</p>
+                  <p class="verse-line verse-highlight">You’re just being yourself… and somehow, that makes the picture special. 🌸</p>
+                </div>
+
+                <p class="story-body-p">
+                  There’s a quiet kind of beauty in this one—the kind you notice slowly and then keep looking at for a little longer. 🥹
+                </p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE DETAIL:</span>
+                  <p class="story-final-quote">
+                    “Madhee… that little smile says so much without saying anything. And honestly, I think this is one of those pictures where your simplicity is what makes you look the most beautiful. ❤️”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 03 / 12</span>
-                <span class="panel-mood-pill">🌿 Peaceful Sunlight & Simplicity</span>
+      <!-- CHAPTER 04 -->
+      <section class="chapter-fullscreen-section" id="chapter-04" data-chapter="4">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee04.jpg', '🌼 A Moment Wrapped in Flowers')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-4" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-playful.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">A Quiet Afternoon</h3>
-              <p class="panel-msg">A quiet moment where everything feels paused. That subtle twinkle in your eyes tells a whole story on its own. You don’t need loud expressions to make an impression. 🌼</p>
-              
-              <div class="panel-accent-quote">
-                <span>“A peaceful pause in time.” ☕</span>
+              <div class="frame-tape-flower">🌼</div>
+              <img src="images/madhee04.jpg" alt="Madhee holding white flowers close to her face in glowing sunlight" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">A soft and glowing moment 🌼✨</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 04 -->
-          <div class="memory-panel-3d" data-index="3" data-chapter="4" id="memPanel04">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-playful.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & A Moment Wrapped in Flowers -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 04</span>
+                <span class="theme-mood-pill">🌼 White Daisies & Glowing Sunlight</span>
+              </div>
+              <h2 class="chapter-title">🌼 A Moment Wrapped in Flowers</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee04.jpg', 'Sunlight & Laughter')">
-                <img src="images/madhee04.jpg" alt="Sunlight & Laughter" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Madhee, this picture is honestly one of those moments that feels soft without even trying. 🥹❤️
+                </p>
+
+                <p class="story-body-p">
+                  You’re holding those little white flowers close to your face, looking through your glasses with that tiny, almost playful smile. 🌼 Your long hair falls naturally around you, and the warm sunlight coming through the window gives the whole picture such a beautiful glow.
+                </p>
+
+                <p class="story-body-p">
+                  And I love how all the little details come together—the flowers near your face, your glasses, that tiny bindi, your gentle expression, and the way you’re looking straight at the camera. Nothing feels overdone. It just feels naturally, quietly beautiful. ✨
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">There’s something almost magical about this picture because the flowers are supposed to be the highlight…</p>
+                  <p class="verse-line verse-highlight">but somehow, they’re still not the most beautiful thing in the frame. 🌼🥹</p>
+                </div>
+
+                <p class="story-whisper-lead">You look peaceful, a little playful, and completely yourself.</p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE DETAIL:</span>
+                  <p class="story-final-quote">
+                    “Those tiny flowers were supposed to steal the picture… but then you showed up with that smile. 😭🌼❤️”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 04 / 12</span>
-                <span class="panel-mood-pill">🌼 White Daisies & Glowing Sunlight</span>
+      <!-- CHAPTER 05 -->
+      <section class="chapter-fullscreen-section" id="chapter-05" data-chapter="5">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee05.jpg', '💚 Just Madhee Being Madhee')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-5" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-peeking.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">Sunlight & Laughter</h3>
-              <p class="panel-msg">When you laugh naturally, the entire mood around you shifts. The sunlight catching your hair and that unfiltered smile—it’s genuinely one of the best moments captured here. 🌺✨</p>
-              
-              <div class="panel-accent-quote">
-                <span>“Genuine laughter looks so good on you.” 😄</span>
+              <div class="frame-tape-flower">🌿</div>
+              <img src="images/madhee05.jpg" alt="Madhee chin in hand with green blouse and white saree in sunlight" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Playful, effortless & completely you 💚</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 05 -->
-          <div class="memory-panel-3d" data-index="4" data-chapter="5" id="memPanel05">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-peeking.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & Just Madhee Being Madhee -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 05</span>
+                <span class="theme-mood-pill">💚 Cute, Playful & Effortless</span>
+              </div>
+              <h2 class="chapter-title">💚 Just Madhee Being Madhee</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee05.jpg', 'The Candid Frame')">
-                <img src="images/madhee05.jpg" alt="The Candid Frame" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture has such a cute, playful, and effortless vibe. 😭💚
+                </p>
+
+                <p class="story-body-p">
+                  Look at you sitting there all comfortably, arms on your knees, glasses on, hair open, and giving that little smile to the camera like “haan haan, photo lelo… ab kya hai?” 😂
+                </p>
+
+                <p class="story-body-p">
+                  And that pose?? 😭 You’re sitting so casually, but somehow the picture still turned out way too good.
+                </p>
+
+                <p class="story-body-p">
+                  The sunlight is hitting you perfectly, your green outfit gives the whole picture a fresh vibe, and that tiny smile makes it feel like you’re secretly enjoying the attention. 😭😂
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">And then there are those glasses…</p>
+                  <p class="verse-line verse-highlight">Madhee + glasses + that innocent little smile = dangerous combination. 🤓💚</p>
+                </div>
+
+                <p class="story-body-p">
+                  It’s not some perfectly planned photoshoot. It’s just you being comfortable, slightly mischievous, and completely yourself—and honestly, that’s what makes this picture so cute. 🥹✨
+                </p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE DETAIL:</span>
+                  <p class="story-final-quote">
+                    “The pose says ‘I’m just sitting here’… but the picture says ‘yeah, I know I look good.’ 😭😂💚”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 05 / 12</span>
-                <span class="panel-mood-pill">💚 Cute, Playful & Effortless</span>
+      <!-- CHAPTER 06 -->
+      <section class="chapter-fullscreen-section" id="chapter-06" data-chapter="6">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee06.jpg', '🖤 Three Frames, One Problem')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-6" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-sleeping.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">The Candid Frame</h3>
-              <p class="panel-msg">You didn’t even know the camera was on you here. Just caught in thought, completely natural. Unplanned moments often turn out to be the most memorable ones of all. 🍂</p>
-              
-              <div class="panel-accent-quote">
-                <span>“Caught mid-thought, perfectly natural.” 📸</span>
+              <div class="frame-tape-flower">🎞️</div>
+              <img src="images/madhee06.jpg" alt="Madhee 3-panel black and white photobooth strip with window shadows" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Three frames, three reasons to stare 🖤</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 06 -->
-          <div class="memory-panel-3d" data-index="5" data-chapter="6" id="memPanel06">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-sleeping.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & Three Frames, One Problem -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 06</span>
+                <span class="theme-mood-pill">🖤 Monochrome Trio & Classy Vibe</span>
+              </div>
+              <h2 class="chapter-title">🖤 Three Frames, One Problem</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee06.jpg', 'Evening Glow')">
-                <img src="images/madhee06.jpg" alt="Evening Glow" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Okay Madhee… this picture is unfair. 😭🖤
+                </p>
+
+                <p class="story-body-p">
+                  Three frames, three different poses, and somehow you managed to make every single one look like a different reason to stare a little longer. 😂
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line"><strong>First frame</strong> — that soft smile.</p>
+                  <p class="verse-line"><strong>Second frame</strong> — that calm, confident look.</p>
+                  <p class="verse-line verse-highlight"><strong>Third frame</strong> — that hand on your shoulder like you already KNOW you look good. 😭</p>
+                </div>
+
+                <p class="story-body-p">
+                  And the black-and-white effect? Dangerous choice. 🖤 Your glasses, long hair, saree, little bindi and that expression together give this whole picture such a classy vibe.
+                </p>
+
+                <p class="story-whisper-lead">
+                  But honestly, I have one question…
+                </p>
+
+                <p class="story-body-p" style="font-style: italic; color: #f8fafc;">
+                  “Madhee, is this a photoshoot or are you just casually collecting reasons for me to say ‘damn’ three times?” 😭😂
+                </p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">🖤 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “They say a picture is worth a thousand words… but looking at these three, I think I’ve forgotten all of mine. 😭🖤”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 06 / 12</span>
-                <span class="panel-mood-pill">🖤 Monochrome Trio & Classy Vibe</span>
+      <!-- CHAPTER 07 -->
+      <section class="chapter-fullscreen-section" id="chapter-07" data-chapter="7">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee07.jpg', '🌙 A Little Moonlight Moment')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-7" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-flower.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">Evening Glow</h3>
-              <p class="panel-msg">Soft evening light and that calm look. You have this quiet way of bringing stillness to chaotic days, and this picture captured that energy effortlessly. 🌙</p>
-              
-              <div class="panel-accent-quote">
-                <span>“Golden hour peace.” 🌆</span>
+              <div class="frame-tape-flower">🌙</div>
+              <img src="images/madhee07.jpg" alt="Madhee circular mirror reflection in saree with delicate brooch" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Circular frame & little moon vibe 🌙</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 07 -->
-          <div class="memory-panel-3d" data-index="6" data-chapter="7" id="memPanel07">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-flower.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & A Little Moonlight Moment -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 07</span>
+                <span class="theme-mood-pill">🌙 Moonlight Vibe & Delicate Saree</span>
+              </div>
+              <h2 class="chapter-title">🌙 A Little Moonlight Moment</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee07.jpg', 'Traditional Grace')">
-                <img src="images/madhee07.jpg" alt="Traditional Grace" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture has a completely different kind of beauty. 🖤🌙
+                </p>
+
+                <p class="story-body-p">
+                  You’re sitting quietly, wrapped in a light saree, with your hand resting near your face. The black-and-white effect makes the whole moment feel calm, mysterious, and timeless.
+                </p>
+
+                <p class="story-body-p">
+                  There’s something beautiful about how little of the picture you need to see to feel the mood. Your long hair, the delicate saree, the small flower detail, and that relaxed pose all come together so naturally.
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">And the circular frame makes it feel almost like looking at a little moon through the night sky. 🌙</p>
+                  <p class="verse-line verse-highlight">If this picture is the moon, I think I finally understand why people keep looking at the moon for no reason. 😭🖤</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “I thought the moon was supposed to be the most beautiful thing in the night… then I saw this picture and had to reconsider. 🌙😭❤️”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 07 / 12</span>
-                <span class="panel-mood-pill">🌙 Moonlight Vibe & Delicate Saree</span>
+      <!-- CHAPTER 08 -->
+      <section class="chapter-fullscreen-section" id="chapter-08" data-chapter="8">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee08.jpg', '🌸 The Flower Was Just an Excuse')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-8" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-playful.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">Traditional Grace</h3>
-              <p class="panel-msg">The traditional attire, the poise, and that graceful expression. You carried this look with such effortless dignity and quiet confidence. Truly stunning. 🌷✨</p>
-              
-              <div class="panel-accent-quote">
-                <span>“Pure grace and effortless poise.” 💫</span>
+              <div class="frame-tape-flower">🌸</div>
+              <img src="images/madhee08.jpg" alt="Madhee in golden sunlight with tiny flower tucked by her hair" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Sunlight, one tiny flower & that smile 🌸☀️</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 08 -->
-          <div class="memory-panel-3d" data-index="7" data-chapter="8" id="memPanel08">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-playful.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & The Flower Was Just an Excuse -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 08</span>
+                <span class="theme-mood-pill">🌸 Sunlight & One Tiny Flower</span>
+              </div>
+              <h2 class="chapter-title">🌸 The Flower Was Just an Excuse</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee08.jpg', 'Soft Breeze')">
-                <img src="images/madhee08.jpg" alt="Soft Breeze" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Okay Madhee… this picture is too unfair. 😭❤️
+                </p>
+
+                <p class="story-body-p">
+                  You’re lying there with your glasses on, your long hair spread around you, and that tiny flower tucked near your hair. 🌸 Your little smile and the way you’re looking at the camera make the whole picture feel so playful and effortless.
+                </p>
+
+                <p class="story-body-p">
+                  And the sunlight?? ☀️ It’s coming through the window and creating those beautiful patterns in the background, while gently lighting up your face and hand. The warm sunlight against your dark outfit and hair makes the whole picture stand out so beautifully. ✨
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">But that little flower is what really caught my attention. 🌸 It looks so tiny and innocent sitting there in your hair…</p>
+                  <p class="verse-line verse-highlight">but somehow it makes the whole picture ten times cuter. 😭❤️</p>
+                </div>
+
+                <p class="story-body-p">
+                  And then there are your glasses, that little smile, your hair falling around you, and that playful expression… Honestly, Madhee, you look like you just casually took a picture without realizing how good it would turn out. 😂
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">You didn’t need a perfect pose.</p>
+                  <p class="verse-line">You didn’t need a fancy background.</p>
+                  <p class="verse-line">You didn’t need anything extra.</p>
+                  <p class="verse-line verse-highlight">Just you, a little sunlight, one tiny flower, and that smile. 🌸☀️</p>
+                </div>
+
+                <p class="story-whisper-lead">And somehow, that's enough to make this picture feel special.</p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">💘 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “Madhee, I was going to compliment the flower… but then I realized it’s probably the luckiest flower in the world for getting to sit that close to you. 😭🌸❤️”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 08 / 12</span>
-                <span class="panel-mood-pill">🌸 Sunlight & One Tiny Flower</span>
+      <!-- CHAPTER 09 -->
+      <section class="chapter-fullscreen-section" id="chapter-09" data-chapter="9">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee09.jpg', '🌸 Two Little Glimpses of You')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-9" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-peeking.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">Soft Breeze</h3>
-              <p class="panel-msg">Hair in the wind, eyes calm, looking into the distance. It feels like taking a deep breath of fresh mountain air. Calm, grounded, and peaceful. 🌾</p>
-              
-              <div class="panel-accent-quote">
-                <span>“As gentle as a cool breeze.” 🍃</span>
+              <div class="frame-tape-flower">🌸</div>
+              <img src="images/madhee09.jpg" alt="Madhee pink scrapbook collage with chikankari kurti and glasses peek" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Soft bangles & mischievous peeking eyes 💖</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 09 -->
-          <div class="memory-panel-3d" data-index="8" data-chapter="9" id="memPanel09">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-peeking.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & Two Little Glimpses of You -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 09</span>
+                <span class="theme-mood-pill">🌸 Two Glimpses & Those Eyes</span>
+              </div>
+              <h2 class="chapter-title">🌸 Two Little Glimpses of You</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee09.jpg', 'The Unspoken Strength')">
-                <img src="images/madhee09.jpg" alt="The Unspoken Strength" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Okay Madhee… this one is too cute to be this innocent. 😭❤️
+                </p>
+
+                <p class="story-body-p">
+                  The first picture already has such a soft, pretty vibe. You’re sitting comfortably in white, resting your arms on your knees, wearing your glasses and those beautiful bangles. That little smile makes the whole frame feel so warm and playful. 🌸✨
+                </p>
+
+                <p class="story-whisper-lead">And then there’s the second one…</p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line verse-highlight">Just your eyes behind those glasses. 👀😭</p>
+                </div>
+
+                <p class="story-body-p">
+                  Honestly, that close-up changes the whole mood. Your eyes are literally the first thing that catches attention, and the tiny bindi and glasses make the picture even more adorable.
+                </p>
+
+                <p class="story-body-p">
+                  I love how both frames feel completely different but still have the same Madhee energy—cute, calm, and slightly mischievous. 😂❤️
+                </p>
+
+                <p class="story-body-p">
+                  The white outfit, pink details, bangles, glasses, and that soft smile all come together so beautifully. It feels like one of those pictures where you weren't even trying too hard, but somehow the camera decided to cooperate way too well. 😭
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">And that second frame…</p>
+                  <p class="verse-line verse-highlight">Madhee, those eyes are definitely not following the “keep it simple” rule. 👀😂</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">💘 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “I was looking at the first picture and thought, ‘okay, she's gorgeous’… then I saw the close-up of your eyes and completely forgot what I was going to say. 😭👀”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 09 / 12</span>
-                <span class="panel-mood-pill">🌸 Two Glimpses & Those Eyes</span>
+      <!-- CHAPTER 10 -->
+      <section class="chapter-fullscreen-section" id="chapter-10" data-chapter="10">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee10.jpg', '🌸 Pink Looks Good on You')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-10" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-flower.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">The Unspoken Strength</h3>
-              <p class="panel-msg">Behind all the fun, jokes, and smiles, there is someone remarkably strong, resilient, and deeply caring. This picture always reminds me of that strength in you. 🍁</p>
-              
-              <div class="panel-accent-quote">
-                <span>“Quiet strength behind the smile.” 💎</span>
+              <div class="frame-tape-flower">🌸</div>
+              <img src="images/madhee10.jpg" alt="Madhee rooftop balcony portrait in pink saree with neem foliage" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Pink saree, green leaves & blue sky 🌸🍃</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 10 -->
-          <div class="memory-panel-3d" data-index="9" data-chapter="10" id="memPanel10">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-flower.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & Pink Looks Good on You -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 10</span>
+                <span class="theme-mood-pill">🌸 Pink Saree & Serene Sky</span>
+              </div>
+              <h2 class="chapter-title">🌸 Pink Looks Good on You</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee10.jpg', 'Pink Looks Good on You')">
-                <img src="images/madhee10.jpg" alt="Pink Looks Good on You" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture is simple, pretty, and so you, Madhee. 🥹💗
+                </p>
+
+                <p class="story-body-p">
+                  That pink saree, the greenery, the blue sky, and the way you’re looking away from the camera… everything just fits perfectly. 🌿✨
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">You didn’t even have to smile or pose properly.</p>
+                  <p class="verse-line verse-highlight">You just stood there looking cute, and somehow the whole picture became beautiful. 😭❤️</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">💘 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “Madhee, I think pink was already pretty… but then you wore it and made it unfair. 😭💗”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 10 / 12</span>
-                <span class="panel-mood-pill">🌸 Pink Saree & Serene Sky</span>
+      <!-- CHAPTER 11 -->
+      <section class="chapter-fullscreen-section" id="chapter-11" data-chapter="11">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee11.jpg', '🌼 Three Flowers, One Frame')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-11" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-sleeping.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">Pink Looks Good on You</h3>
-              <p class="panel-msg">That pink saree, the greenery, the blue sky, and you looking away from the camera… everything just fits perfectly. You didn’t even have to pose—you made the whole picture beautiful. 😭💗</p>
-              
-              <div class="panel-accent-quote">
-                <span>“Pink was already pretty… until you wore it. 😭💗”</span>
+              <div class="frame-tape-flower">🌼</div>
+              <img src="images/madhee11.jpg" alt="Madhee with two daisies, soft smile, and green outfit" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Three flowers in one frame 🌼🌸✨</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 11 -->
-          <div class="memory-panel-3d" data-index="10" data-chapter="11" id="memPanel11">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-sleeping.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <!-- Story & Three Flowers, One Frame -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 11</span>
+                <span class="theme-mood-pill">🌼 Daisy Joy & Soft Smile</span>
+              </div>
+              <h2 class="chapter-title">🌼 Three Flowers, One Frame</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee11.jpg', 'Three Flowers, One Frame')">
-                <img src="images/madhee11.jpg" alt="Three Flowers, One Frame" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture is honestly too cute. 🥹💚
+                </p>
+
+                <p class="story-body-p">
+                  Two little white flowers are right there beside you, and then there’s you—with your glasses, that soft smile, and the green outfit. 🌼✨
+                </p>
+
+                <p class="story-body-p">
+                  The flowers are beautiful, the sunlight is beautiful, the whole picture has such a lovely vibe…
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">But if we’re counting flowers,</p>
+                  <p class="verse-line">there are actually three in this picture. 😭🌸</p>
+                  <p class="verse-line">Two are in your hand.</p>
+                  <p class="verse-line verse-highlight">And the third one is you. 🥹❤️</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">💘 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “I see three flowers in this picture… two are in your hand, and the prettiest one is holding them. 🌼😭❤️”
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+</div>
+      </section>
 
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 11 / 12</span>
-                <span class="panel-mood-pill">🌼 Daisy Joy & Soft Smile</span>
+      <!-- CHAPTER 12 -->
+      <section class="chapter-fullscreen-section" id="chapter-12" data-chapter="12">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee12_final.jpg?v=final', '🖤 Poetry, Paayal & Quiet Smile')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-12" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-playful.svg" alt="Snowbell Cat" class="snowbell-cat-img">
               </div>
-
-              <h3 class="panel-title">Three Flowers, One Frame</h3>
-              <p class="panel-msg">Two little white flowers are right there in your hand, and then there’s you—with your glasses, soft smile, and green outfit. If we are counting flowers, the prettiest one is holding them. 🌼😭❤️</p>
-              
-              <div class="panel-accent-quote">
-                <span>“The prettiest flower in the frame.” 🌸</span>
+              <div class="frame-tape-flower">🖤</div>
+              <img src="images/madhee12_final.jpg?v=final" alt="Madhee black and white portrait with glasses, bindi, hand under chin, and poem lines" class="chapter-img img-wide-contain" loading="eager">
+              <div class="frame-caption">
+                <span class="caption-hand">Pairon mai paayal & quiet poetry 🖤✨</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
               </div>
             </div>
           </div>
 
-          <!-- 3D MEMORY PANEL 12 -->
-          <div class="memory-panel-3d" data-index="11" data-chapter="12" id="memPanel12">
-            <!-- Snowbell Cat perched on top -->
-            <div class="snowbell-panel-perch" title="Snowbell 🐱🤍">
-              <img src="images/snowbell-playful.svg" alt="Snowbell Cat" class="snowbell-panel-img">
-            </div>
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 12</span>
+                <span class="theme-mood-pill">🖤 Black & White • Shayari • Quiet Smile</span>
+              </div>
+              <h2 class="chapter-title">🖤 Poetry, Paayal, and You</h2>
+              <div class="botanical-line"></div>
 
-            <!-- Card Inner Face -->
-            <div class="panel-inner-card">
-              <div class="panel-photo-frame" onclick="openLightbox('images/madhee12_final.jpg?v=final', 'The Classic Monochrome')">
-                <img src="images/madhee12_final.jpg?v=final" alt="The Classic Monochrome" class="panel-photo-img" loading="lazy">
-                <div class="panel-zoom-overlay">
-                  <span>🔍 Tap to enlarge</span>
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Okay Madhee… this picture is on a whole different level. 🥹🖤
+                </p>
+
+                <p class="story-body-p">
+                  The black-and-white tone, your hand resting gently under your chin, your hair flowing naturally, and those glasses framing that subtle, knowing smile… everything about this picture feels so calm, poetic, and effortlessly graceful. ✨
+                </p>
+
+                <p class="story-body-p">
+                  And then there are those beautiful lines written right beside you…
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">“Pairon mai paayal jalke</p>
+                  <p class="verse-line">Nachun mai meera banke</p>
+                  <p class="verse-line">Lajjati radha si mai gar mere mohan hasde..</p>
+                  <p class="verse-line verse-highlight">Mohan ko pyar mujhse agar ho🫣”</p>
+                </div>
+
+                <p class="story-body-p">
+                  The lines talk about innocent love and devotion, but that expression on your face? That’s pure, confident Madhee charm right there. 😭😂 You look like you already knew this was going to turn into an absolute masterpiece of a picture.
+                </p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">🖤 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “The shayari was supposed to be the poetry… but honestly Madhee, you’re the real poem here. 🖤🥹✨”
+                  </p>
                 </div>
               </div>
-
-              <div class="panel-meta-header">
-                <span class="panel-chapter-tag">MEMORY 12 / 12</span>
-                <span class="panel-mood-pill">🖤 Black & White • Shayari • Quiet Smile</span>
-              </div>
-
-              <h3 class="panel-title">The Classic Monochrome</h3>
-              <p class="panel-msg">Kahaaniyan toh bohot hain... Par teri har tasveer ek nayi daastan sunati hai. Stripped of all colors, this classic black and white portrait shows the timeless, authentic Madhee I know. 🖤✨</p>
-              
-              <div class="panel-accent-quote">
-                <span>“Black & white, yet the most colorful soul.” 🎬</span>
-              </div>
             </div>
           </div>
-        </div>
-      </div>
+</div>
+      </section>
 
-      <!-- Interactive Universe Controller Strip -->
-      <div class="universe-controls-strip">
-        <button type="button" class="uni-ctrl-btn" id="uniBtnPrev" onclick="rotateUniverseStep(-1)" aria-label="Previous Memory (Left Arrow)" title="Previous Memory">
-          <span>‹</span>
-        </button>
+    </div><!-- /chapters-wrapper -->
 
-        <div class="uni-indicator-pill">
-          <span class="uni-icon">✦</span>
-          <span class="uni-counter" id="uniCounter">01 / 12</span>
-          <span class="uni-dot-sep">•</span>
-          <span class="uni-active-name" id="uniActiveName">Madhee — This Moment</span>
-          <span class="uni-hint-gesture">⟷ Drag / Swipe to orbit</span>
-        </div>
-
-        <button type="button" class="uni-ctrl-btn" id="uniBtnNext" onclick="rotateUniverseStep(1)" aria-label="Next Memory (Right Arrow)" title="Next Memory">
-          <span>›</span>
-        </button>
-      </div>
-
-      <!-- Quick 12 Dot Jump Indicators -->
-      <div class="universe-dots-bar" id="universeDotsBar">
-        <!-- Injected via JavaScript -->
-      </div>
-
-      <!-- Emotional Story Transition Portal Card -->
-      <div class="universe-transition-portal" id="universePortal">
-        <div class="portal-glass-card">
-          <div class="portal-badge">✦ STORYBOOK PORTAL ✦</div>
-          <h3 class="portal-heading">12 memories later…</h3>
-          <p class="portal-sentiment">
-            “Somehow, you’re still one of my favorite chapters.” 🌸✨
-          </p>
-          <div class="portal-divider"></div>
-          <p class="portal-subtext">
-            These aren’t just photographs... they are pieces of trust, honesty, and a friendship worth protecting.
-          </p>
-          <a href="#chronicles" class="portal-scroll-btn">
-            <span>Continue into the Case File & Sanctuary</span>
-            <span class="portal-arrow">↓</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
+    <!-- ====================================================================
+         TRANSITION PAUSE: THE 12 MEMORIES MILESTONE
+         ==================================================================== -->
     <section class="transition-pause-section" id="transition-pause">
       <div class="milestone-celestial-sanctuary">
 
@@ -1342,6 +1660,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=5.0"></script>
+  <script src="script.js?v=6.0"></script>
 </body>
 </html>
