@@ -1461,3 +1461,54 @@ window.switchDancingBear = switchDancingBear;
   window.openMaamDossier = openMaamDossier;
   window.closeMaamDossier = closeMaamDossier;
 })();
+
+// ==========================================================================
+// CUTU BUBU BEAR INTERACTION
+// ==========================================================================
+function wiggleBubu() {
+  const bearImg = document.getElementById('active-dancing-bear');
+  const whisper = document.querySelector('.bubu-whisper');
+  if (bearImg) {
+    bearImg.style.transition = 'transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    bearImg.style.transform = 'scale(1.2) rotate(-7deg)';
+    setTimeout(function() {
+      bearImg.style.transform = 'scale(1.2) rotate(7deg)';
+      setTimeout(function() {
+        bearImg.style.transform = 'scale(1) rotate(0deg)';
+      }, 250);
+    }, 250);
+  }
+
+  if (whisper) {
+    const funnyLines = [
+      '“Cutu Bubu is wiggling at MAXIMUM HAPPINESS for Madhee! 😭😂❤️”',
+      '“Look at those little bear ears moving! Mission: Make Madhee smile! 🐻🌸”',
+      '“Bubu says: No sad faces allowed in this sanctuary! 🥺✨”',
+      '“Wiggle level: OVER 9000! Smile guaranteed, Ma\\\'am! 🐻💃”'
+    ];
+    whisper.innerHTML = funnyLines[Math.floor(Math.random() * funnyLines.length)];
+  }
+
+  const stage = document.querySelector('.bubu-glow-frame');
+  if (stage) {
+    const emojis = ['🌸', '✨', '❤️', '🐻', '💫'];
+    for (let i = 0; i < 5; i++) {
+      const sp = document.createElement('span');
+      sp.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      sp.style.position = 'absolute';
+      sp.style.left = (20 + Math.random() * 60) + '%';
+      sp.style.top = (20 + Math.random() * 60) + '%';
+      sp.style.fontSize = '1.3rem';
+      sp.style.pointerEvents = 'none';
+      sp.style.transition = 'all 0.9s ease-out';
+      sp.style.zIndex = '100';
+      stage.appendChild(sp);
+      setTimeout(function() {
+        sp.style.transform = 'translateY(-45px) scale(1.3)';
+        sp.style.opacity = '0';
+      }, 50);
+      setTimeout(function() { sp.remove(); }, 1000);
+    }
+  }
+}
+window.wiggleBubu = wiggleBubu;
