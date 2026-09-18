@@ -212,11 +212,18 @@ body {
    ========================================================================== */
 .site-header {
   position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(94%, 1240px);
-  z-index: 100;
+  top: 14px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: none;
+  margin: 0 auto;
+  padding: 0 16px;
+  z-index: 1000;
+  pointer-events: none;
 }
 
 .header-inner {
@@ -4650,23 +4657,26 @@ body {
 }
 
 /* ==========================================================================
-   HEADER NAVIGATION: CENTERED IN THE MIDDLE, EXPANSIVE, UNCONGESTED
+   HEADER NAVIGATION: PERFECTLY CENTERED, BALANCED, AND UNCONGESTED
    ========================================================================== */
 .site-header {
-  position: sticky !important;
+  position: fixed !important;
   top: 14px !important;
-  z-index: 1000 !important;
+  left: 0 !important;
+  right: 0 !important;
   width: 100% !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  padding: 0 16px !important;
+  transform: none !important;
   margin: 0 auto !important;
-  pointer-events: none;
+  padding: 0 16px !important;
+  z-index: 1000 !important;
+  pointer-events: none !important;
 }
 
 .header-inner {
-  pointer-events: auto;
+  pointer-events: auto !important;
   display: grid !important;
   grid-template-columns: 1fr auto 1fr !important;
   align-items: center !important;
@@ -4681,6 +4691,9 @@ body {
   max-width: 1140px !important;
   width: 100% !important;
   margin: 0 auto !important;
+  transform: none !important;
+  left: auto !important;
+  right: auto !important;
 }
 
 .brand-logo {
@@ -4690,6 +4703,23 @@ body {
   gap: 10px !important;
   text-decoration: none !important;
   white-space: nowrap !important;
+}
+
+.brand-moon {
+  font-size: 1.25rem !important;
+  line-height: 1 !important;
+  filter: drop-shadow(0 0 8px #fbbf24) !important;
+}
+
+.brand-text {
+  font-family: 'Cinzel', serif !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 1.5px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  background: linear-gradient(135deg, #ffffff 0%, #fbbf24 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 .nav-links {
@@ -4720,7 +4750,7 @@ body {
   flex-shrink: 0 !important;
   height: 38px !important;
   line-height: 1 !important;
-  padding: 0 18px !important;
+  padding: 0 16px !important;
   border-radius: 999px !important;
   background: transparent !important;
   border: 1px solid transparent !important;
