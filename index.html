@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=8.2">
+  <link rel="stylesheet" href="styles.css?v=8.3">
 
   <!-- Three.js & GSAP from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -119,6 +119,46 @@
           <button class="nick-pill" onclick="triggerNickname('dumbbell')">🏋️‍♀️ Dumbbell</button>
         </div>
         <div id="nickname-toast" class="nickname-toast" aria-live="polite"></div>
+
+        <!-- ==========================================================
+             SPECIAL MOOD BOOSTER: CUTU BUBU ULTA DANCE (SMILE GUARANTEE)
+             ========================================================== -->
+        <div class="hero-bubu-ulta-card" id="heroBubuUltaCard">
+          <div class="bubu-ulta-badge">
+            <span class="badge-sparkle">🍑</span>
+            <span>EXCLUSIVE SMILE PROTOCOL • CUTU BUBU ULTA DANCE</span>
+            <span class="badge-sparkle">✨</span>
+          </div>
+
+          <div class="bubu-ulta-stage">
+            <div class="bubu-ulta-glow-ring"></div>
+            <img id="hero-bubu-ulta-img" src="images/bears/bubu-ulta-bum-dance.gif" alt="Cutu Bubu ulta dance shaking bum" class="bubu-ulta-gif">
+            <div class="bubu-wiggle-sparkles" aria-hidden="true">
+              <span class="sparkle-item sp-1">✨</span>
+              <span class="sparkle-item sp-2">🌸</span>
+              <span class="sparkle-item sp-3">💖</span>
+              <span class="sparkle-item sp-4">🍑</span>
+            </div>
+          </div>
+
+          <div class="bubu-ulta-caption">
+            <p class="bubu-ulta-text">“Emergency mood booster: Cutu Bubu is doing his signature ulta bum shake dance strictly to bring an instant smile on Madhee’s face! 🤭💃”</p>
+            <span class="bubu-ulta-sub">100% Guaranteed to make Madam CR smile!</span>
+          </div>
+
+          <div class="bubu-ulta-buttons">
+            <button type="button" class="bubu-ulta-btn active" onclick="switchBubuUltaDance('bum-duo', this)">
+              <span>🍑 Ulta Bum Shake</span>
+            </button>
+            <button type="button" class="bubu-ulta-btn" onclick="switchBubuUltaDance('bum-solo', this)">
+              <span>💃 Stool Bum Dance</span>
+            </button>
+            <button type="button" class="bubu-ulta-btn smile-trigger-btn" onclick="triggerMadheeSmile()">
+              <span>😊 Smile Activated!</span>
+            </button>
+          </div>
+          <div id="bubu-smile-toast" class="bubu-smile-toast" aria-live="polite"></div>
+        </div>
 
         <div class="hero-actions">
           <a href="#prologue" class="btn-primary-glow">

@@ -1536,3 +1536,77 @@ function switchBubuLetter(mode, btn) {
   }
 }
 window.switchBubuLetter = switchBubuLetter;
+
+// ==========================================================================
+// CUTU BUBU ULTA BUM DANCE SWITCHER & SMILE TRIGGER
+// ==========================================================================
+function switchBubuUltaDance(type, btn) {
+  const img = document.getElementById('hero-bubu-ulta-img');
+  if (!img) return;
+
+  document.querySelectorAll('.bubu-ulta-buttons .bubu-ulta-btn:not(.smile-trigger-btn)').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  if (type === 'bum-duo') {
+    img.src = 'images/bears/bubu-ulta-bum-dance.gif';
+  } else if (type === 'bum-solo') {
+    img.src = 'images/bears/bubu-ulta-bum-stool.gif';
+  }
+
+  img.style.transform = 'scale(1.15)';
+  setTimeout(() => { img.style.transform = ''; }, 250);
+}
+window.switchBubuUltaDance = switchBubuUltaDance;
+
+function triggerMadheeSmile() {
+  const toast = document.getElementById('bubu-smile-toast');
+  const img = document.getElementById('hero-bubu-ulta-img');
+  
+  if (img) {
+    img.style.transform = 'scale(1.2) rotate(5deg)';
+    setTimeout(() => { img.style.transform = ''; }, 350);
+  }
+
+  const smiles = [
+    "✨ Mission Accomplished! Seeing Madhee smile is the prettiest thing in this universe! 🥰🌸",
+    "🍑 Bubu shakes his bum faster: 'Madam CR finally smiled! Yayyy!' 💃💖",
+    "🌸 100% Smile Guaranteed! Your smile lights up this entire galaxy, Madhee! ✨🌙",
+    "🤍 'Bubu is super proud because he made his best friend smile today!' 🐾😊"
+  ];
+  const msg = smiles[Math.floor(Math.random() * smiles.length)];
+
+  if (toast) {
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    toast.style.transform = 'scale(1.05)';
+    setTimeout(() => {
+      toast.style.transform = 'scale(1)';
+    }, 200);
+  }
+
+  // Floating sparkle emojis
+  for (let i = 0; i < 15; i++) {
+    const el = document.createElement('div');
+    el.textContent = ['🌸', '🍑', '✨', '💖', '🥰', '🐾'][Math.floor(Math.random() * 6)];
+    el.style.position = 'fixed';
+    el.style.left = (Math.random() * 80 + 10) + 'vw';
+    el.style.top = (Math.random() * 60 + 20) + 'vh';
+    el.style.fontSize = (Math.random() * 20 + 24) + 'px';
+    el.style.pointerEvents = 'none';
+    el.style.zIndex = '9999';
+    el.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0) scale(0.5)';
+    document.body.appendChild(el);
+
+    setTimeout(() => {
+      el.style.transform = `translateY(-${Math.random() * 120 + 60}px) scale(1.3)`;
+      el.style.opacity = '0';
+    }, 20);
+
+    setTimeout(() => {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    }, 1300);
+  }
+}
+window.triggerMadheeSmile = triggerMadheeSmile;
