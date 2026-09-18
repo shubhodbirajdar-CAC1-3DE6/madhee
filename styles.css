@@ -4843,3 +4843,122 @@ body {
     letter-spacing: 0.6px !important;
   }
 }
+
+/* ==========================================================================
+   CUTU BUBU REGRET & REQUESTING CARD (SECTION 05: THE LETTER)
+   ========================================================================== */
+.bubu-letter-regret-card {
+  margin: 28px auto 32px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(232, 197, 71, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 24px rgba(232, 197, 71, 0.15);
+  border-radius: 24px;
+  padding: 24px 20px;
+  text-align: center;
+  max-width: 540px;
+  position: relative;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.bubu-letter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232, 197, 71, 0.12);
+  border: 1px solid rgba(232, 197, 71, 0.5);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #ffd875;
+  margin-bottom: 16px;
+}
+
+.bubu-letter-visual-box {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 197, 71, 0.25) 0%, rgba(10, 15, 30, 0.8) 70%);
+  border: 2px solid rgba(232, 197, 71, 0.6);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 20px rgba(232, 197, 71, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bubu-letter-gif {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.bubu-letter-speech {
+  background: rgba(8, 14, 28, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+
+.bubu-speech-quote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: #fce7f3;
+  margin-bottom: 6px;
+}
+
+.bubu-speech-author {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #cbd5e1;
+  text-transform: uppercase;
+}
+
+.bubu-letter-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bubu-letter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.bubu-letter-btn:hover {
+  background: rgba(232, 197, 71, 0.15);
+  border-color: rgba(232, 197, 71, 0.5);
+  color: #ffd875;
+  transform: translateY(-2px);
+}
+
+.bubu-letter-btn.active {
+  background: rgba(232, 197, 71, 0.22);
+  border-color: rgba(232, 197, 71, 0.8);
+  color: #ffd875;
+  box-shadow: 0 0 14px rgba(232, 197, 71, 0.35);
+}

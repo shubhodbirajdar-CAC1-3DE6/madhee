@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=8.1">
+  <link rel="stylesheet" href="styles.css?v=8.2">
 
   <!-- Three.js & GSAP from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -1448,6 +1448,38 @@
             <span class="letter-tag">A GENUINE NOTE • DIL SE</span>
             <h2 class="letter-salutation">Dear Madhee,</h2>
             <p class="letter-sub-salutation">Bachaaa,</p>
+
+          <!-- ==========================================================
+               CUTU BUBU REQUESTING & REGRETS CARD (SECTION 05)
+               ========================================================== -->
+          <div class="bubu-letter-regret-card" id="bubuLetterCard">
+            <div class="bubu-letter-badge">
+              <span class="badge-sparkle">🥺</span>
+              <span>CUTU BUBU IS REQUESTING • SINCERE REGRET</span>
+              <span class="badge-sparkle">🐾</span>
+            </div>
+            
+            <div class="bubu-letter-visual-box">
+              <img id="bubu-letter-img" src="images/bears/bubu-regret-sorry.gif" alt="Cutu Bubu requesting forgiveness" class="bubu-letter-gif">
+            </div>
+
+            <div class="bubu-letter-speech">
+              <p class="bubu-speech-quote">“Bachaaa… Bubu knows he made a huge mistake. He feels so deeply guilty &amp; has so much regret for what he did… please listen to him once? 🥺🤍”</p>
+              <span class="bubu-speech-author">— Cutu Bubu with folded paws &amp; heavy regret</span>
+            </div>
+
+            <div class="bubu-letter-actions">
+              <button type="button" class="bubu-letter-btn active" onclick="switchBubuLetter('regret', this)">
+                <span>🥺 Deep Regret</span>
+              </button>
+              <button type="button" class="bubu-letter-btn" onclick="switchBubuLetter('plead', this)">
+                <span>🙇‍♂️ Please Forgive Me</span>
+              </button>
+              <button type="button" class="bubu-letter-btn" onclick="switchBubuLetter('crying', this)">
+                <span>😢 Heavy Heart</span>
+              </button>
+            </div>
+          </div>
           </div>
 
           <div class="letter-body">

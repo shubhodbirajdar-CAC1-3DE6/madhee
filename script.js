@@ -1512,3 +1512,27 @@ function wiggleBubu() {
   }
 }
 window.wiggleBubu = wiggleBubu;
+
+// ==========================================================================
+// CUTU BUBU LETTER REGRET & REQUESTING SWITCHER
+// ==========================================================================
+function switchBubuLetter(mode, btn) {
+  const img = document.getElementById('bubu-letter-img');
+  const speech = document.querySelector('.bubu-speech-quote');
+  if (!img) return;
+
+  document.querySelectorAll('.bubu-letter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  if (mode === 'regret') {
+    img.src = 'images/bears/bubu-regret-sorry.gif';
+    if (speech) speech.textContent = '“Bachaaa… Bubu knows he made a huge mistake. He feels so deeply guilty & has so much regret for what he did… please listen to him once? 🥺🤍”';
+  } else if (mode === 'plead') {
+    img.src = 'images/bears/bubu-plead-forgive.gif';
+    if (speech) speech.textContent = '“Bubu is bowing all the way down… please maaf kardo na? He won\'t ever make you feel bad again, promise! 🙇‍♂️🤍”';
+  } else if (mode === 'crying') {
+    img.src = 'images/bears/bubu-crying-tears.gif';
+    if (speech) speech.textContent = '“Bubu has heavy tears in his eyes… he never ever wanted to hurt you. Dil se sorry Madhee… 😢🐾”';
+  }
+}
+window.switchBubuLetter = switchBubuLetter;
