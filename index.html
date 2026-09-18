@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=8.3">
+  <link rel="stylesheet" href="styles.css?v=8.4">
 
   <!-- Three.js & GSAP from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -121,43 +121,49 @@
         <div id="nickname-toast" class="nickname-toast" aria-live="polite"></div>
 
         <!-- ==========================================================
-             SPECIAL MOOD BOOSTER: CUTU BUBU ULTA DANCE (SMILE GUARANTEE)
+             CUTU BUBU COMEDY SHOW (GUARANTEED TO MAKE MADHEE LAUGH)
              ========================================================== -->
-        <div class="hero-bubu-ulta-card" id="heroBubuUltaCard">
-          <div class="bubu-ulta-badge">
-            <span class="badge-sparkle">🍑</span>
-            <span>EXCLUSIVE SMILE PROTOCOL • CUTU BUBU ULTA DANCE</span>
-            <span class="badge-sparkle">✨</span>
+        <div class="hero-bubu-comedy-card" id="heroBubuComedyCard">
+          <div class="bubu-comedy-badge">
+            <span class="badge-sparkle">😂</span>
+            <span>LAUGHTER THERAPY • CUTU BUBU COMEDY SHOW</span>
+            <span class="badge-sparkle">🎭</span>
           </div>
 
-          <div class="bubu-ulta-stage">
-            <div class="bubu-ulta-glow-ring"></div>
-            <img id="hero-bubu-ulta-img" src="images/bears/bubu-ulta-bum-dance.gif" alt="Cutu Bubu ulta dance shaking bum" class="bubu-ulta-gif">
-            <div class="bubu-wiggle-sparkles" aria-hidden="true">
-              <span class="sparkle-item sp-1">✨</span>
-              <span class="sparkle-item sp-2">🌸</span>
-              <span class="sparkle-item sp-3">💖</span>
-              <span class="sparkle-item sp-4">🍑</span>
+          <div class="bubu-comedy-stage">
+            <div class="bubu-comedy-glow-ring"></div>
+            <img id="hero-bubu-comedy-img" src="images/bears/bubu-comedy-bonk.gif" alt="Cutu Bubu hilarious comedy" class="bubu-comedy-gif">
+            <div class="bubu-comedy-emojis" aria-hidden="true">
+              <span class="em-item em-1">🔨</span>
+              <span class="em-item em-2">😂</span>
+              <span class="em-item em-3">🤏</span>
+              <span class="em-item em-4">🤣</span>
             </div>
           </div>
 
-          <div class="bubu-ulta-caption">
-            <p class="bubu-ulta-text">“Emergency mood booster: Cutu Bubu is doing his signature ulta bum shake dance strictly to bring an instant smile on Madhee’s face! 🤭💃”</p>
-            <span class="bubu-ulta-sub">100% Guaranteed to make Madam CR smile!</span>
+          <div class="bubu-comedy-caption">
+            <p class="bubu-comedy-text" id="bubuComedyQuote">“Madhee punishing idiot Shubhod with squeaky hammer: ‘Itni badi stupid mistake kaun karta hai idiot?!’ 😂🔨”</p>
+            <span class="bubu-comedy-sub" id="bubuComedySub">Madhee vs Idiot Shubhod • 100% Real Footage</span>
           </div>
 
-          <div class="bubu-ulta-buttons">
-            <button type="button" class="bubu-ulta-btn active" onclick="switchBubuUltaDance('bum-duo', this)">
-              <span>🍑 Ulta Bum Shake</span>
+          <div class="bubu-comedy-buttons">
+            <button type="button" class="bubu-comedy-btn active" onclick="switchBubuComedy('bonk', this)">
+              <span>🔨 Bonk Idiot</span>
             </button>
-            <button type="button" class="bubu-ulta-btn" onclick="switchBubuUltaDance('bum-solo', this)">
-              <span>💃 Stool Bum Dance</span>
+            <button type="button" class="bubu-comedy-btn" onclick="switchBubuComedy('squish', this)">
+              <span>🤏 Squish Cheeks</span>
             </button>
-            <button type="button" class="bubu-ulta-btn smile-trigger-btn" onclick="triggerMadheeSmile()">
-              <span>😊 Smile Activated!</span>
+            <button type="button" class="bubu-comedy-btn" onclick="switchBubuComedy('pgl', this)">
+              <span>💃 PGL Aurat</span>
+            </button>
+            <button type="button" class="bubu-comedy-btn" onclick="switchBubuComedy('laugh', this)">
+              <span>🤣 Belly Laugh</span>
+            </button>
+            <button type="button" class="bubu-comedy-btn laugh-burst-btn" onclick="triggerMadheeLaugh()">
+              <span>😂 Tickle Bubu!</span>
             </button>
           </div>
-          <div id="bubu-smile-toast" class="bubu-smile-toast" aria-live="polite"></div>
+          <div id="bubu-laugh-toast" class="bubu-laugh-toast" aria-live="polite"></div>
         </div>
 
         <div class="hero-actions">

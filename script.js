@@ -1610,3 +1610,89 @@ function triggerMadheeSmile() {
   }
 }
 window.triggerMadheeSmile = triggerMadheeSmile;
+
+// ==========================================================================
+// CUTU BUBU COMEDY SHOW SWITCHER & LAUGH TRIGGER
+// ==========================================================================
+function switchBubuComedy(mode, btn) {
+  const img = document.getElementById('hero-bubu-comedy-img');
+  const quote = document.getElementById('bubuComedyQuote');
+  const sub = document.getElementById('bubuComedySub');
+  if (!img) return;
+
+  document.querySelectorAll('.bubu-comedy-buttons .bubu-comedy-btn:not(.laugh-burst-btn)').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  if (mode === 'bonk') {
+    img.src = 'images/bears/bubu-comedy-bonk.gif';
+    if (quote) quote.textContent = '“Madhee punishing idiot Shubhod with squeaky hammer: ‘Itni badi stupid mistake kaun karta hai idiot?!’ 😂🔨”';
+    if (sub) sub.textContent = 'Madhee vs Idiot Shubhod • 100% Real Footage';
+  } else if (mode === 'squish') {
+    img.src = 'images/bears/bubu-comedy-squish.gif';
+    if (quote) quote.textContent = '“Bubu squishing Dudu\'s cheeks: ‘Hasso ab jaldi se Madam CR, warna dono cheeks stretch kar doonga!’ 😜🤏”';
+    if (sub) sub.textContent = 'Squishy Cheeks Attack Mode';
+  } else if (mode === 'pgl') {
+    img.src = 'images/bears/bubu-comedy-pgl.gif';
+    if (quote) quote.textContent = '“Dudu doing his victory dance: ‘PGL AURAT... dekh Madhee thoda sa toh hassi na?!’ 💃✨”';
+    if (sub) sub.textContent = 'Official PGL Aurat Dance Routine';
+  } else if (mode === 'laugh') {
+    img.src = 'images/bears/bubu-comedy-laugh.gif';
+    if (quote) quote.textContent = '“Bubu laughing with his single goofy tooth until his stomach hurts! Hahahahaha! 😆🦷”';
+    if (sub) sub.textContent = 'Uncontrollable Belly Laugh';
+  }
+
+  img.style.transform = 'scale(1.15) rotate(3deg)';
+  setTimeout(() => { img.style.transform = ''; }, 260);
+}
+window.switchBubuComedy = switchBubuComedy;
+
+function triggerMadheeLaugh() {
+  const toast = document.getElementById('bubu-laugh-toast');
+  const img = document.getElementById('hero-bubu-comedy-img');
+  
+  if (img) {
+    img.style.transform = 'scale(1.22) rotate(-5deg)';
+    setTimeout(() => { img.style.transform = ''; }, 320);
+  }
+
+  const laughs = [
+    "😂 “Hahahah! Dekho dekho Madam CR hassi! Mission Successful!” 🔨🤣",
+    "🤏 “Pagal aurat hass di! Ab no more gussa, deal done!” 💖🤭",
+    "🤣 “Bubu falls on the floor laughing: ‘Yeh dekho idiot ko!’” 🦷💃",
+    "🌸 “Your real laugh is the cutest sound in the galaxy, Madhee!” 🥰✨"
+  ];
+  const msg = laughs[Math.floor(Math.random() * laughs.length)];
+
+  if (toast) {
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    toast.style.transform = 'scale(1.06)';
+    setTimeout(() => { toast.style.transform = 'scale(1)'; }, 200);
+  }
+
+  // Floating funny emojis
+  for (let i = 0; i < 18; i++) {
+    const el = document.createElement('div');
+    el.textContent = ['😂', '🤣', '🔨', '🤏', '💃', '😆', '✨', '💖'][Math.floor(Math.random() * 8)];
+    el.style.position = 'fixed';
+    el.style.left = (Math.random() * 84 + 8) + 'vw';
+    el.style.top = (Math.random() * 60 + 20) + 'vh';
+    el.style.fontSize = (Math.random() * 22 + 26) + 'px';
+    el.style.pointerEvents = 'none';
+    el.style.zIndex = '9999';
+    el.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0) scale(0.6)';
+    document.body.appendChild(el);
+
+    setTimeout(() => {
+      el.style.transform = `translateY(-${Math.random() * 140 + 70}px) scale(1.3) rotate(${Math.random()*40-20}deg)`;
+      el.style.opacity = '0';
+    }, 20);
+
+    setTimeout(() => {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    }, 1300);
+  }
+}
+window.triggerMadheeLaugh = triggerMadheeLaugh;
