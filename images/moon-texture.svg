@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <!-- Moon Base Gradient -->
+    <radialGradient id="moonSurface" cx="42%" cy="40%" r="58%" fx="38%" fy="36%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="35%" stop-color="#f2f5fc" />
+      <stop offset="65%" stop-color="#d5dde8" />
+      <stop offset="85%" stop-color="#b6c2d1" />
+      <stop offset="96%" stop-color="#8896a8" />
+      <stop offset="100%" stop-color="#647285" />
+    </radialGradient>
+
+    <!-- Outer Atmospheric Glow Gradient -->
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="rgba(255, 255, 255, 0.95)" />
+      <stop offset="78%" stop-color="rgba(215, 230, 255, 0.45)" />
+      <stop offset="88%" stop-color="rgba(165, 195, 255, 0.18)" />
+      <stop offset="100%" stop-color="rgba(140, 180, 255, 0)" />
+    </radialGradient>
+
+    <!-- Soft Crater Noise/Shading Filter -->
+    <filter id="craterShading" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+    </filter>
+  </defs>
+
+  <!-- Outer Glow Ring -->
+  <circle cx="250" cy="250" r="248" fill="url(#moonGlow)" opacity="0.85" />
+
+  <!-- Moon Body -->
+  <circle cx="250" cy="250" r="215" fill="url(#moonSurface)" />
+
+  <!-- Lunar Maria (Dark Basaltic Plains - Oceanus Procellarum, Mare Imbrium, Mare Serenitatis, etc.) -->
+  <g opacity="0.32" filter="url(#craterShading)">
+    <!-- Oceanus Procellarum (Left large expanse) -->
+    <path d="M120,170 Q100,240 140,310 Q190,340 210,300 Q200,220 170,180 Z" fill="#69778a" />
+    <path d="M140,150 Q160,110 200,120 Q220,160 190,190 Q150,190 140,150 Z" fill="#58667a" />
+    
+    <!-- Mare Imbrium (Upper center-left basin) -->
+    <circle cx="205" cy="185" r="42" fill="#5b6a7d" />
+    <circle cx="230" cy="165" r="28" fill="#66768a" />
+
+    <!-- Mare Serenitatis & Tranquillitatis (Upper-right central seas) -->
+    <circle cx="285" cy="190" r="32" fill="#5d6c7f" />
+    <circle cx="315" cy="235" r="38" fill="#58677a" />
+    <path d="M330,260 Q360,290 345,330 Q310,340 305,295 Z" fill="#617084" />
+    
+    <!-- Mare Crisium (Distinct round sea on far right) -->
+    <ellipse cx="370" cy="205" rx="22" ry="26" fill="#4d5c6f" />
+
+    <!-- Mare Nubium & Humorum (Lower half plains) -->
+    <circle cx="185" cy="295" r="30" fill="#647387" />
+    <circle cx="225" cy="335" r="34" fill="#5a697c" />
+    <path d="M250,320 Q290,350 260,380 Q220,380 230,340 Z" fill="#667588" />
+  </g>
+
+  <!-- Prominent Lunar Craters with Bright Ejecta Rays (Tycho & Copernicus) -->
+  <g opacity="0.45">
+    <!-- Tycho Rays (Southern crater rays) -->
+    <path d="M250,390 L160,280 M250,390 L340,300 M250,390 L210,430 M250,390 L300,425 M250,390 L130,360 M250,390 L370,350" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.4" />
+    <!-- Tycho Central Peak Crater -->
+    <circle cx="250" cy="390" r="8" fill="#ffffff" opacity="0.8" />
+    <circle cx="250" cy="390" r="4" fill="#6f7e91" />
+
+    <!-- Copernicus Crater (Central-left bright ray crater) -->
+    <circle cx="195" cy="230" r="9" fill="#ffffff" opacity="0.75" />
+    <circle cx="195" cy="230" r="5" fill="#617082" />
+
+    <!-- Kepler Crater -->
+    <circle cx="145" cy="225" r="5" fill="#ffffff" opacity="0.65" />
+    <circle cx="145" cy="225" r="2.5" fill="#617082" />
+
+    <!-- Aristarchus (Brightest spot on the moon) -->
+    <circle cx="130" cy="180" r="6" fill="#ffffff" opacity="0.9" />
+  </g>
+
+  <!-- Organic Subtle Rim Shadow / 3D Spherical Edge Falloff -->
+  <radialGradient id="sphereShadow" cx="44%" cy="42%" r="56%">
+    <stop offset="75%" stop-color="transparent" />
+    <stop offset="92%" stop-color="rgba(20, 28, 42, 0.15)" />
+    <stop offset="100%" stop-color="rgba(10, 16, 28, 0.45)" />
+  </radialGradient>
+  <circle cx="250" cy="250" r="215" fill="url(#sphereShadow)" />
+</svg>

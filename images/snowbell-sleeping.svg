@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 75" width="120" height="75">
+  <defs>
+    <filter id="cat-shadow2" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="rgba(0,0,0,0.2)"/>
+    </filter>
+  </defs>
+  <g filter="url(#cat-shadow2)">
+    <!-- Curled Fluffy Body -->
+    <ellipse cx="64" cy="46" rx="42" ry="24" fill="#ffffff" stroke="#f1f5f9" stroke-width="1.5"/>
+
+    <!-- Fluffy Tail curled up -->
+    <path d="M 98 48 C 112 40, 115 22, 102 18 C 96 16, 92 24, 98 32" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 98 48 C 112 40, 115 22, 102 18 C 96 16, 92 24, 98 32" fill="none" stroke="#f1f5f9" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Ears -->
+    <path d="M 28 32 L 20 12 L 40 24 Z" fill="#ffffff" stroke="#f1f5f9" stroke-width="1.5"/>
+    <path d="M 28 28 L 22 15 L 36 24 Z" fill="#fbcfe8"/>
+    <path d="M 56 32 L 66 12 L 48 24 Z" fill="#ffffff" stroke="#f1f5f9" stroke-width="1.5"/>
+    <path d="M 56 28 L 63 15 L 50 24 Z" fill="#fbcfe8"/>
+
+    <!-- Head Resting -->
+    <circle cx="42" cy="40" r="22" fill="#ffffff" stroke="#f1f5f9" stroke-width="1.5"/>
+
+    <!-- Sleeping Happy Eyes (Curved Lines) -->
+    <path d="M 32 38 Q 36 43 40 38" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M 46 38 Q 50 43 54 38" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Pink Nose -->
+    <polygon points="42,42 46,42 44,45" fill="#f472b6"/>
+
+    <!-- Tiny Mouth -->
+    <path d="M 42 46 Q 44 48 46 46" fill="none" stroke="#475569" stroke-width="1.4" stroke-linecap="round"/>
+
+    <!-- Blush -->
+    <circle cx="31" cy="43" r="3.5" fill="rgba(244, 114, 182, 0.4)"/>
+    <circle cx="55" cy="43" r="3.5" fill="rgba(244, 114, 182, 0.4)"/>
+
+    <!-- Paws tucked underneath but visible -->
+    <ellipse cx="36" cy="62" rx="7" ry="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+    <ellipse cx="50" cy="62" rx="7" ry="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+
+    <!-- Floating Z z z -->
+    <text x="14" y="24" font-family="'Caveat', cursive, sans-serif" font-size="12" font-weight="bold" fill="#a855f7">z</text>
+    <text x="8" y="16" font-family="'Caveat', cursive, sans-serif" font-size="14" font-weight="bold" fill="#c084fc">z</text>
+    <text x="2" y="8" font-family="'Caveat', cursive, sans-serif" font-size="16" font-weight="bold" fill="#e879f9">Z</text>
+  </g>
+</svg>

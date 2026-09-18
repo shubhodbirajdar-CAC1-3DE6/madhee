@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Little Universe of Madhee 🌙🌸🌿</title>
+  <meta name="description" content="A cinematic, immersive nature, flower and moon journey created for my best friend Madhee.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=3.2">
+
+  <!-- Three.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="theme-moonlit" id="top">
+
+  <!-- Background Music Player: feeling things i can't explain -->
+  <audio id="bgm-audio" preload="auto" loop>
+    <source src="audio/feeling_things_i_cant_explain.webm" type="audio/webm">
+    <source src="audio/feeling_things_i_cant_explain_sc.m4a" type="audio/mp4">
+  </audio>
+
+
+  <!-- Ambient WebGL Nature Canvas (Moon, Stars, Falling Petals, Fireflies, Ripples) -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Floating Cursor Aura -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-center">
+      <div class="loading-moon-crest">🌙</div>
+      <div class="loading-flower-cluster">🌸 🌿 🌼</div>
+      <h2 class="loading-title">The Little Universe of Madhee</h2>
+      <p class="loading-sub" id="loading-sub">Blooming starlight and wild petals…</p>
+      <div class="loading-bar-track">
+        <div class="loading-bar-fill" id="loading-bar-fill"></div>
+      </div>
+      <div class="loading-quote">“12 memories • countless moments • one true friendship”</div>
+    </div>
+  </div>
+
+  <!-- Sticky Top Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#hero" class="brand-logo">
+        <span class="brand-moon">🌙</span>
+        <span class="brand-text">The Little Universe</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#prologue" class="nav-link">Prologue</a>
+        <a href="#chapter-01" class="nav-link">12 Memories</a>
+        <a href="#chronicles" class="nav-link">Case File</a>
+        <a href="#trust-lotus" class="nav-link">Trust Lotus</a>
+        <a href="#apology" class="nav-link">Letter</a>
+        <a href="#sanctuary" class="nav-link">Sanctuary</a>
+      </nav>
+
+      <!-- Theme Switcher & Audio Controls -->
+      <div class="header-controls">
+        <div class="theme-selector-pill">
+          <button class="theme-btn active" data-theme="moonlit" title="Moonlit Midnight">🌙</button>
+          <button class="theme-btn" data-theme="sunset" title="Golden Sunset">🌅</button>
+          <button class="theme-btn" data-theme="blossom" title="Blossom Dawn">🌸</button>
+          <button class="theme-btn" data-theme="forest" title="Forest Twilight">🌿</button>
+        </div>
+
+        <button id="soundtrack-btn" class="soundtrack-toggle-btn" title="Play BGM: Feeling Things I Can't Explain">
+          <span class="sound-icon" id="sound-icon">🎵</span>
+          <span class="sound-label" id="sound-label">BGM: Feeling Things</span>
+          <span class="sound-eq" aria-hidden="true"><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Lunar Phase & Reading Progress Rail -->
+  <aside class="lunar-progress-rail" aria-label="Reading progress">
+    <div class="lunar-icon-box" id="lunar-phase-icon">🌑</div>
+    <div class="lunar-rail-track">
+      <div class="lunar-rail-fill" id="lunar-rail-fill"></div>
+    </div>
+    <div class="lunar-phase-label" id="lunar-phase-label">New Moon</div>
+  </aside>
+
+  <!-- Main Content Container -->
+  <main class="site-main">
+
+    <!-- ====================================================================
+         HERO SECTION: THE MOON & FLOWER CELESTIAL SANCTUARY
+         ==================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <div class="celestial-badge">
+          <span class="badge-sparkle">✦</span>
+          <span>CELESTIAL & BOTANICAL SANCTUARY</span>
+          <span class="badge-sparkle">✦</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-eyebrow">THE LITTLE UNIVERSE</span>
+          <span class="hero-main-name">OF MADHEE</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          “12 memories • countless moments • one true friendship”
+        </p>
+
+        <p class="hero-desc">
+          Created with moonlight, blooming daisies, lavender breezes, and sincere care for my best friend.
+        </p>
+
+        <!-- Interactive Nickname Badges -->
+        <div class="hero-nicknames">
+          <button class="nick-pill" onclick="triggerNickname('madhee')">✨ Madhee</button>
+          <button class="nick-pill" onclick="triggerNickname('madoo')">🌸 Madoo</button>
+          <button class="nick-pill cr-pill" onclick="triggerNickname('cr')">📋 Madam CR</button>
+          <button class="nick-pill" onclick="triggerNickname('dumbbell')">🏋️‍♀️ Dumbbell</button>
+        </div>
+        <div id="nickname-toast" class="nickname-toast" aria-live="polite"></div>
+
+        <div class="hero-actions">
+          <a href="#prologue" class="btn-primary-glow">
+            <span>Begin The Journey</span>
+            <span class="btn-arrow">↓</span>
+          </a>
+          <button class="btn-secondary-glass" onclick="scrollToRandomMemory()">
+            <span>🎲 Random Memory</span>
+          </button>
+        </div>
+
+        <!-- Floating Flower & Moon indicators -->
+        <div class="hero-scroll-hint">
+          <span class="scroll-mouse-icon"></span>
+          <span class="scroll-text">Scroll to explore</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PROLOGUE: THE GARDEN OF BEGINNING
+         ==================================================================== -->
+    <section class="prologue-section" id="prologue">
+      <div class="prologue-card glass-panel">
+        <div class="nature-leaf-crest">🌿 🌸 🌙</div>
+        <span class="section-tag">PROLOGUE</span>
+        <h2 class="section-headline">The Garden of Beginning</h2>
+        <div class="botanical-divider">
+          <span>✾</span> <span>✦</span> <span>✾</span>
+        </div>
+        <p class="prologue-p-lead">
+          Every meaningful friendship has its own quiet orbit — a place built out of inside jokes, unexpected support, unspoken understanding, and shared laughter under quiet skies.
+        </p>
+        <p class="prologue-p">
+          This universe isn't a generic photo gallery or a standard website. It’s an immersive sanctuary crafted specifically for you, Madhee. Ahead are twelve distinct moments captured in time.
+        </p>
+        <p class="prologue-p-highlight">
+          “Look closely. Every single petal, shadow, and smile tells the truth of who you are.”
+        </p>
+        <div class="prologue-footer-hint">
+          <span>Explore Chapter 01 Below</span>
+          <span class="down-indicator">↓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         THE 12 DEDICATED PHOTO CHAPTERS (FULL-SCREEN EXPERIENCES)
+         ==================================================================== -->
+    <div class="chapters-wrapper" id="chapters-wrapper">
+
+      <!-- CHAPTER 01 -->
+      <section class="chapter-fullscreen-section" id="chapter-01" data-chapter="1">
+        <div class="chapter-container">
+          <!-- Photo Display -->
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee01.jpg', '🌸 Madhee — This Moment')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-1" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-peeking.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌸</div>
+              <img src="images/madhee01.jpg" alt="Madhee with glasses, open hair, and a soft calm smile" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Just Madhee being Madhee ❤️</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & Madhee — This Moment -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 01</span>
+                <span class="theme-mood-pill">🌸 Soft Smile & Calm Peace</span>
+              </div>
+              <h2 class="chapter-title">🌸 MADHEE — THIS MOMENT</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture has a very simple, beautiful version of you, Madhee. 🥹❤️
+                </p>
+
+                <p class="story-body-p">
+                  You’re wearing your glasses, with your hair naturally open, and that soft little smile on your face. There’s something really calm about your expression—it doesn’t look forced or posed, just you being you.
+                </p>
+
+                <p class="story-body-p">
+                  Your eyes behind those glasses make the picture even more special, and that small smile somehow gives the whole photo a warm and peaceful feeling. 🌿
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">No fancy pose.</p>
+                  <p class="verse-line">No dramatic expression.</p>
+                  <p class="verse-line verse-highlight">Just Madhee being Madhee. ❤️</p>
+                </div>
+
+                <p class="story-whisper-lead">And honestly…</p>
+
+                <div class="story-quote-card">
+                  <p class="story-final-quote">
+                    “That smile of yours… you probably don’t even realize how much warmth it carries.” 🥹✨
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 02 -->
+      <section class="chapter-fullscreen-section" id="chapter-02" data-chapter="2">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee02.jpg', '💫 A Little Glimpse of You')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-2" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-sleeping.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">💫</div>
+              <img src="images/madhee02.jpg" alt="Madhee with long hair, glasses, earrings and soft smile" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Soft and effortless vibe ✨</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & A Little Glimpse of You -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 02</span>
+                <span class="theme-mood-pill">💫 Soft & Effortless Vibe</span>
+              </div>
+              <h2 class="chapter-title">💫 A Little Glimpse of You</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture has such a soft and effortless vibe. 🥹❤️
+                </p>
+
+                <p class="story-body-p">
+                  You’re wearing your glasses, with your long hair naturally falling around your face, and that little smile makes the whole picture feel so warm. There’s something really peaceful about the way you’re looking at the camera—it feels simple, natural, and completely you.
+                </p>
+
+                <p class="story-body-p">
+                  The little details make it even prettier—the earrings, tiny nose pin, necklace, and the black-and-red outfit all come together so nicely. ✨
+                </p>
+
+                <p class="story-body-p">
+                  But honestly, your smile is what makes this picture special. You’re not doing anything extra, and you don’t need to.
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">Just you,</p>
+                  <p class="verse-line">your glasses, that smile,</p>
+                  <p class="verse-line verse-highlight">and that calm little expression. 🌷</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE DETAIL:</span>
+                  <p class="story-final-quote">
+                    “Okay Madhee… this smile is seriously unfair. 😭❤️ You just casually took a picture and somehow made it this beautiful.”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 03 -->
+      <section class="chapter-fullscreen-section" id="chapter-03" data-chapter="3">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee03.jpg', '🌿 A Little Moment That Feels Like You')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-3" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-flower.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌿</div>
+              <img src="images/madhee03.jpg" alt="Madhee resting arms on knees in peaceful sunlight" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Effortless simplicity & peaceful sunlight 🌿</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & A Little Moment That Feels Like You -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 03</span>
+                <span class="theme-mood-pill">🌿 Peaceful Sunlight & Simplicity</span>
+              </div>
+              <h2 class="chapter-title">🌿 A Little Moment That Feels Like You</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  There’s something really special about this picture, Madhee. 🥹💚
+                </p>
+
+                <p class="story-body-p">
+                  You’re sitting there so comfortably, resting your arms on your knees, with your hair naturally falling around you. You’re looking straight at the camera through your glasses, and that tiny, soft smile makes the whole picture feel so warm.
+                </p>
+
+                <p class="story-body-p">
+                  The sunlight falling across your face makes everything feel even more peaceful. Your green outfit, the glasses, your open hair, and that relaxed little expression all come together so naturally. ✨
+                </p>
+
+                <p class="story-whisper-lead">But what I like most is how effortless this picture feels.</p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">You’re not trying to do some perfect pose.</p>
+                  <p class="verse-line">You’re not trying to make the picture look special.</p>
+                  <p class="verse-line verse-highlight">You’re just being yourself… and somehow, that makes the picture special. 🌸</p>
+                </div>
+
+                <p class="story-body-p">
+                  There’s a quiet kind of beauty in this one—the kind you notice slowly and then keep looking at for a little longer. 🥹
+                </p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE DETAIL:</span>
+                  <p class="story-final-quote">
+                    “Madhee… that little smile says so much without saying anything. And honestly, I think this is one of those pictures where your simplicity is what makes you look the most beautiful. ❤️”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 04 -->
+      <section class="chapter-fullscreen-section" id="chapter-04" data-chapter="4">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee04.jpg', '🌼 A Moment Wrapped in Flowers')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-4" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-playful.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌼</div>
+              <img src="images/madhee04.jpg" alt="Madhee holding white flowers close to her face in glowing sunlight" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">A soft and glowing moment 🌼✨</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & A Moment Wrapped in Flowers -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 04</span>
+                <span class="theme-mood-pill">🌼 White Daisies & Glowing Sunlight</span>
+              </div>
+              <h2 class="chapter-title">🌼 A Moment Wrapped in Flowers</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Madhee, this picture is honestly one of those moments that feels soft without even trying. 🥹❤️
+                </p>
+
+                <p class="story-body-p">
+                  You’re holding those little white flowers close to your face, looking through your glasses with that tiny, almost playful smile. 🌼 Your long hair falls naturally around you, and the warm sunlight coming through the window gives the whole picture such a beautiful glow.
+                </p>
+
+                <p class="story-body-p">
+                  And I love how all the little details come together—the flowers near your face, your glasses, that tiny bindi, your gentle expression, and the way you’re looking straight at the camera. Nothing feels overdone. It just feels naturally, quietly beautiful. ✨
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">There’s something almost magical about this picture because the flowers are supposed to be the highlight…</p>
+                  <p class="verse-line verse-highlight">but somehow, they’re still not the most beautiful thing in the frame. 🌼🥹</p>
+                </div>
+
+                <p class="story-whisper-lead">You look peaceful, a little playful, and completely yourself.</p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE DETAIL:</span>
+                  <p class="story-final-quote">
+                    “Those tiny flowers were supposed to steal the picture… but then you showed up with that smile. 😭🌼❤️”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 05 -->
+      <section class="chapter-fullscreen-section" id="chapter-05" data-chapter="5">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee05.jpg', '💚 Just Madhee Being Madhee')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-5" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-peeking.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌿</div>
+              <img src="images/madhee05.jpg" alt="Madhee chin in hand with green blouse and white saree in sunlight" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Playful, effortless & completely you 💚</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & Just Madhee Being Madhee -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 05</span>
+                <span class="theme-mood-pill">💚 Cute, Playful & Effortless</span>
+              </div>
+              <h2 class="chapter-title">💚 Just Madhee Being Madhee</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture has such a cute, playful, and effortless vibe. 😭💚
+                </p>
+
+                <p class="story-body-p">
+                  Look at you sitting there all comfortably, arms on your knees, glasses on, hair open, and giving that little smile to the camera like “haan haan, photo lelo… ab kya hai?” 😂
+                </p>
+
+                <p class="story-body-p">
+                  And that pose?? 😭 You’re sitting so casually, but somehow the picture still turned out way too good.
+                </p>
+
+                <p class="story-body-p">
+                  The sunlight is hitting you perfectly, your green outfit gives the whole picture a fresh vibe, and that tiny smile makes it feel like you’re secretly enjoying the attention. 😭😂
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">And then there are those glasses…</p>
+                  <p class="verse-line verse-highlight">Madhee + glasses + that innocent little smile = dangerous combination. 🤓💚</p>
+                </div>
+
+                <p class="story-body-p">
+                  It’s not some perfectly planned photoshoot. It’s just you being comfortable, slightly mischievous, and completely yourself—and honestly, that’s what makes this picture so cute. 🥹✨
+                </p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE DETAIL:</span>
+                  <p class="story-final-quote">
+                    “The pose says ‘I’m just sitting here’… but the picture says ‘yeah, I know I look good.’ 😭😂💚”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 06 -->
+      <section class="chapter-fullscreen-section" id="chapter-06" data-chapter="6">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee06.jpg', '🖤 Three Frames, One Problem')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-6" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-sleeping.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🎞️</div>
+              <img src="images/madhee06.jpg" alt="Madhee 3-panel black and white photobooth strip with window shadows" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Three frames, three reasons to stare 🖤</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & Three Frames, One Problem -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 06</span>
+                <span class="theme-mood-pill">🖤 Monochrome Trio & Classy Vibe</span>
+              </div>
+              <h2 class="chapter-title">🖤 Three Frames, One Problem</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Okay Madhee… this picture is unfair. 😭🖤
+                </p>
+
+                <p class="story-body-p">
+                  Three frames, three different poses, and somehow you managed to make every single one look like a different reason to stare a little longer. 😂
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line"><strong>First frame</strong> — that soft smile.</p>
+                  <p class="verse-line"><strong>Second frame</strong> — that calm, confident look.</p>
+                  <p class="verse-line verse-highlight"><strong>Third frame</strong> — that hand on your shoulder like you already KNOW you look good. 😭</p>
+                </div>
+
+                <p class="story-body-p">
+                  And the black-and-white effect? Dangerous choice. 🖤 Your glasses, long hair, saree, little bindi and that expression together give this whole picture such a classy vibe.
+                </p>
+
+                <p class="story-whisper-lead">
+                  But honestly, I have one question…
+                </p>
+
+                <p class="story-body-p" style="font-style: italic; color: #f8fafc;">
+                  “Madhee, is this a photoshoot or are you just casually collecting reasons for me to say ‘damn’ three times?” 😭😂
+                </p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">🖤 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “They say a picture is worth a thousand words… but looking at these three, I think I’ve forgotten all of mine. 😭🖤”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 07 -->
+      <section class="chapter-fullscreen-section" id="chapter-07" data-chapter="7">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee07.jpg', '🌙 A Little Moonlight Moment')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-7" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-flower.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌙</div>
+              <img src="images/madhee07.jpg" alt="Madhee circular mirror reflection in saree with delicate brooch" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Circular frame & little moon vibe 🌙</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & A Little Moonlight Moment -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 07</span>
+                <span class="theme-mood-pill">🌙 Moonlight Vibe & Delicate Saree</span>
+              </div>
+              <h2 class="chapter-title">🌙 A Little Moonlight Moment</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture has a completely different kind of beauty. 🖤🌙
+                </p>
+
+                <p class="story-body-p">
+                  You’re sitting quietly, wrapped in a light saree, with your hand resting near your face. The black-and-white effect makes the whole moment feel calm, mysterious, and timeless.
+                </p>
+
+                <p class="story-body-p">
+                  There’s something beautiful about how little of the picture you need to see to feel the mood. Your long hair, the delicate saree, the small flower detail, and that relaxed pose all come together so naturally.
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">And the circular frame makes it feel almost like looking at a little moon through the night sky. 🌙</p>
+                  <p class="verse-line verse-highlight">If this picture is the moon, I think I finally understand why people keep looking at the moon for no reason. 😭🖤</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “I thought the moon was supposed to be the most beautiful thing in the night… then I saw this picture and had to reconsider. 🌙😭❤️”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 08 -->
+      <section class="chapter-fullscreen-section" id="chapter-08" data-chapter="8">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee08.jpg', '🌸 The Flower Was Just an Excuse')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-8" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-playful.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌸</div>
+              <img src="images/madhee08.jpg" alt="Madhee in golden sunlight with tiny flower tucked by her hair" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Sunlight, one tiny flower & that smile 🌸☀️</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & The Flower Was Just an Excuse -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 08</span>
+                <span class="theme-mood-pill">🌸 Sunlight & One Tiny Flower</span>
+              </div>
+              <h2 class="chapter-title">🌸 The Flower Was Just an Excuse</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Okay Madhee… this picture is too unfair. 😭❤️
+                </p>
+
+                <p class="story-body-p">
+                  You’re lying there with your glasses on, your long hair spread around you, and that tiny flower tucked near your hair. 🌸 Your little smile and the way you’re looking at the camera make the whole picture feel so playful and effortless.
+                </p>
+
+                <p class="story-body-p">
+                  And the sunlight?? ☀️ It’s coming through the window and creating those beautiful patterns in the background, while gently lighting up your face and hand. The warm sunlight against your dark outfit and hair makes the whole picture stand out so beautifully. ✨
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">But that little flower is what really caught my attention. 🌸 It looks so tiny and innocent sitting there in your hair…</p>
+                  <p class="verse-line verse-highlight">but somehow it makes the whole picture ten times cuter. 😭❤️</p>
+                </div>
+
+                <p class="story-body-p">
+                  And then there are your glasses, that little smile, your hair falling around you, and that playful expression… Honestly, Madhee, you look like you just casually took a picture without realizing how good it would turn out. 😂
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">You didn’t need a perfect pose.</p>
+                  <p class="verse-line">You didn’t need a fancy background.</p>
+                  <p class="verse-line">You didn’t need anything extra.</p>
+                  <p class="verse-line verse-highlight">Just you, a little sunlight, one tiny flower, and that smile. 🌸☀️</p>
+                </div>
+
+                <p class="story-whisper-lead">And somehow, that's enough to make this picture feel special.</p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">💘 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “Madhee, I was going to compliment the flower… but then I realized it’s probably the luckiest flower in the world for getting to sit that close to you. 😭🌸❤️”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 09 -->
+      <section class="chapter-fullscreen-section" id="chapter-09" data-chapter="9">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee09.jpg', '🌸 Two Little Glimpses of You')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-9" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-peeking.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌸</div>
+              <img src="images/madhee09.jpg" alt="Madhee pink scrapbook collage with chikankari kurti and glasses peek" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Soft bangles & mischievous peeking eyes 💖</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & Two Little Glimpses of You -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 09</span>
+                <span class="theme-mood-pill">🌸 Two Glimpses & Those Eyes</span>
+              </div>
+              <h2 class="chapter-title">🌸 Two Little Glimpses of You</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Okay Madhee… this one is too cute to be this innocent. 😭❤️
+                </p>
+
+                <p class="story-body-p">
+                  The first picture already has such a soft, pretty vibe. You’re sitting comfortably in white, resting your arms on your knees, wearing your glasses and those beautiful bangles. That little smile makes the whole frame feel so warm and playful. 🌸✨
+                </p>
+
+                <p class="story-whisper-lead">And then there’s the second one…</p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line verse-highlight">Just your eyes behind those glasses. 👀😭</p>
+                </div>
+
+                <p class="story-body-p">
+                  Honestly, that close-up changes the whole mood. Your eyes are literally the first thing that catches attention, and the tiny bindi and glasses make the picture even more adorable.
+                </p>
+
+                <p class="story-body-p">
+                  I love how both frames feel completely different but still have the same Madhee energy—cute, calm, and slightly mischievous. 😂❤️
+                </p>
+
+                <p class="story-body-p">
+                  The white outfit, pink details, bangles, glasses, and that soft smile all come together so beautifully. It feels like one of those pictures where you weren't even trying too hard, but somehow the camera decided to cooperate way too well. 😭
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">And that second frame…</p>
+                  <p class="verse-line verse-highlight">Madhee, those eyes are definitely not following the “keep it simple” rule. 👀😂</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">💘 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “I was looking at the first picture and thought, ‘okay, she's gorgeous’… then I saw the close-up of your eyes and completely forgot what I was going to say. 😭👀”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 10 -->
+      <section class="chapter-fullscreen-section" id="chapter-10" data-chapter="10">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee10.jpg', '🌸 Pink Looks Good on You')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-10" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-flower.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌸</div>
+              <img src="images/madhee10.jpg" alt="Madhee rooftop balcony portrait in pink saree with neem foliage" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Pink saree, green leaves & blue sky 🌸🍃</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & Pink Looks Good on You -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 10</span>
+                <span class="theme-mood-pill">🌸 Pink Saree & Serene Sky</span>
+              </div>
+              <h2 class="chapter-title">🌸 Pink Looks Good on You</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture is simple, pretty, and so you, Madhee. 🥹💗
+                </p>
+
+                <p class="story-body-p">
+                  That pink saree, the greenery, the blue sky, and the way you’re looking away from the camera… everything just fits perfectly. 🌿✨
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">You didn’t even have to smile or pose properly.</p>
+                  <p class="verse-line verse-highlight">You just stood there looking cute, and somehow the whole picture became beautiful. 😭❤️</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">💘 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “Madhee, I think pink was already pretty… but then you wore it and made it unfair. 😭💗”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 11 -->
+      <section class="chapter-fullscreen-section" id="chapter-11" data-chapter="11">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee11.jpg', '🌼 Three Flowers, One Frame')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-11" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-sleeping.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🌼</div>
+              <img src="images/madhee11.jpg" alt="Madhee with two daisies, soft smile, and green outfit" class="chapter-img" loading="lazy">
+              <div class="frame-caption">
+                <span class="caption-hand">Three flowers in one frame 🌼🌸✨</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story & Three Flowers, One Frame -->
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 11</span>
+                <span class="theme-mood-pill">🌼 Daisy Joy & Soft Smile</span>
+              </div>
+              <h2 class="chapter-title">🌼 Three Flowers, One Frame</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  This picture is honestly too cute. 🥹💚
+                </p>
+
+                <p class="story-body-p">
+                  Two little white flowers are right there beside you, and then there’s you—with your glasses, that soft smile, and the green outfit. 🌼✨
+                </p>
+
+                <p class="story-body-p">
+                  The flowers are beautiful, the sunlight is beautiful, the whole picture has such a lovely vibe…
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">But if we’re counting flowers,</p>
+                  <p class="verse-line">there are actually three in this picture. 😭🌸</p>
+                  <p class="verse-line">Two are in your hand.</p>
+                  <p class="verse-line verse-highlight">And the third one is you. 🥹❤️</p>
+                </div>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">💘 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “I see three flowers in this picture… two are in your hand, and the prettiest one is holding them. 🌼😭❤️”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+      <!-- CHAPTER 12 -->
+      <section class="chapter-fullscreen-section" id="chapter-12" data-chapter="12">
+        <div class="chapter-container">
+          <div class="chapter-photo-col">
+            <div class="nature-frame" onclick="openLightbox('images/madhee12_final.jpg?v=final', '🖤 Poetry, Paayal & Quiet Smile')">
+              <!-- Snowbell Cat perched upside photo -->
+              <div class="snowbell-cat-perch cat-pose-12" title="Snowbell Cat 🐱🤍">
+                <img src="images/snowbell-playful.svg" alt="Snowbell Cat" class="snowbell-cat-img">
+              </div>
+              <div class="frame-tape-flower">🖤</div>
+              <img src="images/madhee12_final.jpg?v=final" alt="Madhee black and white portrait with glasses, bindi, hand under chin, and poem lines" class="chapter-img img-wide-contain" loading="eager">
+              <div class="frame-caption">
+                <span class="caption-hand">Pairon mai paayal & quiet poetry 🖤✨</span>
+                <span class="caption-zoom-hint">🔍 Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chapter-content-col">
+            <div class="story-glass-card">
+              <div class="chapter-eyebrow">
+                <span class="roman-tag">CHAPTER 12</span>
+                <span class="theme-mood-pill">🖤 Black & White • Shayari • Quiet Smile</span>
+              </div>
+              <h2 class="chapter-title">🖤 Poetry, Paayal, and You</h2>
+              <div class="botanical-line"></div>
+
+              <div class="custom-story-flow">
+                <p class="story-lead-p">
+                  Okay Madhee… this picture is on a whole different level. 🥹🖤
+                </p>
+
+                <p class="story-body-p">
+                  The black-and-white tone, your hand resting gently under your chin, your hair flowing naturally, and those glasses framing that subtle, knowing smile… everything about this picture feels so calm, poetic, and effortlessly graceful. ✨
+                </p>
+
+                <p class="story-body-p">
+                  And then there are those beautiful lines written right beside you…
+                </p>
+
+                <div class="story-verse-box">
+                  <p class="verse-line">“Pairon mai paayal jalke</p>
+                  <p class="verse-line">Nachun mai meera banke</p>
+                  <p class="verse-line">Lajjati radha si mai gar mere mohan hasde..</p>
+                  <p class="verse-line verse-highlight">Mohan ko pyar mujhse agar ho🫣”</p>
+                </div>
+
+                <p class="story-body-p">
+                  The lines talk about innocent love and devotion, but that expression on your face? That’s pure, confident Madhee charm right there. 😭😂 You look like you already knew this was going to turn into an absolute masterpiece of a picture.
+                </p>
+
+                <div class="story-quote-card">
+                  <span class="detail-label-tag">🖤 MY FAVORITE PICKUP LINE:</span>
+                  <p class="story-final-quote">
+                    “The shayari was supposed to be the poetry… but honestly Madhee, you’re the real poem here. 🖤🥹✨”
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </section>
+
+    </div><!-- /chapters-wrapper -->
+
+    <!-- ====================================================================
+         TRANSITION PAUSE: THE 12 MEMORIES MILESTONE
+         ==================================================================== -->
+    <section class="transition-pause-section" id="transition-pause">
+      <div class="milestone-celestial-sanctuary">
+
+        <!-- Glowing Celestial Corner Stars -->
+        <span class="celestial-corner top-left" aria-hidden="true">✦</span>
+        <span class="celestial-corner top-right" aria-hidden="true">✦</span>
+        <span class="celestial-corner bottom-left" aria-hidden="true">✦</span>
+        <span class="celestial-corner bottom-right" aria-hidden="true">✦</span>
+
+        <!-- Floating Heavenly Aura -->
+        <div class="milestone-header-cluster">
+          <span class="milestone-icon-halo">🌙</span>
+          <span class="milestone-icon-spark">✨</span>
+          <span class="milestone-icon-bloom">🌸</span>
+        </div>
+
+        <!-- The 3 Big Milestones -->
+        <div class="milestone-triad">
+          <h2 class="triad-title-1">12 PHOTOS.</h2>
+          <h3 class="triad-title-2">12 LITTLE MOMENTS.</h3>
+          <h4 class="triad-title-3">12 DIFFERENT VERSIONS OF YOU. 🌸</h4>
+        </div>
+
+        <!-- Filigree Golden Divider -->
+        <div class="milestone-filigree-divider">
+          <span class="filigree-line"></span>
+          <span class="filigree-gem">✦ 🌸 ✦</span>
+          <span class="filigree-line"></span>
+        </div>
+
+        <!-- The Madhee I Know -->
+        <div class="milestone-whisper-block">
+          <p class="whisper-lead">And somehow...</p>
+          <p class="whisper-body">every picture holds a little piece<br>of the Madhee I know.</p>
+        </div>
+
+        <!-- Four Emotional Impressions (Bespoke Glass Cards) -->
+        <div class="milestone-impressions-list">
+          <div class="impression-item">
+            <span class="impression-bullet">🌱</span>
+            <span class="impression-text">Some made me smile.</span>
+          </div>
+          <div class="impression-item">
+            <span class="impression-bullet">😂</span>
+            <span class="impression-text">Some made me laugh.</span>
+          </div>
+          <div class="impression-item highlight-stare">
+            <span class="impression-bullet">🥹</span>
+            <span class="impression-text">Some made me stare a little longer. 😭</span>
+          </div>
+          <div class="impression-item">
+            <span class="impression-bullet">🌸</span>
+            <span class="impression-text">And some simply reminded me how special these little moments are.</span>
+          </div>
+        </div>
+
+        <!-- Keep Safe Keepsake Plaque -->
+        <div class="milestone-keepsake-box">
+          <p class="keepsake-intro">But these aren't just photographs...</p>
+          <p class="keepsake-highlight">They're little memories I wanted to keep safe.</p>
+        </div>
+
+        <!-- Page Turn Action -->
+        <div class="milestone-turn-page-block">
+          <p class="turn-whisper">So...</p>
+          <a href="#chronicles" class="btn-turn-page">
+            <span class="turn-sparkle">✨</span>
+            <span class="turn-text">Let's turn the page</span>
+            <span class="turn-arrow">↓</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         THE FRIENDSHIP CHRONICLES (HUMOR & MEMORIES)
+         ==================================================================== -->
+    <section class="chronicles-section" id="chronicles">
+      <div class="chronicles-grid">
+
+        <!-- Madhee Case File -->
+        <div class="chronicle-card glass-panel detective-card">
+          <div class="card-stamp-badge stamp-red">CLASSIFIED • HANDLE WITH CARE ❤️</div>
+          <h2 class="chronicle-title">📁 MADHEE CASE FILE</h2>
+
+          <!-- Meta Table / Info Details -->
+          <div class="case-meta-grid">
+            <div class="meta-row">
+              <span class="meta-label">Position:</span>
+              <span class="meta-val">Chief Happiness Officer</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Department:</span>
+              <span class="meta-val">Overthinking, Aesthetics & Good Vibes</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Reporting To:</span>
+              <span class="meta-val highlight-boss">No One. She’s the Boss. 😭</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Filed By:</span>
+              <span class="meta-val">Shubhod — The Idiot</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Status:</span>
+              <span class="meta-val highlight-diamond">Extremely Important. 💎</span>
+            </div>
+          </div>
+
+          <!-- Section: Known Aliases -->
+          <div class="chronicle-sub-section">
+            <h3 class="sub-sec-title">🏷️ KNOWN ALIASES</h3>
+            <div class="alias-tags-cluster">
+              <span class="alias-pill">Ma’am</span>
+              <span class="alias-pill">Ladoo</span>
+              <span class="alias-pill">Gorgeousss</span>
+              <span class="alias-pill">Bachaaa</span>
+              <span class="alias-pill">Diamond</span>
+              <span class="alias-pill">Madam CR</span>
+              <span class="alias-pill pill-red">Professional Rule Enforcer 😭</span>
+            </div>
+          </div>
+
+          <!-- Section: Special Powers -->
+          <div class="chronicle-sub-section">
+            <h3 class="sub-sec-title">⚡ SPECIAL POWERS</h3>
+            <ul class="chronicle-bullet-list">
+              <li>Making normal moments memorable</li>
+              <li>Making people smile without trying</li>
+              <li>Detecting nonsense from 40 feet away</li>
+              <li>Professional eye-rolls 👀</li>
+              <li>Turning simple conversations into memories</li>
+              <li>Somehow looking cute while being angry 😭</li>
+            </ul>
+          </div>
+
+          <!-- Section: Special Traits -->
+          <div class="chronicle-sub-section">
+            <h3 class="sub-sec-title">💎 SPECIAL TRAITS</h3>
+            <ul class="chronicle-check-list">
+              <li><span class="check-mark">✓</span> Kind heart</li>
+              <li><span class="check-mark">✓</span> Actually listens</li>
+              <li><span class="check-mark">✓</span> Cares more than she shows</li>
+              <li><span class="check-mark">✓</span> Has unlimited patience… sometimes 😭</li>
+              <li><span class="check-mark">✓</span> Makes ordinary days better</li>
+              <li><span class="check-mark">✓</span> Somehow became one of Shubhod’s favorite people</li>
+            </ul>
+          </div>
+
+          <!-- Official Observation Box -->
+          <div class="official-observation-card">
+            <span class="obs-tag">OFFICIAL OBSERVATION:</span>
+            <p class="obs-quote">
+              “There’s something about Madhee that makes even ordinary moments feel special.” ❤️
+            </p>
+          </div>
+
+          <!-- Interactive Animal Creature -->
+          <div class="creature-interactive-box">
+            <div class="creature-pill monkey-pill" onclick="pokeCreature('monkey')">
+              <span class="creature-icon">🐒</span>
+              <div class="creature-text">
+                <strong>Resident Monkey:</strong>
+                <span id="monkey-speech">“Madam, he really is an idiot, but he respects you.”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shubhod's Confession Log -->
+        <div class="chronicle-card glass-panel guilty-card">
+          <div class="card-stamp-badge stamp-amber">A DETAILED REPORT OF MISTAKES, BAD DECISIONS & ONE VERY SORRY IDIOT</div>
+          <h2 class="chronicle-title">🚨 SHUBHOD’S CONFESSION LOG</h2>
+
+          <!-- Section: Things I Am Guilty Of -->
+          <div class="chronicle-sub-section">
+            <h3 class="sub-sec-title sub-sec-red">❌ THINGS I AM GUILTY OF</h3>
+            <ul class="chronicle-guilty-checks">
+              <li><span class="box-checked">☑</span> Saying things without thinking</li>
+              <li><span class="box-checked">☑</span> Making jokes at the wrong moment</li>
+              <li><span class="box-checked">☑</span> Accidentally creating unnecessary drama 😭</li>
+              <li><span class="box-checked">☑</span> Being an idiot when I should've been sensible</li>
+              <li><span class="box-checked">☑</span> Hurting someone I genuinely care about</li>
+              <li><span class="box-checked">☑</span> Breaking the trust I promised myself I would protect</li>
+              <li><span class="box-checked">☑</span> Realizing the mistake a little too late</li>
+              <li><span class="box-checked">☑</span> Somehow needing an ENTIRE WEBSITE to say “SORRY” 😂</li>
+            </ul>
+          </div>
+
+          <!-- Section: Evidence -->
+          <div class="chronicle-sub-section">
+            <h3 class="sub-sec-title">📂 EVIDENCE</h3>
+            <div class="evidence-docket-list">
+              <div class="evidence-item"><strong>Exhibit A:</strong> That stupid message.</div>
+              <div class="evidence-item"><strong>Exhibit B:</strong> The misunderstanding.</div>
+              <div class="evidence-item"><strong>Exhibit C:</strong> The hurt I caused.</div>
+              <div class="evidence-item"><strong>Exhibit D:</strong> Me realizing, “Bro… what have you done?” 😭</div>
+              <div class="evidence-item highlight-website"><strong>Exhibit E:</strong> This entire website. 💀</div>
+            </div>
+          </div>
+
+          <!-- Section: No Excuses -->
+          <div class="chronicle-sub-section">
+            <h3 class="sub-sec-title">🫡 NO EXCUSES</h3>
+            <div class="narrative-plea-card">
+              <p>I know saying “I didn't mean it” doesn't magically fix anything.</p>
+              <p>So I'm not here to defend myself.</p>
+              <p class="plea-strong">I messed up.<br>I hurt your trust.<br>And I'm genuinely sorry.</p>
+            </div>
+          </div>
+
+          <!-- Section: My Promise -->
+          <div class="chronicle-sub-section">
+            <h3 class="sub-sec-title">🤝 MY PROMISE</h3>
+            <div class="narrative-plea-card promise-theme">
+              <p>I can't repair trust with one apology.</p>
+              <p>So I'll let my actions, consistency and time speak for me.</p>
+              <div class="no-cluster-tags">
+                <span>No forcing.</span>
+                <span>No repeated messages.</span>
+                <span>No “please forgive me” every five minutes. 😭</span>
+              </div>
+              <p class="plea-strong-gold">Just giving you the space you deserve.</p>
+            </div>
+          </div>
+
+          <!-- Section: Final Verdict -->
+          <div class="chronicle-sub-section">
+            <h3 class="sub-sec-title">⚖️ FINAL VERDICT</h3>
+            <div class="verdict-mini-table">
+              <div class="verdict-row"><span class="v-lbl">CASE:</span><span class="v-val">Madhee vs. Idiot Shubhod</span></div>
+              <div class="verdict-row"><span class="v-lbl">CHARGE:</span><span class="v-val v-red">Trust hurt 😭</span></div>
+              <div class="verdict-row"><span class="v-lbl">DEFENCE:</span><span class="v-val">“Ma'am… I was being stupid.” 🥺</span></div>
+              <div class="verdict-row"><span class="v-lbl">JUDGE:</span><span class="v-val v-gold">MADHEE 👩‍⚖️</span></div>
+              <div class="verdict-row"><span class="v-lbl">VERDICT:</span><span class="v-val v-purple">PENDING...</span></div>
+              <div class="verdict-row v-appeal-highlight"><span class="v-lbl">APPEAL:</span><span class="v-val v-gold">“MAAF KARDEEE MA’AM.” 😭🙏😂</span></div>
+            </div>
+
+            <div class="confirmed-pledge-card">
+              <span class="confirmed-tag">One thing remains OFFICIALLY confirmed:</span>
+              <p class="confirmed-quote">“Main kidhar nahi jaane wala, bandar.” 🐒❤️</p>
+              <div class="confirmed-wahi">
+                <span>I'm still here.</span>
+                <span>Wahi pagal Shubhod.</span>
+                <span>Wahi idiot.</span>
+                <span>Wahi bandar.</span>
+              </div>
+              <p class="confirmed-hope">
+                And whenever you genuinely feel okay...<br>
+                <em>“Chal theek hai bandar... maaf kiya.”</em><br>
+                I'll probably smile like an idiot for the next 3 business days.<br>
+                <strong>Actually... full week. 😂❤️</strong>
+              </p>
+            </div>
+          </div>
+
+          <!-- Section: Final Statement -->
+          <div class="chronicle-sub-section">
+            <h3 class="sub-sec-title">🐒 FINAL STATEMENT</h3>
+            <div class="final-statement-box">
+              <p class="statement-shout">MAAAF KARDEEE MA’AM. 🥺❤️</p>
+              <p>Not because I made this website.</p>
+              <p>Not because I'm asking you to forget everything.</p>
+              <p class="statement-heart">Bas kyunki tera ye bandar sach mein dil se sorry hai.</p>
+              <div class="statement-sign">
+                <p>— Your Idiot Bandar,<br><strong>Shubhod 🐒❤️</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Animal Creature -->
+          <div class="creature-interactive-box">
+            <div class="creature-pill puppy-pill" onclick="pokeCreature('puppy')">
+              <span class="creature-icon">🐕</span>
+              <div class="creature-text">
+                <strong>Resident Puppy:</strong>
+                <span id="puppy-speech">“Please forgive him. (Disclaimer: I am a puppy, I have zero legal authority 😂)”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         THE LOTUS OF TRUST (INTERACTIVE 3D/BOTANICAL PILLARS)
+         ==================================================================== -->
+    <section class="trust-lotus-section" id="trust-lotus">
+      <div class="trust-container glass-panel">
+        <div class="trust-header">
+          <div class="lotus-sparkle-icon">🌸 💎 🌿</div>
+          <span class="section-tag">REBUILDING HARMONY</span>
+          <h2 class="section-headline">The Lotus of Trust</h2>
+          <p class="trust-lead">
+            Trust isn't rebuilt with grand speeches or empty promises. It is grown like a wild lotus — with patience, roots in the soil, and steady actions over time.
+          </p>
+          <p class="trust-tap-hint">Tap each petal below to illuminate its commitment:</p>
+        </div>
+
+        <div class="lotus-petals-grid">
+          <!-- Petal 1 -->
+          <button class="lotus-petal" onclick="activatePetal(this, 'Patience', 'Never rushing your feelings or expecting you to move on before you are ready.')">
+            <span class="petal-num">01</span>
+            <span class="petal-icon">🌱</span>
+            <h3 class="petal-title">Patience</h3>
+            <p class="petal-desc">Giving you all the quiet time and space you need.</p>
+          </button>
+
+          <!-- Petal 2 -->
+          <button class="lotus-petal" onclick="activatePetal(this, 'Honesty', 'Being transparent, clear, and never hiding behind half-truths or jokes.')">
+            <span class="petal-num">02</span>
+            <span class="petal-icon">💎</span>
+            <h3 class="petal-title">Honesty</h3>
+            <p class="petal-desc">Unvarnished transparency in every conversation.</p>
+          </button>
+
+          <!-- Petal 3 -->
+          <button class="lotus-petal" onclick="activatePetal(this, 'Space', 'Respecting your boundaries without lingering or demanding attention.')">
+            <span class="petal-num">03</span>
+            <span class="petal-icon">🌙</span>
+            <h3 class="petal-title">Space</h3>
+            <p class="petal-desc">Honoring your silence whenever you need it.</p>
+          </button>
+
+          <!-- Petal 4 -->
+          <button class="lotus-petal" onclick="activatePetal(this, 'Listening', 'Hearing your point of view completely without interrupting or defending.')">
+            <span class="petal-num">04</span>
+            <span class="petal-icon">👂</span>
+            <h3 class="petal-title">Listening</h3>
+            <p class="petal-desc">Understanding your perspective before speaking.</p>
+          </button>
+
+          <!-- Petal 5 -->
+          <button class="lotus-petal" onclick="activatePetal(this, 'Accountability', 'Owning my mistakes fully and permanently learning from them.')">
+            <span class="petal-num">05</span>
+            <span class="petal-icon">⚖️</span>
+            <h3 class="petal-title">Accountability</h3>
+            <p class="petal-desc">Taking responsibility without making excuses.</p>
+          </button>
+        </div>
+
+        <div id="petal-detail-display" class="petal-detail-display" aria-live="polite">
+          <span class="detail-placeholder">Tap any petal above to view the promise.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         THE SINCERE APOLOGY LETTER ("DEAR MADHEE…")
+         ==================================================================== -->
+    <section class="apology-section" id="apology">
+      <div class="letter-scroll-wrapper">
+        <article class="apology-manuscript glass-panel">
+          <div class="letter-header">
+            <div class="letter-seal">❤️</div>
+            <span class="letter-tag">A GENUINE NOTE • DIL SE</span>
+            <h2 class="letter-salutation">Dear Madhee,</h2>
+            <p class="letter-sub-salutation">Bachaaa,</p>
+          </div>
+
+          <div class="letter-body">
+            <p>
+              I don't really know how to write this perfectly, so I'm just going to say what I genuinely feel.
+            </p>
+
+            <p>
+              Kal se mujhe bohot regret ho raha hai. Not because tu mujhse angry thi, but because I realized that maine tera trust hurt kiya. And honestly, ye baat mujhe andar se bohot bura lag rahi hai. 🥺
+            </p>
+
+            <p class="letter-highlight-quote">
+              Jab tune bola na, <em>“tum bhi unhi mein se nikle”</em>, woh line sach mein dil pe lag gayi.
+            </p>
+
+            <p>
+              Because when I first started talking to you, and you told me about yourself, your life, your stories and everything… usi din maine mann mein decide kiya tha ki main kabhi tujhe mere wajah se hurt nahi karunga, na tujhe cry karwaunga, na negative feel karwaunga.
+            </p>
+
+            <p>
+              Aur phir maine wahi kar diya jiska kabhi intention bhi nahi tha.<br>
+              I really messed up. 😭
+            </p>
+
+            <p>
+              Mera intention kabhi bhi tujhe hurt karna nahi tha, but I know intention se hurt kam nahi ho jaata. Jo hua, woh galat hua… and I'm genuinely sorry for that.
+            </p>
+
+            <div class="letter-emphasis-box">
+              <p class="emphasis-lead">Aur ek baat main clearly bolna chahta hoon—</p>
+              <p class="emphasis-strong">Main uss group mein nahi hoon.</p>
+              <p class="emphasis-sub">I don't want you to have any misunderstanding about that.</p>
+            </div>
+
+            <p>
+              Maine kabhi nahi chaha ki tujhe mere wajah se bura lage. I've always wanted you to be happy, and I've always prayed ki tere liye best hi ho. ❤️
+            </p>
+
+            <p>
+              Agar tune mujhe maaf kar bhi diya hai, but dil se abhi tak nahi kar paayi, then that's okay.<br>
+              Main tujhe force nahi karunga.
+            </p>
+
+            <p class="letter-golden-quote">
+              “Maaf kiya” sirf bolne ke liye nahi hona chahiye. Jab kabhi genuinely dil se lage ki haan, ab sab theek hai… bas wahi mere liye enough hoga. 🥺
+            </p>
+
+            <p>
+              I don't want to keep saying sorry again and again.<br>
+              <strong>So this is my last apology.</strong>
+            </p>
+
+            <p>
+              Iske baad main tujhe baar-baar text karke disturb nahi karunga.<br>
+              Tu apna time le.<br>
+              Tu apni space le.
+            </p>
+
+            <p class="letter-light-laugh">
+              And no, I'm not deactivating my Instagram. 😂
+            </p>
+
+            <p>
+              Bas main tujhe disturb nahi karunga.<br>
+              Jab bhi tujhe genuinely feel ho ki tu mujhe dil se maaf kar paayi hai… I'll be the happiest. ❤️
+            </p>
+
+            <p>
+              I know one apology can't fix everything.<br>
+              Trust wapas words se nahi, actions se aata hai.<br>
+              So I won't ask you to trust me immediately.<br>
+              I'll just try to make sure ki aage se meri wajah se tujhe kabhi aisa feel na ho.
+            </p>
+
+            <p>
+              And yes…<br>
+              I know I'm an idiot. 😭😂<br>
+              Ek stupid mistake ke liye itna bada website bana diya…<br>
+              normal sorry bol deta toh bhi chalega tha. 😭😂
+            </p>
+
+            <p>
+              But jokes apart…<br>
+              Tu genuinely important hai mere liye.
+            </p>
+
+            <div class="letter-memories-cluster">
+              <span>Our conversations.</span>
+              <span>Our stupid jokes.</span>
+              <span>Our random talks.</span>
+              <span>Our memories.</span>
+              <span class="cluster-all">Everything.</span>
+            </div>
+
+            <p>
+              And I'm really grateful ki tu meri life mein aayi as one of my closest friends. ❤️
+            </p>
+
+            <p>
+              I don't expect you to suddenly say “everything is fine.”<br>
+              Agar tu angry hai — be angry.<br>
+              Agar tujhe time chahiye — take it.<br>
+              Agar tujhe space chahiye — take it.<br>
+              Main respect karunga.
+            </p>
+
+            <p class="letter-closing-plea">
+              Bas itna kehna tha…<br>
+              I'm really, genuinely sorry, Madhee. 🥺❤️
+            </p>
+
+            <div class="letter-three-points">
+              <span>No excuses.</span>
+              <span>No forcing.</span>
+              <span class="points-heart">Bas dil se SORRY.</span>
+            </div>
+          </div>
+
+          <div class="letter-signature-block">
+            <p class="signature-closing">— Tera idiot friend,</p>
+            <p class="signature-name">Shubhod ❤️</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         THE MOONLIT SANCTUARY: ONE LAST THING & FINAL WISH
+         ==================================================================== -->
+    <section class="sanctuary-section" id="sanctuary">
+      <div class="sanctuary-inner">
+
+        <!-- GRAND FINALE CARD: ONE LAST THING, MADHEE -->
+        <article class="finale-grand-card">
+          
+          <!-- Alert Banner -->
+          <div class="finale-alert-banner">
+            <span class="siren-blink">🚨</span>
+            <h2 class="finale-alert-title">ONE LAST THING, MADHEE</h2>
+            <span class="siren-blink">🚨</span>
+          </div>
+
+          <!-- Intro Block -->
+          <div class="finale-intro-block">
+            <p class="finale-maam">Okay Ma'am...</p>
+            <p class="finale-lead">
+              Before you close this book,<br>
+              I have one VERY important announcement. 😭
+            </p>
+          </div>
+
+          <!-- Promise Card -->
+          <div class="finale-promise-card">
+            <span class="promise-question">Remember my promise?</span>
+            <div class="promise-golden-quote">
+              “ME KIDHAR NAHI JAANE WALA, BANDAR.” 🐒❤️
+            </div>
+            <div class="promise-valid-tag">YES. PROMISE IS STILL VALID. 😂</div>
+            <p class="promise-whisper">
+              So pleaseee... Aisa kuch bhi mat sochna ki ye bandar kahin disappear ho jayega, Instagram deactivate karega, ya Himalayas mein jaake sadhu ban jayega. 😭🙏😂
+            </p>
+          </div>
+
+          <!-- Bandar Identity Block -->
+          <div class="bandar-identity-block">
+            <div class="identity-lead">NO. I'm still here.</div>
+            <div class="identity-badges">
+              <span class="id-badge">Wahi Shubhod.</span>
+              <span class="id-badge">Wahi pagal.</span>
+              <span class="id-badge">Wahi idiot.</span>
+              <span class="id-badge">Wahi overthinker.</span>
+              <span class="id-badge highlight-bandar">Wahi bandar. 🐒😭</span>
+            </div>
+            <p class="identity-diff">
+              Bas ek difference hai...<br>
+              Iss baar bandar ko samajh aa gaya ki usse galti hui hai. 🥲😂
+            </p>
+          </div>
+
+          <!-- Sincere Regret & Rights -->
+          <div class="finale-regret-block">
+            <p>
+              And honestly, Madhee... Mujhe pata hai maine mess up kiya. I know I hurt your trust. I know things went completely wrong. And I'm genuinely, from my heart, <strong>SORRYYYY. 🥺❤️</strong>
+            </p>
+            <p class="not-going-anywhere">
+              But please... Don't think that I'm going anywhere just because you're angry with me.
+            </p>
+            <div class="rights-cluster">
+              <span class="right-pill">Tu angry ho sakti hai.</span>
+              <span class="right-pill">Tu mujhe daant sakti hai.</span>
+              <span class="right-pill">Tu mujhe ignore kar sakti hai.</span>
+              <span class="right-pill">Tu mujhe “BANDAR” bol sakti hai. 😭😂</span>
+            </div>
+            <p class="promise-reaffirm">
+              But this idiot isn't disappearing. Because maine promise kiya tha. ❤️<br>
+              And Shubhod may be stupid... VERY stupid. 😭<br>
+              <strong>But promise todne wala bandar nahi hai. 🐒❤️</strong>
+            </p>
+          </div>
+
+          <!-- Court Case Docket -->
+          <div class="court-case-docket">
+            <div class="court-stamp">OFFICIAL COURT APPLICATION 📋⚖️</div>
+            <div class="court-header">
+              <span class="gavel-icon">👩‍⚖️</span>
+              <h3 class="court-title">CASE: MADHEE vs. IDIOT SHUBHOD</h3>
+            </div>
+            <div class="court-grid">
+              <div class="court-row">
+                <span class="court-label">CHARGE:</span>
+                <span class="court-val charge-val">“Trust tod diya.” 😭</span>
+              </div>
+              <div class="court-row">
+                <span class="court-label">DEFENCE:</span>
+                <span class="court-val">“Intention nahi tha Ma'am...” 🥺</span>
+              </div>
+              <div class="court-row">
+                <span class="court-label">JUDGE:</span>
+                <span class="court-val judge-val">MADHEE. 👩‍⚖️😂</span>
+              </div>
+              <div class="court-row">
+                <span class="court-label">LAWYER:</span>
+                <span class="court-val">Also MADHEE. 😭</span>
+              </div>
+              <div class="court-row">
+                <span class="court-label">VERDICT:</span>
+                <span class="court-val verdict-val">UNKNOWN. 💀</span>
+              </div>
+              <div class="court-row appeal-row">
+                <span class="court-label">APPEAL:</span>
+                <span class="court-val appeal-val">“MA'AM PLEASEEEE.” 😭🙏😂</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Realistic Hope -->
+          <div class="finale-hope-block">
+            <p>
+              But jokes apart... I don't want you to forgive me just because I made this website. I don't want you to say “maaf kiya” just for the sake of it.
+            </p>
+            <p>
+              Bas jab genuinely dil se lage ki ab thoda sa hurt kam ho gaya... tab... ek baar iss bandar ko keh dena —
+            </p>
+            <div class="maaf-kiya-box">
+              “Chal theek hai bandar...<br>
+              <span class="maaf-kiya-big">MAAF KIYA.” 🥹❤️</span>
+            </div>
+            <p class="smile-calc">
+              And I swear... I'll probably smile like an idiot for the next 3 business days. 😭😂<br>
+              Maybe 4.<br>
+              Actually... Knowing me...<br>
+              <strong class="full-week">FULL WEEK. 💀😂</strong>
+            </p>
+          </div>
+
+          <!-- Unchanging Care & 5 Sacred Nicknames -->
+          <div class="finale-nicknames-block">
+            <p class="until-then">
+              Until then... Take your time. Take your space. Be angry if you need to.<br>
+              But please don't think that I've stopped caring. Because I haven't. And I won't.
+            </p>
+            <div class="sacred-nicknames-grid">
+              <div class="nick-card">
+                <span class="nick-icon">❤️</span>
+                <span class="nick-name">Still my Gorgeousss.</span>
+              </div>
+              <div class="nick-card">
+                <span class="nick-icon">🍬</span>
+                <span class="nick-name">Still my Ladoo.</span>
+              </div>
+              <div class="nick-card">
+                <span class="nick-icon">🥹</span>
+                <span class="nick-name">Still my Bachaaa.</span>
+              </div>
+              <div class="nick-card">
+                <span class="nick-icon">💎</span>
+                <span class="nick-name">Still my Diamond.</span>
+              </div>
+              <div class="nick-card bandar-card">
+                <span class="nick-icon">🐒😭😂</span>
+                <span class="nick-name">And unfortunately... I'm still your bandar.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Final Heartfelt Plea -->
+          <div class="finale-plea-block">
+            <p class="one-last-time">So... ONE LAST TIME...</p>
+            <div class="no-drama-row">
+              <span>No explanations.</span>
+              <span>No excuses.</span>
+              <span>No drama.</span>
+            </div>
+            <div class="final-dil-se-sorry">
+              Just from the heart:<br>
+              <span class="maaf-kardeee-glow">MAAF KARDEEE MA'AM. 🥺❤️😭</span>
+            </div>
+            <p class="happiest-bandar">
+              And whenever your heart finally says...<br>
+              <em>“Okayyy... iss idiot ko maaf kar sakte hain.” 😂</em><br>
+              <strong>I'll be the happiest bandar alive. 🐒❤️</strong>
+            </p>
+          </div>
+
+          <!-- Bandar Grand Seal -->
+          <div class="bandar-grand-seal">
+            <div class="seal-monkey-crest">🐒❤️</div>
+            <div class="seal-title">YOUR IDIOT BANDAR</div>
+            <div class="seal-name">SHUBHOD</div>
+            <div class="seal-pledge">“STILL NOT GOING ANYWHERE.” ❤️</div>
+          </div>
+
+          <!-- Postscript Notes -->
+          <div class="postscript-sticky-card">
+            <div class="ps-item">
+              <span class="ps-tag">P.S.</span>
+              <p>
+                Yes Ma'am... I know this was supposed to be a short apology. I somehow turned it into an entire website. 😭😂 Typical Shubhod.
+              </p>
+            </div>
+            <div class="ps-item">
+              <span class="ps-tag">P.P.S.</span>
+              <p>
+                Now please smile a little. I've already embarrassed myself enough for one lifetime. 😭😂❤️
+              </p>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- The Glowing Moon & Celestial Wish -->
+        <div class="sanctuary-moon-orb">🌕</div>
+        <h2 class="sanctuary-quote">
+          “Some chapters end.<br>True friendships keep writing themselves.”
+        </h2>
+        <p class="sanctuary-sub">
+          May your skies always have flowers, moonlight, and peace.
+        </p>
+
+        <!-- Interactive Wish Button -->
+        <button class="btn-wish-moon" id="btn-wish" onclick="sendWishToMoon()">
+          <span>Send a Silent Wish to the Moon 🌙✨</span>
+        </button>
+        <div id="wish-feedback" class="wish-feedback" aria-live="polite"></div>
+
+        <!-- Back to Top -->
+        <div class="sanctuary-nav-bottom">
+          <a href="#hero" class="btn-return-top">↑ Return to the Beginning</a>
+        </div>
+      </div>
+    </section>
+</main>
+
+  <!-- Photo Lightbox Modal -->
+  <div id="photo-lightbox" class="photo-lightbox" role="dialog" aria-hidden="true">
+    <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">✕</button>
+      <img id="lightbox-img" src="" alt="Enlarged photo view" class="lightbox-photo">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>The Little Universe of Madhee 🌙🌸🌿 • Dedicated to my best friend</p>
+      <p class="footer-small">Crafted with care, honesty & starlight • Localhost Edition</p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=3.2"></script>
+</body>
+</html>

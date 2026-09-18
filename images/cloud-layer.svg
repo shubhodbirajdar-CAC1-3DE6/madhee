@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <defs>
+    <filter id="cloudSoftness" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="25" />
+    </filter>
+  </defs>
+  <g fill="rgba(190, 210, 245, 0.15)" filter="url(#cloudSoftness)">
+    <ellipse cx="200" cy="220" rx="220" ry="80" />
+    <ellipse cx="380" cy="180" rx="180" ry="70" />
+    <ellipse cx="560" cy="230" rx="240" ry="85" />
+    <ellipse cx="780" cy="190" rx="210" ry="75" />
+    <ellipse cx="980" cy="220" rx="220" ry="80" />
+  </g>
+  <g fill="rgba(255, 255, 255, 0.1)" filter="url(#cloudSoftness)">
+    <ellipse cx="320" cy="170" rx="140" ry="50" />
+    <ellipse cx="640" cy="180" rx="170" ry="60" />
+    <ellipse cx="860" cy="160" rx="150" ry="55" />
+  </g>
+</svg>
