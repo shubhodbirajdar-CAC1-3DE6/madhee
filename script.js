@@ -781,8 +781,27 @@ function scrollToRandomMemory() {
 
 // Replace initSixSectionsScrollSpy with Page Controller Initializer
 function initSixSectionsScrollSpy() {
-  // Initialize page 1 as active
-  switchSitePage(1);
+  // Check URL query param (?page=3) or hash (#chronicles, #madhee-dimension)
+  const urlParams = new URLSearchParams(window.location.search);
+  const pageParam = parseInt(urlParams.get('page'), 10);
+  const rawHash = window.location.hash ? window.location.hash.substring(1) : '';
+
+  if (pageParam >= 1 && pageParam <= 6) {
+    switchSitePage(pageParam);
+  } else if (rawHash === 'chronicles') {
+    switchSitePage(3);
+  } else if (rawHash === 'madhee-dimension' || rawHash === 'dimension') {
+    switchSitePage(4);
+  } else if (rawHash === 'apology' || rawHash === 'letter') {
+    switchSitePage(5);
+  } else if (rawHash === 'sanctuary') {
+    switchSitePage(6);
+  } else if (rawHash === 'memories' || rawHash.startsWith('chapter-')) {
+    switchSitePage(2, rawHash.startsWith('chapter-') ? rawHash : null);
+  } else {
+    // Default: page 1
+    switchSitePage(1);
+  }
   
   // Handle any anchor clicks to navigate to correct page
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1054,13 +1073,19 @@ window.switchDancingBear = switchDancingBear;
         initMadheeDimension();
         startDimensionRenderLoop();
 
-        // Warp Camera Effect with GSAP
+        // Force resize recalculation so WebGL viewport matches dimensions
+        setTimeout(() => {
+          window.dispatchEvent(new Event('resize'));
+        }, 80);
+
+        // Warp Camera Effect with GSAP - scaled for mobile if viewport is narrow
+        const targetZ = window.innerWidth < 768 ? 14.2 : 9.8;
         if (typeof gsap !== 'undefined' && camera) {
           camera.position.set(0, 0, 24);
           gsap.to(camera.position, {
             x: 0,
             y: 0.5,
-            z: 9.8,
+            z: targetZ,
             duration: 1.8,
             ease: 'power3.out'
           });
@@ -1079,9 +1104,10 @@ window.switchDancingBear = switchDancingBear;
     const height = container.clientHeight || 560;
 
     // Scene & Camera
+    const isMobile = window.innerWidth < 768;
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.set(0, 0.5, 9.8);
+    camera.position.set(0, 0.5, isMobile ? 14.2 : 9.8);
 
     // Renderer
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -1239,6 +1265,9 @@ window.switchDancingBear = switchDancingBear;
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
+      if (activeWorldIndex === null) {
+        camera.position.z = window.innerWidth < 768 ? 14.2 : 9.8;
+      }
     });
   }
 
@@ -1356,12 +1385,13 @@ window.switchDancingBear = switchDancingBear;
       modal.classList.add('show');
     }
 
-    // Camera fly smoothly towards the world
+    // Camera fly smoothly towards the world (zoomed slightly further out on mobile so it fits)
+    const flyZ = window.innerWidth < 768 ? 6.2 : 4.8;
     if (typeof gsap !== 'undefined' && camera) {
       gsap.to(camera.position, {
         x: wData.pos.x * 0.72,
         y: wData.pos.y * 0.72,
-        z: 4.8,
+        z: flyZ,
         duration: 1.2,
         ease: 'power2.out'
       });
@@ -1380,12 +1410,13 @@ window.switchDancingBear = switchDancingBear;
     const modal = document.getElementById('dimension-world-modal');
     if (modal) modal.classList.remove('show');
 
-    // Camera return to overview
+    // Camera return to overview (scaled for mobile if needed)
+    const targetZ = window.innerWidth < 768 ? 14.2 : 9.8;
     if (typeof gsap !== 'undefined' && camera) {
       gsap.to(camera.position, {
         x: 0,
         y: 0.5,
-        z: 9.8,
+        z: targetZ,
         duration: 1.2,
         ease: 'power2.inOut'
       });
@@ -1397,11 +1428,12 @@ window.switchDancingBear = switchDancingBear;
 
   function focusDimensionCore() {
     exitWorldView();
+    const targetCoreZ = window.innerWidth < 768 ? 7.2 : 5.5;
     if (typeof gsap !== 'undefined' && camera) {
       gsap.to(camera.position, {
         x: 0,
         y: 0.2,
-        z: 5.5,
+        z: targetCoreZ,
         duration: 1.2,
         ease: 'power2.out',
         onComplete: () => {

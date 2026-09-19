@@ -5689,9 +5689,53 @@ button, a, .nick-pill, .bubu-comedy-btn, .court-role-btn, .bubu-letter-btn, .btn
   }
 
   /* SECTION 03: CASE FILE & COURTROOM */
+  .chronicles-section {
+    padding: 24px 6px !important;
+  }
+
+  .chronicles-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  .chronicle-card {
+    width: 94% !important;
+    max-width: 540px !important;
+    margin: 0 auto !important;
+    padding: 20px 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .card-stamp-badge {
+    font-size: 0.6rem !important;
+    letter-spacing: 1px !important;
+    padding: 3px 8px !important;
+    white-space: normal !important;
+    line-height: 1.3 !important;
+    margin-bottom: 10px !important;
+  }
+
   .chronicle-title {
-    font-size: 1.25rem !important;
+    font-size: 1.15rem !important;
+    letter-spacing: 1px !important;
     margin-bottom: 6px !important;
+  }
+
+  .chronicle-sub-section {
+    margin-bottom: 16px !important;
+  }
+
+  .sub-sec-title {
+    font-size: 0.78rem !important;
+    letter-spacing: 1.2px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .case-meta-grid {
+    gap: 6px !important;
+    margin-bottom: 16px !important;
   }
 
   .meta-row {
@@ -5702,53 +5746,508 @@ button, a, .nick-pill, .bubu-comedy-btn, .court-role-btn, .bubu-letter-btn, .btn
   }
 
   .meta-label {
-    font-size: 0.68rem !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.8px !important;
   }
 
   .meta-val {
-    font-size: 0.84rem !important;
+    font-size: 0.82rem !important;
     line-height: 1.35 !important;
   }
 
+  .alias-tags-cluster {
+    gap: 5px !important;
+  }
+
   .alias-pill {
-    font-size: 0.74rem !important;
+    font-size: 0.72rem !important;
     padding: 3px 8px !important;
   }
 
+  .chronicle-bullet-list li,
+  .chronicle-check-list li,
+  .chronicle-guilty-checks li {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .chronicle-bullet-list li {
+    padding-left: 18px !important;
+  }
+
+  .check-mark,
+  .box-checked {
+    font-size: 0.95rem !important;
+  }
+
+  .official-observation-card {
+    padding: 12px 14px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .obs-tag {
+    font-size: 0.65rem !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .obs-quote {
+    font-size: 0.95rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .creature-interactive-box {
+    margin-bottom: 12px !important;
+  }
+
+  .creature-pill {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+
+  .creature-icon {
+    font-size: 1.3rem !important;
+  }
+
+  .creature-text {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .creature-text strong {
+    font-size: 0.72rem !important;
+  }
+
+  .evidence-docket-list {
+    gap: 6px !important;
+  }
+
+  .evidence-item {
+    font-size: 0.82rem !important;
+    padding: 6px 10px !important;
+    line-height: 1.4 !important;
+  }
+
+  .narrative-plea-card {
+    padding: 12px 14px !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .no-cluster-tags {
+    gap: 5px !important;
+    margin: 8px 0 !important;
+  }
+
+  .no-cluster-tags span {
+    font-size: 0.76rem !important;
+    padding: 3px 8px !important;
+  }
+
+  /* Verdict table — stack label/value on mobile so long text wraps cleanly */
+  .verdict-mini-table {
+    padding: 10px 12px !important;
+    gap: 6px !important;
+  }
+
+  .verdict-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .v-lbl {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.8px !important;
+  }
+
+  .v-val {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+  }
+
+  .v-appeal-highlight {
+    padding: 6px 8px !important;
+    border-radius: 8px !important;
+  }
+
+  /* Courtroom Bubu Card */
+  .case-court-bubu-card {
+    padding: 16px 12px !important;
+  }
+
   .court-bubu-avatar-wrap {
-    width: 110px !important;
-    height: 110px !important;
+    width: 100px !important;
+    height: 100px !important;
     margin: 0 auto 8px !important;
   }
 
+  .court-bubu-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
   .court-bubu-quote {
-    font-size: 0.9rem !important;
+    font-size: 0.85rem !important;
     line-height: 1.45 !important;
     margin-bottom: 4px !important;
   }
 
   .court-bubu-role-badge {
-    font-size: 0.68rem !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.5px !important;
   }
 
   .court-bubu-switcher {
     gap: 4px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
   }
 
   .court-role-btn {
     padding: 5px 8px !important;
-    font-size: 0.72rem !important;
+    font-size: 0.68rem !important;
   }
 
-  /* SECTION 04: DIMENSION */
+  /* Confirmed Pledge Card */
+  .confirmed-pledge-card {
+    padding: 14px 12px !important;
+  }
+
+  .confirmed-tag {
+    font-size: 0.68rem !important;
+  }
+
+  .confirmed-quote {
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .confirmed-wahi {
+    gap: 6px !important;
+  }
+
+  .confirmed-wahi span {
+    font-size: 0.8rem !important;
+  }
+
+  .confirmed-hope {
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Final Statement */
+  .final-statement-box {
+    padding: 16px 12px !important;
+  }
+
+  .statement-shout {
+    font-size: 1.1rem !important;
+  }
+
+  .final-statement-box p {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .statement-sign p {
+    font-size: 0.82rem !important;
+  }
+
+  /* ============================================================
+     SECTION 04: DIMENSION — MOBILE
+     ============================================================ */
+  .madhee-dimension-section {
+    padding: 24px 6px 40px !important;
+  }
+
+  .dimension-container {
+    max-width: 100% !important;
+  }
+
+  .dimension-main-title {
+    font-size: 1.5rem !important;
+    letter-spacing: 1.5px !important;
+    margin: 8px 0 6px !important;
+  }
+
+  .dimension-rule-line {
+    margin: 6px auto 10px !important;
+    max-width: 280px !important;
+    gap: 10px !important;
+  }
+
+  .dimension-rule-line .d-symbol {
+    font-size: 0.75rem !important;
+    letter-spacing: 2px !important;
+  }
+
+  .dimension-lead-sub {
+    font-size: 0.82rem !important;
+    margin: 0 auto 18px !important;
+    max-width: 95% !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Portal Gate */
+  .dimension-portal-gate {
+    padding: 30px 16px !important;
+    border-radius: 18px !important;
+    max-width: 100% !important;
+    margin: 16px auto 14px !important;
+  }
+
+  .portal-rings-container {
+    width: 130px !important;
+    height: 130px !important;
+    margin: 0 auto 16px !important;
+  }
+
+  .portal-ring.ring-outer {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .portal-ring.ring-mid {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+  .portal-ring.ring-inner {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .portal-vortex-core {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .portal-alert-tag {
+    font-size: 0.6rem !important;
+    padding: 3px 10px !important;
+    letter-spacing: 1px !important;
+  }
+
+  .portal-title {
+    font-size: 1.2rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .portal-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+    max-width: 100% !important;
+    margin: 0 auto 18px !important;
+  }
+
+  .btn-portal-enter {
+    padding: 12px 24px !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 1px !important;
+    gap: 8px !important;
+  }
+
+  /* 3D Universe Stage */
+  .dimension-universe-stage {
+    padding: 10px !important;
+    border-radius: 16px !important;
+  }
+
+  .dimension-hud-bar {
+    padding: 6px 10px !important;
+    border-radius: 10px !important;
+    margin-bottom: 8px !important;
+    gap: 6px !important;
+  }
+
+  .hud-system-title {
+    font-size: 0.6rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  .hud-orbit-btn {
+    padding: 4px 10px !important;
+    font-size: 0.64rem !important;
+  }
+
+  /* Canvas — comfortable height, allow scroll past */
   .dimension-canvas-container {
-    height: 280px !important;
+    height: 300px !important;
     border-radius: 14px !important;
+    touch-action: pan-y !important;
+  }
+
+  .dimension-tag {
+    font-size: 0.52rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  .dimension-tag.tag-tl { top: 8px !important; left: 8px !important; }
+  .dimension-tag.tag-tr { top: 8px !important; right: 8px !important; }
+  .dimension-tag.tag-bl,
+  .dimension-tag.tag-br {
+    display: none !important;
+  }
+
+  /* World Pills — wrap neatly centered */
+  .dimension-world-pills {
+    bottom: 8px !important;
+    gap: 5px !important;
+    width: 96% !important;
   }
 
   .world-pill {
     padding: 4px 8px !important;
+    font-size: 0.62rem !important;
+    gap: 3px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .pill-emoji {
+    font-size: 0.85rem !important;
+  }
+
+  /* World Modal */
+  .dimension-world-modal {
+    padding: 20px 16px 18px !important;
+    border-radius: 16px !important;
+    max-width: 92% !important;
+    width: 92% !important;
+  }
+
+  .btn-close-world {
+    top: 10px !important;
+    right: 10px !important;
+    font-size: 0.62rem !important;
+    padding: 3px 8px !important;
+  }
+
+  .w-badge {
+    font-size: 0.62rem !important;
+    padding: 3px 10px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .w-title {
+    font-size: 1.15rem !important;
+  }
+
+  .w-quote-block {
+    font-size: 0.92rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .btn-hazard-press {
+    padding: 8px 16px !important;
     font-size: 0.72rem !important;
+  }
+
+  /* Chaos Monkey Popup */
+  .chaos-monkey-popup {
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
+    max-width: 88% !important;
+    width: 88% !important;
+  }
+
+  .monkey-bounce-img {
+    font-size: 2.8rem !important;
+  }
+
+  .monkey-badge {
+    font-size: 0.62rem !important;
+  }
+
+  .monkey-title {
+    font-size: 1.05rem !important;
+  }
+
+  .monkey-desc {
+    font-size: 0.8rem !important;
+    margin-bottom: 14px !important;
+  }
+
+  .btn-dismiss-monkey {
+    padding: 8px 16px !important;
+    font-size: 0.7rem !important;
+  }
+
+  /* Ma'am Dossier Modal */
+  .maam-dossier-modal {
+    max-width: 90% !important;
+    width: 90% !important;
+  }
+
+  .dossier-card {
+    padding: 20px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .dossier-stamp {
+    font-size: 0.6rem !important;
+    padding: 3px 10px !important;
+  }
+
+  .dossier-title {
+    font-size: 1.0rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  .dossier-rows {
+    padding: 10px !important;
+  }
+
+  .d-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .d-label {
+    font-size: 0.65rem !important;
+  }
+
+  .btn-close-dossier {
+    padding: 8px 18px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Dimension Finale */
+  .dimension-universe-finale {
+    padding: 24px 14px !important;
+    border-radius: 18px !important;
+    margin-top: 16px !important;
+  }
+
+  .finale-star-crest {
+    font-size: 1rem !important;
+    letter-spacing: 4px !important;
+  }
+
+  .finale-universe-title {
+    font-size: 1.8rem !important;
+    letter-spacing: 4px !important;
+  }
+
+  .finale-universe-sub {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .evidence-lead,
+  .evidence-quote,
+  .evidence-highlight,
+  .evidence-continue {
+    font-size: 0.88rem !important;
+  }
+
+  .btn-universe-proceed {
+    padding: 12px 22px !important;
+    font-size: 0.82rem !important;
   }
 
   /* SECTION 05: THE LETTER - COMPACT, CRISP, PROPORTIONAL */
@@ -6136,6 +6635,44 @@ button, a, .nick-pill, .bubu-comedy-btn, .court-role-btn, .bubu-letter-btn, .btn
 
   .bubu-speech-quote {
     font-size: 0.84rem !important;
+  }
+
+  /* Section 03 & 04 Extra Small Refinements */
+  .chronicle-card {
+    width: 98% !important;
+    padding: 16px 10px !important;
+  }
+
+  .chronicle-title {
+    font-size: 1.05rem !important;
+  }
+
+  .dimension-canvas-container {
+    height: 260px !important;
+  }
+
+  .portal-rings-container {
+    width: 110px !important;
+    height: 110px !important;
+  }
+
+  .portal-ring.ring-outer {
+    width: 105px !important;
+    height: 105px !important;
+  }
+
+  .portal-ring.ring-mid {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .portal-ring.ring-inner {
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  .portal-title {
+    font-size: 1.1rem !important;
   }
 }
 
