@@ -5400,139 +5400,788 @@ button, a, .nick-pill, .bubu-comedy-btn, .court-role-btn, .bubu-letter-btn {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Mobile & Tablet screens (< 768px) */
+/* ==========================================================================
+   COMPLETE MOBILE WEBSITE OPTIMIZATION (PROPER ON ALL SMARTPHONES)
+   ========================================================================== */
+
+/* Universal mobile touch & scroll hygiene */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+button, a, .nick-pill, .bubu-comedy-btn, .court-role-btn, .bubu-letter-btn, .btn-step-nav {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ==========================================================================
+   MOBILE PHONES & TABLETS (< 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
-  /* Give cards full width on mobile screens to eliminate empty side space */
+  /* Layout: Edge-to-edge full width on phone screens */
+  .site-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .site-section-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+  }
+
+  .hero-section,
   .chronicles-section,
   .apology-section,
   .memories-section,
-  .hero-section,
-  .sanctuary-section {
+  .sanctuary-section,
+  .prologue-section {
     width: 100% !important;
     max-width: 100% !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
     box-sizing: border-box !important;
   }
 
-  .apology-manuscript {
-    padding: 36px 18px !important;
-    border-radius: 20px !important;
+  /* Master Section Badges */
+  .section-master-badge {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.08em !important;
+    padding: 4px 12px !important;
+    max-width: 96% !important;
+    white-space: normal !important;
+    text-align: center !important;
+    line-height: 1.4 !important;
   }
 
-  .letter-salutation {
-    font-size: 2.3rem !important;
-  }
-
-  .letter-sub-salutation {
-    font-size: 2.1rem !important;
-  }
-
-  .letter-body p {
-    font-size: 1.22rem !important;
-    line-height: 1.85 !important;
-  }
-
-  .letter-highlight-quote,
-  .letter-golden-quote {
-    padding: 16px 18px !important;
-    font-size: 1.25rem !important;
-  }
-
-  .letter-emphasis-box {
-    padding: 20px 16px !important;
-  }
-
-  .emphasis-strong {
-    font-size: 1.5rem !important;
-  }
-
-  .bubu-letter-regret-card {
-    padding: 20px 14px !important;
-    margin: 20px auto 26px !important;
-  }
-
-  .bubu-letter-actions {
-    gap: 6px !important;
-  }
-
-  .bubu-letter-btn {
-    padding: 8px 12px !important;
-    font-size: 0.82rem !important;
-  }
-
-  /* Courtroom in Case File on Mobile Web */
-  .case-court-bubu-card {
-    padding: 18px 12px !important;
-  }
-
-  .court-bubu-switcher {
-    gap: 6px !important;
-  }
-
-  .court-role-btn {
-    padding: 6px 10px !important;
-    font-size: 0.78rem !important;
-  }
-
-  .court-bubu-quote {
-    font-size: 1.15rem !important;
-  }
-
-  /* Comedy Show in Section 01 on Mobile Web */
-  .hero-bubu-comedy-card {
-    padding: 20px 14px !important;
-  }
-
-  .bubu-comedy-buttons {
-    gap: 6px !important;
-  }
-
-  .bubu-comedy-btn {
-    padding: 7px 11px !important;
-    font-size: 0.8rem !important;
-  }
-
-  /* Bottom page step buttons */
-  .page-step-footer {
-    padding: 14px 12px !important;
-    gap: 10px !important;
-  }
-
-  .btn-step-nav {
-    min-height: 46px !important;
-    font-size: 0.88rem !important;
-    padding: 10px 16px !important;
-  }
-}
-
-/* Extra small mobile phones (< 420px) */
-@media (max-width: 420px) {
+  /* Sticky Top Header Navigation on Mobile */
   .site-header {
-    padding: 0 4px !important;
+    top: 6px !important;
+    padding: 0 6px !important;
+    width: 100% !important;
   }
 
   .header-inner {
-    padding: 4px 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 4px 8px !important;
+    border-radius: 999px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .brand-logo,
+  .header-controls {
+    display: none !important;
+  }
+
+  .nav-links {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 4px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding: 2px 0 !important;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none !important;
   }
 
   .nav-link {
-    padding: 0 7px !important;
-    font-size: 0.66rem !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    height: 32px !important;
+    padding: 0 11px !important;
+    font-size: 0.74rem !important;
+    letter-spacing: 0.5px !important;
+    border-radius: 999px !important;
+  }
+
+  /* SECTION 01: HERO & PROLOGUE */
+  .hero-section {
+    padding-top: 64px !important;
+    padding-bottom: 30px !important;
+  }
+
+  .celestial-badge {
+    font-size: 0.68rem !important;
+    padding: 3px 10px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.85rem !important;
+    letter-spacing: 2px !important;
+  }
+
+  .hero-main-name {
+    font-size: 2.1rem !important;
+    line-height: 1.15 !important;
+    margin: 4px 0 10px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.94rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero-desc {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 18px !important;
   }
 
   .hero-nicknames {
     gap: 6px !important;
+    margin-bottom: 20px !important;
   }
 
   .nick-pill {
     padding: 6px 12px !important;
-    font-size: 0.84rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  /* Hero Cutu Bubu Comedy Card */
+  .hero-bubu-comedy-card {
+    padding: 16px 12px !important;
+    border-radius: 18px !important;
+    margin: 20px auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .bubu-comedy-badge {
+    font-size: 0.66rem !important;
+    padding: 4px 10px !important;
+  }
+
+  .bubu-comedy-stage {
+    width: 130px !important;
+    height: 130px !important;
+    margin: 0 auto 10px !important;
+  }
+
+  .bubu-comedy-text {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .bubu-comedy-sub {
+    font-size: 0.72rem !important;
+  }
+
+  .bubu-comedy-buttons {
+    gap: 5px !important;
+  }
+
+  .bubu-comedy-btn {
+    padding: 6px 10px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .bubu-laugh-toast {
+    font-size: 1.05rem !important;
+  }
+
+  .hero-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .btn-primary-glow,
+  .btn-secondary-glass {
+    width: 100% !important;
+    min-height: 44px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 0.9rem !important;
+  }
+
+  .prologue-card {
+    padding: 24px 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .section-headline {
+    font-size: 1.6rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* SECTION 02: 12 MEMORIES */
+  .section-gateway-header {
+    padding: 40px 10px 20px !important;
+  }
+
+  .section-gateway-title {
+    font-size: 1.65rem !important;
+  }
+
+  .section-gateway-subtitle {
+    font-size: 0.92rem !important;
+  }
+
+  .chapter-fullscreen-section {
+    padding: 30px 6px !important;
+    min-height: auto !important;
+  }
+
+  .chapter-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  .chapter-photo-col {
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 0 auto !important;
+  }
+
+  .nature-frame {
+    padding: 10px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .chapter-img {
+    border-radius: 12px !important;
+    max-height: 380px !important;
+    object-fit: cover !important;
+    width: 100% !important;
+  }
+
+  .story-glass-card {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .chapter-title {
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .story-lead-p {
+    font-size: 1.02rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .story-body-p {
+    font-size: 0.96rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .verse-line {
+    font-size: 0.92rem !important;
+  }
+
+  .story-final-quote {
+    font-size: 1.02rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* SECTION 03: CASE FILE & COURTROOM */
+  .chronicles-section {
+    padding: 30px 8px !important;
+  }
+
+  .chronicle-card {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .chronicle-title {
+    font-size: 1.35rem !important;
+  }
+
+  .meta-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 3px !important;
+    padding: 8px 10px !important;
+  }
+
+  .meta-label {
+    font-size: 0.72rem !important;
+  }
+
+  .meta-val {
+    font-size: 0.88rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .alias-tags-cluster {
+    gap: 6px !important;
+  }
+
+  .alias-pill {
+    font-size: 0.78rem !important;
+    padding: 4px 8px !important;
+  }
+
+  .case-court-bubu-card {
+    padding: 18px 12px !important;
+    border-radius: 18px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .court-bubu-avatar-wrap {
+    width: 130px !important;
+    height: 130px !important;
+    margin: 0 auto 10px !important;
+  }
+
+  .court-bubu-quote {
+    font-size: 0.98rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .court-bubu-role-badge {
+    font-size: 0.72rem !important;
+  }
+
+  .court-bubu-switcher {
+    gap: 5px !important;
+  }
+
+  .court-role-btn {
+    padding: 6px 9px !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* SECTION 04: DIMENSION */
+  .dimension-canvas-container {
+    height: 320px !important;
+    border-radius: 16px !important;
+  }
+
+  .world-pill {
+    padding: 5px 10px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .dimension-story-card {
+    padding: 18px 12px !important;
+    border-radius: 16px !important;
+  }
+
+  /* SECTION 05: THE LETTER (SCALED PROPERLY FOR MOBILE PHONES) */
+  .apology-section {
+    padding: 24px 6px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .apology-manuscript {
+    padding: 24px 14px !important;
+    border-radius: 18px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .letter-header {
+    margin-bottom: 20px !important;
+  }
+
+  .letter-seal {
+    font-size: 2.2rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .letter-tag {
+    font-size: 0.7rem !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .letter-salutation {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .letter-sub-salutation {
+    font-size: 1.55rem !important;
+    margin-top: 4px !important;
+  }
+
+  /* Cutu Bubu Regret Card inside Letter */
+  .bubu-letter-regret-card {
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+    margin: 16px auto 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .bubu-letter-badge {
+    font-size: 0.68rem !important;
+    padding: 4px 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .bubu-letter-visual-box {
+    width: 120px !important;
+    height: 120px !important;
+    margin: 0 auto 10px !important;
+  }
+
+  .bubu-letter-speech {
+    padding: 12px 14px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .bubu-speech-quote {
+    font-size: 0.98rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .bubu-speech-author {
+    font-size: 0.72rem !important;
+  }
+
+  .bubu-letter-actions {
+    gap: 4px !important;
+  }
+
+  .bubu-letter-btn {
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Letter Paragraphs & Quotes */
+  .letter-body {
+    gap: 14px !important;
+    margin-bottom: 24px !important;
   }
 
   .letter-body p {
-    font-size: 1.15rem !important;
+    font-size: 1.02rem !important;
+    line-height: 1.72 !important;
+    color: #f1f5f9 !important;
+  }
+
+  .letter-highlight-quote {
+    font-size: 1.05rem !important;
+    padding: 12px 14px !important;
+    line-height: 1.6 !important;
+    border-left-width: 3px !important;
+    border-radius: 0 12px 12px 0 !important;
+  }
+
+  .letter-golden-quote {
+    font-size: 1.05rem !important;
+    padding: 12px 14px !important;
+    line-height: 1.6 !important;
+    border-left-width: 3px !important;
+    border-radius: 0 12px 12px 0 !important;
+  }
+
+  .letter-emphasis-box {
+    padding: 16px 12px !important;
+    border-radius: 14px !important;
+    margin: 10px 0 !important;
+  }
+
+  .emphasis-lead {
+    font-size: 0.92rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .emphasis-strong {
+    font-size: 1.18rem !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .emphasis-sub {
+    font-size: 0.88rem !important;
+  }
+
+  .letter-light-laugh {
+    font-size: 1.02rem !important;
+  }
+
+  .letter-memories-cluster {
+    gap: 6px !important;
+    margin: 12px 0 !important;
+  }
+
+  .letter-memories-cluster span {
+    font-size: 0.82rem !important;
+    padding: 5px 12px !important;
+  }
+
+  .letter-closing-plea {
+    font-size: 1.08rem !important;
+    line-height: 1.6 !important;
+    margin-top: 14px !important;
+  }
+
+  .letter-three-points {
+    gap: 8px !important;
+    margin: 10px 0 16px !important;
+  }
+
+  .letter-three-points span {
+    font-size: 0.85rem !important;
+  }
+
+  .letter-three-points .points-heart {
+    font-size: 1.0rem !important;
+  }
+
+  .letter-signature-block {
+    padding-top: 18px !important;
+  }
+
+  .signature-closing {
+    font-size: 0.92rem !important;
+  }
+
+  .signature-name {
+    font-size: 1.75rem !important;
+  }
+
+  /* SECTION 06: SANCTUARY & GRAND FINALE */
+  .sanctuary-section {
+    padding: 30px 8px !important;
+  }
+
+  .finale-grand-card {
+    padding: 24px 12px !important;
+    border-radius: 18px !important;
+    margin-bottom: 36px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .finale-alert-banner {
+    padding: 6px 12px !important;
+    gap: 6px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .siren-blink {
+    font-size: 1.1rem !important;
+  }
+
+  .finale-alert-title {
+    font-size: 0.8rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  .finale-maam {
+    font-size: 1.55rem !important;
+  }
+
+  .finale-lead {
+    font-size: 1.02rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .finale-promise-card {
+    padding: 16px 12px !important;
+    border-radius: 14px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .promise-pre {
+    font-size: 0.92rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .promise-golden-quote {
+    font-size: 1.05rem !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .promise-valid-tag {
+    font-size: 0.74rem !important;
+    padding: 3px 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .promise-whisper {
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .identity-lead {
+    font-size: 1.02rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  .identity-badges {
+    gap: 6px !important;
+  }
+
+  .id-badge {
+    font-size: 0.78rem !important;
+    padding: 5px 10px !important;
+  }
+
+  .identity-diff,
+  .finale-regret-block p {
+    font-size: 0.96rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .rights-cluster {
+    gap: 6px !important;
+  }
+
+  .right-pill {
+    font-size: 0.78rem !important;
+    padding: 6px 10px !important;
+  }
+
+  .promise-reaffirm {
+    font-size: 1.02rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Court Docket Table on Mobile */
+  .court-case-docket {
+    padding: 16px 10px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 24px !important;
+  }
+
+  .court-stamp {
+    font-size: 0.7rem !important;
+    padding: 3px 8px !important;
+  }
+
+  .gavel-icon {
+    font-size: 1.3rem !important;
+  }
+
+  .court-title {
+    font-size: 1.02rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  .court-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+    padding: 6px 8px !important;
+  }
+
+  .court-label {
+    font-size: 0.68rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  .court-val {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .sanctuary-heading {
+    font-size: 1.65rem !important;
+  }
+
+  .sanctuary-subheading {
+    font-size: 0.92rem !important;
+  }
+
+  .flower-altar {
+    gap: 6px !important;
+  }
+
+  .flower-offering-btn {
+    padding: 8px 12px !important;
+    font-size: 0.82rem !important;
+  }
+
+  /* Page Step Footer Navigation on Mobile */
+  .page-step-footer {
+    padding: 12px 6px !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .page-step-footer.double-step {
+    flex-direction: column !important;
+  }
+
+  .btn-step-nav {
+    width: 100% !important;
+    min-height: 46px !important;
+    font-size: 0.86rem !important;
+    padding: 10px 14px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
+  }
+
+  .lunar-progress-rail {
+    display: none !important;
   }
 }
+
+/* ==========================================================================
+   EXTRA SMALL MOBILE PHONES (< 420px - iPhone SE, Galaxy A series)
+   ========================================================================== */
+@media (max-width: 420px) {
+  .site-header {
+    top: 4px !important;
+    padding: 0 4px !important;
+  }
+
+  .header-inner {
+    padding: 3px 6px !important;
+  }
+
+  .nav-link {
+    padding: 0 8px !important;
+    font-size: 0.7rem !important;
+    height: 30px !important;
+  }
+
+  .hero-main-name {
+    font-size: 1.85rem !important;
+  }
+
+  .letter-salutation {
+    font-size: 1.55rem !important;
+  }
+
+  .letter-sub-salutation {
+    font-size: 1.4rem !important;
+  }
+
+  .letter-body p {
+    font-size: 0.98rem !important;
+    line-height: 1.68 !important;
+  }
+
+  .bubu-speech-quote {
+    font-size: 0.92rem !important;
+  }
+}
+
 
 
