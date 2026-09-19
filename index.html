@@ -14,7 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=8.8">
+  <!-- Progressive Web App (PWA) Mobile App Support -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#070b14">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Madhee 🌙">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
+  <link rel="stylesheet" href="styles.css?v=9.0">
 
   <!-- Three.js & GSAP from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -67,6 +78,10 @@
           <button class="theme-btn" data-theme="blossom" title="Blossom Dawn">🌸</button>
           <button class="theme-btn" data-theme="forest" title="Forest Twilight">🌿</button>
         </div>
+        <button type="button" id="headerInstallBtn" class="header-install-btn" onclick="triggerPWAInstall()" title="Install App on Phone / Desktop">
+          <span class="install-icon">📲</span>
+          <span class="install-text">App</span>
+        </button>
       </div>
     </div>
   </header>
@@ -1978,6 +1993,50 @@
     </div>
   </footer>
 
-  <script src="script.js?v=8.8"></script>
+  <!-- PWA Mobile App Install Banner & iOS Modal -->
+  <div id="pwa-install-banner" class="pwa-install-banner" style="display: none;">
+    <div class="pwa-banner-inner">
+      <img src="icons/icon-192.png" alt="App Icon" class="pwa-banner-icon">
+      <div class="pwa-banner-info">
+        <span class="pwa-banner-title">The Little Universe of Madhee</span>
+        <span class="pwa-banner-desc">Install on your phone for full-screen starlight 🌙</span>
+      </div>
+      <div class="pwa-banner-actions">
+        <button type="button" class="btn-pwa-install" onclick="triggerPWAInstall()">Install</button>
+        <button type="button" class="btn-pwa-dismiss" onclick="dismissPWABanner()" aria-label="Dismiss">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="pwa-ios-modal" class="pwa-ios-modal" style="display: none;" onclick="closeIOSModal(event)">
+    <div class="pwa-ios-sheet" onclick="event.stopPropagation()">
+      <div class="ios-sheet-handle"></div>
+      <div class="ios-sheet-header">
+        <img src="icons/apple-touch-icon.png" alt="App Icon" class="ios-app-icon">
+        <div class="ios-header-text">
+          <h4>Install on iPhone / iPad</h4>
+          <p>Add to Home Screen for the full app experience</p>
+        </div>
+        <button type="button" class="ios-close-btn" onclick="closeIOSModal()">✕</button>
+      </div>
+      <div class="ios-steps-list">
+        <div class="ios-step-item">
+          <span class="ios-step-num">1</span>
+          <p>Tap the <strong>Share</strong> button <span class="ios-inline-icon">⎋</span> in Safari’s bottom toolbar.</p>
+        </div>
+        <div class="ios-step-item">
+          <span class="ios-step-num">2</span>
+          <p>Scroll down and tap <strong>"Add to Home Screen"</strong> <span class="ios-inline-icon">➕</span>.</p>
+        </div>
+        <div class="ios-step-item">
+          <span class="ios-step-num">3</span>
+          <p>Tap <strong>"Add"</strong> in the top right. <em>Madhee’s Little Universe</em> app icon will now appear on your phone!</p>
+        </div>
+      </div>
+      <button type="button" class="btn-ios-done" onclick="closeIOSModal()">Got It! ✨</button>
+    </div>
+  </div>
+
+  <script src="script.js?v=9.0"></script>
 </body>
 </html>

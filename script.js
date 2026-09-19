@@ -1728,3 +1728,89 @@ function switchCourtRole(role, btn) {
   setTimeout(() => { img.style.transform = ''; }, 260);
 }
 window.switchCourtRole = switchCourtRole;
+
+// ==========================================================================
+// PROGRESSIVE WEB APP (PWA) INSTALL CONTROLLER & SERVICE WORKER
+// ==========================================================================
+let deferredPrompt = null;
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then((reg) => console.log('PWA Service Worker registered:', reg.scope))
+      .catch((err) => console.warn('PWA registration failed:', err));
+  });
+}
+
+// Listen for browser install prompt (Android, Chrome, Edge, etc.)
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  const headerBtn = document.getElementById('headerInstallBtn');
+  if (headerBtn && !isStandalone) {
+    headerBtn.style.display = 'inline-flex';
+  }
+
+  setTimeout(() => {
+    const banner = document.getElementById('pwa-install-banner');
+    const dismissed = sessionStorage.getItem('pwa_dismissed');
+    if (banner && !dismissed && !isStandalone) {
+      banner.style.display = 'block';
+    }
+  }, 3500);
+});
+
+// Trigger Install Action
+function triggerPWAInstall() {
+  if (isIOS) {
+    const modal = document.getElementById('pwa-ios-modal');
+    if (modal) modal.style.display = 'flex';
+    return;
+  }
+
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User installed the PWA!');
+        dismissPWABanner();
+      }
+      deferredPrompt = null;
+    });
+  } else {
+    if (isIOS) {
+      const modal = document.getElementById('pwa-ios-modal');
+      if (modal) modal.style.display = 'flex';
+    } else {
+      alert('To install this app:\n• Android/Chrome: Tap the 3 dots menu ⋮ > "Install app" or "Add to Home screen"\n• iPhone/Safari: Tap Share ⎋ > "Add to Home Screen"');
+    }
+  }
+}
+window.triggerPWAInstall = triggerPWAInstall;
+
+function dismissPWABanner() {
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) banner.style.display = 'none';
+  sessionStorage.setItem('pwa_dismissed', 'true');
+}
+window.dismissPWABanner = dismissPWABanner;
+
+function closeIOSModal(e) {
+  if (e && e.target && e.target.classList.contains('pwa-ios-sheet')) return;
+  const modal = document.getElementById('pwa-ios-modal');
+  if (modal) modal.style.display = 'none';
+}
+window.closeIOSModal = closeIOSModal;
+
+// Hide install elements if app is already running in standalone mode
+window.addEventListener('appinstalled', () => {
+  console.log('Madhee Universe App successfully installed!');
+  dismissPWABanner();
+  const headerBtn = document.getElementById('headerInstallBtn');
+  if (headerBtn) headerBtn.style.display = 'none';
+});
+
